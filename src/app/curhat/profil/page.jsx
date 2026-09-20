@@ -63,8 +63,8 @@ function ProfileFormContent() {
       // Graceful fallback if storage disabled
     }
 
-    // Proceed to next step (wilayah selection)
-    router.push(`/curhat/wilayah?mode=${mode}&session=${sessionId}`);
+    // Proceed to the short screening before choosing a PIK-R partner
+    router.push(`/curhat/screening?mode=${mode}&session=${sessionId}`);
   };
 
   return (
@@ -209,7 +209,7 @@ function ProfileFormContent() {
               )}
 
               <button type="submit" className={`btn btn-primary btn-lg ${styles.formSubmit}`}>
-                Lanjutkan Pilih Wilayah PIK-R →
+                Lanjutkan ke Screening →
               </button>
             </form>
 

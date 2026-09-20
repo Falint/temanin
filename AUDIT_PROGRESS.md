@@ -1,9 +1,9 @@
 # Audit Progress
 
 ## Status
-- Overall: 38% (5/13 tasks completed)
+- Overall: 46% (6/13 tasks completed)
 - Current Task: -
-- Last Updated: 2026-09-20
+- Last Updated: 2026-09-21
 
 ---
 
@@ -86,11 +86,20 @@
   - Next.js Build: PASS (`npm run build` sukses 10/10 routes terdaftar `/curhat/profil`)
 
 ### 6. Screening Kondisi & Kategori Masalah
-- Status: TODO
+- Status: DONE
 - Priority: MEDIUM
 - Category: Curhat Flow / UX
 - Depends On: Task 5
 - Description: Sediakan formulir screening singkat (pilihan kategori topik masalah dan skala kondisi saat ini) sebelum masuk antrean sesi konseling. Hasil screening disimpan sebagai `priority_label` untuk konteks awal konselor sebaya.
+- Changes:
+  - `src/app/curhat/screening/page.jsx`: Membuat rute screening dua pertanyaan untuk memilih kategori topik dan skala kondisi 1–5. Hasilnya disimpan sementara di `sessionStorage` sebagai `temanin_screening`, termasuk `category`, `raw_answer`, dan `priority_label` (`LOW`, `MEDIUM`, `HIGH`, atau `URGENT`). Label prioritas hanya menjadi metadata konteks dan tidak mengubah routing secara otomatis.
+  - `src/app/curhat/screening/page.jsx`: Menambahkan pemberitahuan bahwa screening bukan diagnosis medis serta bantuan krisis 112 dan 119 ext 8 saat pengguna memilih kondisi paling berat.
+  - `src/app/curhat/profil/page.jsx`: Mengubah langkah setelah profil menuju `/curhat/screening` sebelum pemilihan wilayah.
+  - `src/app/curhat/chat/page.jsx`: Membaca hasil screening dari `sessionStorage` dan menyertakan ringkasan topik serta kondisi sebagai konteks awal percakapan.
+  - `src/components/curhat/curhat.module.css`: Menambahkan tampilan responsif untuk pilihan topik, skala kondisi, validasi, dan pemberitahuan bantuan segera.
+- Validation:
+  - ESLint: PASS (`npm run lint` exit code 0)
+  - Next.js Build: PASS (`npm run build` sukses 11 static pages dan route `/curhat/screening` terdaftar)
 
 ### 7. Perbaikan Konten Edukasi & Detail Artikel Dinamis (`/edukasi/[slug]`)
 - Status: TODO
@@ -149,42 +158,43 @@
 - Task 3: Consent Screen & Disclaimer Krisis Mental Health
 - Task 4: Emergency Button & Hotline Darurat Selalu Terlihat di Chat
 - Task 5: Form Identitas & Profiling (Anonim & Terhubung)
+- Task 6: Screening Kondisi & Kategori Masalah
 
 ---
 
 ## Current Work
-- Checkpoint aman setelah Task 5 selesai
+- Checkpoint aman setelah Task 6 selesai
 
 ---
 
 ## Next Tasks
-- Task 6: Screening Kondisi & Kategori Masalah
 - Task 7: Perbaikan Konten Edukasi & Detail Artikel Dinamis (`/edukasi/[slug]`)
 - Task 8: Halaman Informasi Publik Wajib (Fase 1: Tentang, Kontak, Privasi, Ketentuan)
+- Task 9: Perbaikan Tautan Placeholder & URL Roblox
 
 ---
 
 ## Resume Instructions
 
 Continue from:
-- Task: Task 6 — Screening Kondisi & Kategori Masalah
+- Task: Task 7 — Perbaikan Konten Edukasi & Detail Artikel Dinamis (`/edukasi/[slug]`)
 
 Last completed:
-- Task 5: Form Identitas & Profiling (Anonim & Terhubung) selesai dan divalidasi penuh.
+- Task 6: Screening Kondisi & Kategori Masalah selesai dan divalidasi penuh.
 
 Next action:
-- Kerjakan Task 6: Buat alur screening singkat (pilihan kategori topik masalah dan skala kondisi saat ini) sebelum pemilihan konselor/PIK-R untuk menghasilkan `priority_label` sebagai konteks awal konselor.
+- Kerjakan Task 7: Buat halaman detail artikel `/edukasi/[slug]`, lengkapi konten artikel, dan hubungkan card edukasi ke halaman detail.
 
 Important context:
 - Project Next.js berada di direktori `src/`.
-- Rute `/curhat/profil` aktif dan terhubung mulus di antara `/curhat` (consent) dan `/curhat/wilayah` (pemilihan PIK-R).
-- Nama panggilan user kini disimpan sementara di `sessionStorage` dan menyapa user di `/curhat/chat`.
+- Alur aktif sekarang adalah `/curhat` (consent) → `/curhat/profil` → `/curhat/screening` → `/curhat/wilayah` → `/curhat/chat`.
+- Profil dan hasil screening disimpan sementara di `sessionStorage`; persistensi database akan ditangani pada Task 11.
+- `priority_label` hanya menjadi metadata konteks konselor dan tidak digunakan untuk routing otomatis.
 - Semua validasi (`npm run lint` & `npm run build`) dalam status PASS.
 
 Files recently modified:
-- `src/app/curhat/profil/page.jsx` (baru)
-- `src/components/curhat/curhat.module.css`
-- `src/app/curhat/page.jsx`
-- `src/app/curhat/wilayah/page.jsx`
+- `src/app/curhat/screening/page.jsx` (baru)
+- `src/app/curhat/profil/page.jsx`
 - `src/app/curhat/chat/page.jsx`
+- `src/components/curhat/curhat.module.css`
 - `AUDIT_PROGRESS.md`

@@ -34,28 +34,36 @@ function ChatContent() {
   const [chatState, setChatState] = useState(CHAT_STATES.READY);
   const messagesEndRef = useRef(null);
 
-  // Greet user with their chosen nickname if available
+  // Load the temporary profile and screening context for this browser session.
   useEffect(() => {
     try {
-      const stored = sessionStorage.getItem('temanin_user_profile');
-      if (stored) {
-        const profile = JSON.parse(stored);
-        if (profile.displayName) {
-          setMessages([
-            {
-              id: 'welcome',
-              type: 'in',
-              text: `Halo ${profile.displayName}! 👋 Selamat datang di TEMANIN. Ini adalah ruang amanmu bersama konselor sebaya.`,
-              time: '10:00',
-            },
-            {
-              id: 'intro',
-              type: 'in',
-              text: 'Kamu bisa ceritakan apa saja yang sedang kamu rasakan. Percakapan ini bersifat rahasia.',
-              time: '10:00',
-            },
-          ]);
+      const storedProfile = sessionStorage.getItem('temanin_user_profile');
+      const storedScreening = sessionStorage.getItem('temanin_screening');
+      const profile = storedProfile ? JSON.parse(storedProfile) : null;
+      const screening = storedScreening ? JSON.parse(storedScreening) : null;
+
+      if (profile?.displayName || screening?.categoryLabel) {
+        const nextMessages = [
+          {
+            id: 'welcome',
+            type: 'in',
+            text: `Halo${profile?.displayName ? ` ${profile.displayName}` : ''}! 👋 Selamat datang di TEMANIN. Ini adalah ruang amanmu bersama konselor sebaya.`,
+            time: '10:00',
+          },
+        ];
+
+        if (screening?.categoryLabel && screening?.conditionLabel) {
+          nextMessages.push({
+            id: 'screening-context',
+            type: 'in',
+            text: `Kami sudah menerima konteks awalmu: ${screening.categoryLabel}, dengan kondisi “${screening.conditionLabel}”. Kamu boleh mulai bercerita dari bagian yang paling nyaman.`,
+            time: '10:00',
+          });
+        } else {
+          nextMessages.push(INITIAL_MESSAGES[1]);
         }
+
+        setMessages(nextMessages);
       }
     } catch {
       // Graceful fallback
