@@ -1,0 +1,25 @@
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionHeader.alignLeft {
+  text-align: left;
+}
+
+.title {
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.description {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.alignLeft .description {
+  margin: 0;
+}

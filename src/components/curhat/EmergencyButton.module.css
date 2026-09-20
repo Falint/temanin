@@ -1,0 +1,232 @@
+/* --- Floating Emergency Button --- */
+.emergencyFloatingBtn {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #E53E3E;
+  color: #FFFFFF;
+  border: 2px solid #FEB2B2;
+  border-radius: var(--radius-full);
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(229, 62, 62, 0.4);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  animation: pulse 2.5s infinite;
+}
+
+.emergencyFloatingBtn:hover {
+  background: #C53030;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(229, 62, 62, 0.5);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(229, 62, 62, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(229, 62, 62, 0);
+  }
+}
+
+/* --- Inline Header Emergency Button --- */
+.emergencyHeaderBtn {
+  background: #FFF5F5;
+  color: #C53030;
+  border: 1px solid #FEB2B2;
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-left: auto;
+  margin-right: 0.5rem;
+}
+
+.emergencyHeaderBtn:hover {
+  background: #FED7D7;
+  color: #9B2C2C;
+}
+
+/* --- Modal Backdrop --- */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- Modal Content --- */
+.modalContent {
+  background: #FFFFFF;
+  border-radius: var(--radius-2xl);
+  max-width: 520px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: var(--shadow-2xl);
+  position: relative;
+  animation: slideUp 0.25s ease;
+  border: 2px solid #FED7D7;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.modalTitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.modalIcon {
+  font-size: 1.75rem;
+}
+
+.modalTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #C53030;
+  margin: 0;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  line-height: 1;
+  border-radius: var(--radius-md);
+  transition: all 0.15s ease;
+}
+
+.closeBtn:hover {
+  background: var(--border-light);
+  color: var(--text-main);
+}
+
+.modalDesc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.hotlineList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.hotlineItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFF5F5;
+  border: 1px solid #FEB2B2;
+  border-radius: var(--radius-xl);
+  padding: 0.875rem 1.25rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.hotlineItem:hover {
+  background: #FED7D7;
+  border-color: #E53E3E;
+  transform: translateX(4px);
+}
+
+.hotlineDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.hotlineTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #742A2A;
+}
+
+.hotlineSubtitle {
+  font-size: 0.75rem;
+  color: #9B2C2C;
+}
+
+.hotlineAction {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #C53030;
+  background: #FFFFFF;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid #FEB2B2;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.returnBtn {
+  background: var(--border-light);
+  color: var(--text-main);
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.returnBtn:hover {
+  background: var(--border);
+}

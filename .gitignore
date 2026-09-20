@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# next.js build output
+.next/
+out/
+
+# production output
+build/
+
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files (SANGAT PENTING: Jangan sampai terekspos ke Git)
+.env*.local
+.env
+.env.production
+.env.development
+
+# vercel CLI
+.vercel/
+
+# OS / Editor files
+.DS_Store
+*.pem
+.vscode/
+.idea/
