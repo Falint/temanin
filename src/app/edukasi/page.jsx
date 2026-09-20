@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { articles, categories, getFeaturedArticles } from '@/lib/data/education';
 import styles from '@/components/education/education.module.css';
 
@@ -81,7 +82,7 @@ export default function EdukasiPage() {
         {/* Featured article (only shown when no filters active) */}
         {!searchQuery && activeCategory === 'all' && featured && (
           <div className={styles.featured}>
-            <div className={styles.featuredCard}>
+            <Link href={`/edukasi/${featured.id}`} className={styles.featuredCard}>
               <div className={styles.featuredEmoji}>{featured.emoji}</div>
               <div>
                 <span className={styles.featuredBadge}>⭐ Artikel Pilihan</span>
@@ -89,7 +90,7 @@ export default function EdukasiPage() {
                 <p className={styles.featuredExcerpt}>{featured.excerpt}</p>
                 <span className={styles.featuredMeta}>⏱ {featured.readTime} · {getCategoryLabel(featured.category)}</span>
               </div>
-            </div>
+            </Link>
           </div>
         )}
 
@@ -98,13 +99,14 @@ export default function EdukasiPage() {
           {filteredArticles.length > 0 ? (
             <div className={styles.articleGrid}>
               {filteredArticles.map((article) => (
-                <article key={article.id} className={styles.articleCard}>
+                <Link key={article.id} href={`/edukasi/${article.id}`} className={styles.articleCard}>
                   <span className={styles.articleEmoji}>{article.emoji}</span>
                   <span className={styles.articleCategory}>{getCategoryLabel(article.category)}</span>
                   <h3 className={styles.articleTitle}>{article.title}</h3>
                   <p className={styles.articleExcerpt}>{article.excerpt}</p>
                   <span className={styles.articleMeta}>⏱ {article.readTime}</span>
-                </article>
+                  <span className={styles.articleReadMore}>Baca artikel →</span>
+                </Link>
               ))}
             </div>
           ) : (

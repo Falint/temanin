@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from '@/components/curhat/curhat.module.css';
+import PageLoading from '@/components/shared/PageLoading';
 
 function generateRandomSessionId() {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -230,13 +231,7 @@ function ProfileFormContent() {
 
 export default function ProfilePage() {
   return (
-    <Suspense
-      fallback={
-        <div style={{ padding: '8rem 2rem', textAlign: 'center' }}>
-          <p>Menyiapkan sesi curhat...</p>
-        </div>
-      }
-    >
+    <Suspense fallback={<PageLoading message="Menyiapkan sesi curhat..." />}>
       <ProfileFormContent />
     </Suspense>
   );

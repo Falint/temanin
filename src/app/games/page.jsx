@@ -1,5 +1,6 @@
 import { games } from '@/lib/data/games';
 import styles from '@/components/games/games.module.css';
+import UnavailableNotice from '@/components/shared/UnavailableNotice';
 
 export const metadata = {
   title: 'Games | TEMANIN',
@@ -25,12 +26,12 @@ export default function GamesPage() {
         <div className="container">
           <div className={styles.gamesGrid}>
             {games.map((game) => (
-              <a
+              <UnavailableNotice
                 key={game.id}
                 href={game.url}
                 className={styles.gameCard}
-                target={game.url !== '#' ? '_blank' : undefined}
-                rel={game.url !== '#' ? 'noopener noreferrer' : undefined}
+                title={`${game.title} belum tersedia`}
+                message="Tautan resmi Roblox untuk game ini belum dirilis. Silakan kembali lagi setelah pengelola memperbarui tautannya."
               >
                 <div className={styles.gameVisual}>
                   {game.emoji}
@@ -43,7 +44,7 @@ export default function GamesPage() {
                     <span className={styles.gamePlayBtn}>▶ Main Sekarang</span>
                   </div>
                 </div>
-              </a>
+              </UnavailableNotice>
             ))}
           </div>
         </div>

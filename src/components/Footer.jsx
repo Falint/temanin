@@ -51,6 +51,7 @@ export default function Footer() {
             <div>
               <h4 className={styles.title}>Platform</h4>
               <div className={styles.links}>
+                <Link href="/tentang" className={styles.linkItem}>Tentang Kami</Link>
                 <Link href="/edukasi" className={styles.linkItem}>Edukasi</Link>
                 <Link href="/games" className={styles.linkItem}>Games</Link>
                 <Link href="/curhat" className={styles.linkItem}>Curhat</Link>
@@ -64,7 +65,7 @@ export default function Footer() {
               <div className={styles.links}>
                 <Link href="/curhat" className={styles.linkItem}>Curhat Sekarang</Link>
                 <Link href="/curhat/konseling" className={styles.linkItem}>Konseling</Link>
-                <a href={EXTERNAL_LINKS.EMAIL} className={styles.linkItem}>Hubungi Kami</a>
+                <Link href="/kontak" className={styles.linkItem}>Hubungi Kami</Link>
               </div>
             </div>
 
@@ -74,6 +75,8 @@ export default function Footer() {
               <div className={styles.links}>
                 <span className={styles.infoText}>PIK-R Kota Depok</span>
                 <span className={styles.infoText}>GenRe (Generasi Berencana)</span>
+                <Link href="/kebijakan-privasi" className={styles.linkItem}>Kebijakan Privasi</Link>
+                <Link href="/ketentuan" className={styles.linkItem}>Ketentuan Layanan</Link>
                 <a
                   href={EXTERNAL_LINKS.INSTAGRAM}
                   target="_blank"

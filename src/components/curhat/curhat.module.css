@@ -484,6 +484,7 @@
   cursor: pointer;
   transition: var(--transition);
   text-decoration: none;
+  font-family: inherit;
 }
 
 .pikrActionChat {
@@ -1091,4 +1092,47 @@
     justify-content: flex-start;
     text-align: left;
   }
+}
+
+/* --- Session status & post-chat flow --- */
+.sessionStatus { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.85rem 1rem; margin: 0.75rem 0; border: 1px solid var(--border-light); border-radius: var(--radius-lg); background: var(--white); }
+.sessionStatus > div { display: flex; flex-direction: column; gap: 0.2rem; }
+.sessionStatus strong { color: var(--text-main); font-size: 0.875rem; }
+.sessionStatus span { color: var(--text-muted); font-size: 0.75rem; }
+.sessionStatus_waiting { border-color: #F6D365; background: #FFFBEB; }
+.sessionStatus_connected { border-color: rgba(54, 214, 181, 0.4); background: var(--bg-mint); }
+.sessionStatus_outside-schedule { border-color: #CBD5E1; background: #F8FAFC; }
+.endSessionBtn { min-height: 44px; padding: 0 1rem; border: 1px solid #FEB2B2; border-radius: var(--radius-full); background: #FFF5F5; color: #C53030; font: inherit; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
+.endSessionBtn:disabled { opacity: 0.45; cursor: not-allowed; }
+.postChatPage { min-height: 100vh; padding: 7rem 0 5rem; background: linear-gradient(180deg, var(--bg-mint), var(--bg-color) 45%); }
+.postChatContainer { max-width: 900px; text-align: center; }
+.postChatIcon { display: block; margin-bottom: 0.75rem; font-size: 3rem; }
+.postChatContainer > h1 { margin-bottom: 0.75rem; }
+.postChatContainer > p { max-width: 620px; margin: 0 auto 2.5rem; color: var(--text-muted); line-height: 1.7; }
+.sessionSummary, .recommendationSection, .feedbackSection { margin-bottom: 2rem; padding: 2rem; border: 1px solid var(--border-light); border-radius: var(--radius-xl); background: var(--white); text-align: left; box-shadow: var(--shadow-sm); }
+.sessionSummary h2, .recommendationSection h2, .feedbackSection h2 { margin-bottom: 1.25rem; font-size: 1.25rem; }
+.sessionSummary dl { margin: 0; }
+.sessionSummary dl div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border-light); }
+.sessionSummary dl div:last-child { border-bottom: 0; }
+.sessionSummary dt { color: var(--text-muted); }
+.sessionSummary dd { margin: 0; color: var(--text-main); font-weight: 600; text-align: right; }
+.recommendationGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.recommendationCard { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.25rem; border: 1px solid var(--border-light); border-radius: var(--radius-lg); text-decoration: none; }
+.recommendationCard:hover { border-color: var(--primary); box-shadow: var(--shadow-sm); }
+.recommendationCard > span { font-size: 1.75rem; }
+.recommendationCard strong { color: var(--text-main); line-height: 1.4; }
+.recommendationCard small { color: var(--text-light); }
+.ratingRow { display: flex; gap: 0.35rem; margin-bottom: 1rem; }
+.ratingRow button { padding: 0; border: 0; background: transparent; color: #CBD5E1; font-size: 2rem; cursor: pointer; }
+.ratingRow .ratingActive { color: #F6AD55; }
+.feedbackSection textarea { width: 100%; margin-bottom: 1rem; resize: vertical; }
+.feedbackSuccess { padding: 1rem; border-radius: var(--radius-lg); background: var(--bg-mint); color: #065F46; }
+.postChatActions { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+@media (max-width: 768px) {
+  .sessionStatus { align-items: stretch; flex-direction: column; }
+  .chatInputArea { flex-wrap: wrap; }
+  .endSessionBtn { width: 100%; }
+  .recommendationGrid { grid-template-columns: 1fr; }
+  .sessionSummary dl div { flex-direction: column; gap: 0.25rem; }
+  .sessionSummary dd { text-align: left; }
 }

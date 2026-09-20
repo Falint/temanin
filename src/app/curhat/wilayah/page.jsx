@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { pikrPartners, getPikrByDistrict } from '@/lib/data/pikr';
 import { regions } from '@/lib/data/regions';
 import styles from '@/components/curhat/curhat.module.css';
+import UnavailableNotice from '@/components/shared/UnavailableNotice';
+import PageLoading from '@/components/shared/PageLoading';
 
 function WilayahContent() {
   const searchParams = useSearchParams();
@@ -97,15 +99,15 @@ function WilayahContent() {
                           💬 Chat
                         </Link>
                       )}
-                      {partner.telegramEnabled && partner.telegramUrl && (
-                        <a
+                      {partner.telegramEnabled && (
+                        <UnavailableNotice
                           href={partner.telegramUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
                           className={`${styles.pikrActionBtn} ${styles.pikrActionTelegram}`}
+                          title="Kontak Telegram belum tersedia"
+                          message="PIK-R ini belum memiliki tautan Telegram resmi yang terverifikasi. Gunakan pilihan Chat atau Konseling jika tersedia."
                         >
                           📱 Telegram
-                        </a>
+                        </UnavailableNotice>
                       )}
                       {partner.offlineCounselingEnabled && (
                         <Link
@@ -135,11 +137,7 @@ function WilayahContent() {
 
 export default function WilayahPage() {
   return (
-    <Suspense fallback={
-      <div style={{ padding: '8rem 2rem', textAlign: 'center' }}>
-        <p>Memuat...</p>
-      </div>
-    }>
+    <Suspense fallback={<PageLoading message="Memuat wilayah PIK-R..." />}>
       <WilayahContent />
     </Suspense>
   );

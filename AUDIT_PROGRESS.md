@@ -1,7 +1,7 @@
 # Audit Progress
 
 ## Status
-- Overall: 46% (6/13 tasks completed)
+- Overall: 100% (13/13 tasks completed)
 - Current Task: -
 - Last Updated: 2026-09-21
 
@@ -102,53 +102,110 @@
   - Next.js Build: PASS (`npm run build` sukses 11 static pages dan route `/curhat/screening` terdaftar)
 
 ### 7. Perbaikan Konten Edukasi & Detail Artikel Dinamis (`/edukasi/[slug]`)
-- Status: TODO
+- Status: DONE
 - Priority: HIGH
 - Category: Edukasi / Content
 - Depends On: Task 1
 - Description: Buat halaman detail artikel `/edukasi/[slug]` dengan layout ramah baca, perbarui kategori artikel di `src/lib/data/education.js` sesuai brief (Cyberbullying, Media Sosial & Perbandingan Diri, Mengelola Emosi, dll.), sediakan isi artikel lengkap beserta bagian "Langkah Selanjutnya" dan CTA menuju Curhat. Hubungkan card di `/edukasi` ke halaman detail.
+- Changes:
+  - `src/lib/data/education.js`: Menyelaraskan kategori dengan brief dan menyediakan sembilan artikel terstruktur dengan isi, tips, dan langkah selanjutnya.
+  - `src/app/edukasi/[slug]/page.jsx`: Menambahkan dynamic route, metadata per artikel, static params, penanganan artikel tidak ditemukan, CTA Curhat, dan informasi bantuan darurat.
+  - `src/app/edukasi/page.jsx`: Menghubungkan featured card dan seluruh article card ke halaman detail.
+  - `src/components/education/education.module.css`: Menambahkan layout baca responsif untuk halaman detail.
+- Validation:
+  - ESLint: PASS (`npm run lint` exit code 0)
+  - Next.js Build: PASS (9 artikel diprerender melalui `generateStaticParams`)
 
 ### 8. Halaman Informasi Publik Wajib (Fase 1)
-- Status: TODO
+- Status: DONE
 - Priority: HIGH
 - Category: Legal & Info / UI
 - Depends On: Task 1
 - Description: Buat rute dan tampilan halaman statis yang wajib ada menurut brief: Tentang Kami (`/tentang`), Kontak & Media Sosial (`/kontak`), Kebijakan Privasi (`/kebijakan-privasi`), dan Ketentuan Layanan (`/ketentuan`). Hubungkan semua navigasi dari Navbar dan Footer.
+- Changes:
+  - Menambahkan halaman `/tentang`, `/kontak`, `/kebijakan-privasi`, dan `/ketentuan` dengan metadata serta konten sesuai kondisi project saat ini.
+  - `src/components/info/info.module.css`: Menambahkan layout bersama yang responsif untuk halaman informasi publik.
+  - `src/components/Navbar.jsx` dan `src/components/Footer.jsx`: Menghubungkan halaman informasi, privasi, dan ketentuan dari navigasi utama.
+- Validation:
+  - ESLint: PASS (`npm run lint` exit code 0)
+  - Next.js Build: PASS (empat route informasi terdaftar)
 
 ### 9. Perbaikan Tautan Placeholder & URL Roblox
-- Status: TODO
+- Status: DONE
 - Priority: LOW
 - Category: UI/UX & Integrity
 - Depends On: -
 - Description: Tangani link placeholder Telegram `t.me/example` di `pikr.js` dan URL game Roblox `#` di `games.js`. Berikan modal konfirmasi atau fallback yang informatif sehingga tidak membingungkan pengguna jika tautan resmi belum tersedia.
+- Changes:
+  - `src/components/shared/UnavailableNotice.jsx`: Membuat komponen fallback aksesibel yang membuka modal informasi untuk tautan yang belum tersedia dan tetap mendukung tautan resmi ketika nanti diisi.
+  - `src/lib/data/games.js` dan `src/lib/data/pikr.js`: Menghapus URL placeholder aktif agar pengguna tidak diarahkan ke tujuan yang salah.
+  - Halaman Games dan pemilihan PIK-R sekarang menampilkan pemberitahuan yang jelas ketika URL Roblox atau Telegram resmi belum tersedia.
+- Validation:
+  - ESLint: PASS (`npm run lint` exit code 0)
+  - Next.js Build: PASS
+  - Placeholder aktif: PASS (URL `#` dan `t.me/example` di data telah dihapus)
 
 ### 10. Status Chat UI, Disclaimer Simulasi & Post-Chat Flow
-- Status: TODO
+- Status: DONE
 - Priority: MEDIUM
 - Category: Chat Experience / UI
 - Depends On: Task 4
 - Description: Tambahkan indikator status sesi (menunggu konselor / terhubung / di luar jam piket), berikan transparansi banner yang jelas bahwa chat saat ini adalah lingkungan simulasi interaktif (sebelum backend realtime dihubungkan), dan sediakan alur pasca-chat: rangkuman sesi, rekomendasi artikel edukasi terkait, serta formulir umpan balik (feedback).
+- Changes:
+  - `src/app/curhat/chat/page.jsx`: Menambahkan status menunggu, simulasi terhubung, di luar jam piket, dan sesi selesai tanpa menyamarkan simulasi sebagai chat sungguhan.
+  - Menambahkan disclaimer simulasi yang terlihat, tombol mulai simulasi, tombol selesai, rangkuman sesi, rekomendasi artikel berdasarkan topik screening, serta feedback rating dan komentar.
+  - Feedback prototipe disimpan sementara di `sessionStorage`; penyimpanan permanen menunggu Supabase.
+  - `src/components/curhat/curhat.module.css`: Menambahkan tampilan status dan post-chat yang responsif.
+- Validation:
+  - ESLint: PASS (`npm run lint` exit code 0)
+  - Next.js Build: PASS
 
 ### 11. Arsitektur Backend, Database Schema & Autentikasi
-- Status: TODO
+- Status: DONE
 - Priority: HIGH
 - Category: Backend / Database / Auth
 - Depends On: Task 2, Task 5, Task 6
 - Description: Rancang skema database (PostgreSQL/Supabase) yang mencakup entitas: `sessions`, `screening_results`, `counselors`, `pik_r_partners`, `shift_schedule`, `conversations`, `messages`, `feedback`. Siapkan koneksi client/service layer dan autentikasi berbasis peran (peer counselor, supervisor, admin).
+- Scope Note: Sesuai instruksi pemilik project, pekerjaan Supabase pada sesi ini dibatasi pada pembuatan skema SQL. Pembuatan project, environment variable, dan koneksi client akan dilakukan sendiri oleh pemilik project.
+- Changes:
+  - `supabase/schema.sql`: Menambahkan seluruh entitas audit, enum status/role, foreign key, constraint, index antrean/chat, trigger `updated_at`, integrasi `auth.users`, RLS, policy berbasis role, grant minimum, serta publication Realtime untuk conversation dan messages.
+  - `supabase/README.md`: Menambahkan urutan pemasangan skema, pembuatan akun staf, pengisian data resmi, dan batas keamanan service role key.
+- Validation:
+  - Schema Structure: PASS (8/8 entitas utama tersedia, constraint/index/trigger terdefinisi)
+  - RLS Coverage: PASS (8/8 tabel mengaktifkan row level security)
+  - Supabase Execution: DEFERRED (project Supabase akan dibuat dan dijalankan sendiri oleh pemilik project)
 
 ### 12. Dashboard Konselor, Supervisor & Admin
-- Status: TODO
+- Status: DONE
 - Priority: MEDIUM
 - Category: Dashboard / RBAC
 - Depends On: Task 11
 - Description: Bangun antarmuka dashboard untuk konselor sebaya (antrean chat, jadwal piket, tombol terima chat, eskalasi), dashboard supervisor (monitoring sesi aktif, penanganan eskalasi kasus darurat), dan dashboard admin.
+- Changes:
+  - Menambahkan route `/dashboard/konselor`, `/dashboard/supervisor`, dan `/dashboard/admin`.
+  - Dashboard konselor memuat antrean, jadwal piket, sesi aktif, tombol terima sesi, dan eskalasi.
+  - Dashboard supervisor memuat monitoring sesi dan permintaan eskalasi; dashboard admin memuat mitra, staf, jadwal, dan ringkasan operasional.
+  - `DashboardShell` dan CSS bersama menjaga struktur antarmuka konsisten serta responsif.
+  - Semua data diberi label demo dan aksi backend dinonaktifkan sampai project Supabase milik pengguna dihubungkan.
+- Validation:
+  - ESLint: PASS (`npm run lint` exit code 0)
+  - Next.js Build: PASS (3 route dashboard terdaftar)
+  - Backend actions: DEFERRED sampai project Supabase milik pengguna dihubungkan
 
 ### 13. Resilience & Polishing (404, Loading, Error Boundaries, Suspense Refactor)
-- Status: TODO
+- Status: DONE
 - Priority: LOW
 - Category: Code Quality / DX
 - Depends On: -
 - Description: Buat `not-found.jsx`, `error.jsx`, dan `loading.jsx` untuk pengalaman pengguna yang mulus saat transisi atau jika terjadi kendala rute. Abstraksikan duplikasi Suspense fallback yang berulang pada alur curhat.
+- Changes:
+  - Menambahkan root `not-found.jsx`, `error.jsx`, dan `loading.jsx` dengan tampilan serta tindakan pemulihan yang konsisten.
+  - `src/components/shared/PageLoading.jsx`: Membuat fallback loading bersama dengan status aksesibel.
+  - Mengganti fallback Suspense berulang pada halaman profil, screening, wilayah, konseling, dan chat.
+- Validation:
+  - ESLint: PASS (`npm run lint` exit code 0)
+  - Next.js Build: PASS (27 static pages berhasil dibuat)
+  - Suspense Duplication Check: PASS
 
 ---
 
@@ -159,42 +216,53 @@
 - Task 4: Emergency Button & Hotline Darurat Selalu Terlihat di Chat
 - Task 5: Form Identitas & Profiling (Anonim & Terhubung)
 - Task 6: Screening Kondisi & Kategori Masalah
+- Task 7: Perbaikan Konten Edukasi & Detail Artikel Dinamis
+- Task 8: Halaman Informasi Publik Wajib
+- Task 9: Perbaikan Tautan Placeholder & URL Roblox
+- Task 10: Status Chat UI, Disclaimer Simulasi & Post-Chat Flow
+- Task 11: Skema SQL Supabase, Auth Role & RLS (sesuai scope pengguna)
+- Task 12: Dashboard Konselor, Supervisor & Admin
+- Task 13: Resilience & Polishing
 
 ---
 
 ## Current Work
-- Checkpoint aman setelah Task 6 selesai
+- Seluruh 13 task audit telah selesai sesuai scope terbaru.
 
 ---
 
 ## Next Tasks
-- Task 7: Perbaikan Konten Edukasi & Detail Artikel Dinamis (`/edukasi/[slug]`)
-- Task 8: Halaman Informasi Publik Wajib (Fase 1: Tentang, Kontak, Privasi, Ketentuan)
-- Task 9: Perbaikan Tautan Placeholder & URL Roblox
+- Tidak ada task audit tersisa.
+- Tindakan pemilik project: buat project Supabase dan jalankan `supabase/schema.sql`, lalu hubungkan environment variable serta query dashboard.
 
 ---
 
 ## Resume Instructions
 
 Continue from:
-- Task: Task 7 — Perbaikan Konten Edukasi & Detail Artikel Dinamis (`/edukasi/[slug]`)
+- Task: Integrasi Supabase oleh pemilik project (di luar scope implementasi sesi ini)
 
 Last completed:
-- Task 6: Screening Kondisi & Kategori Masalah selesai dan divalidasi penuh.
+- Task 13: Resilience & Polishing selesai dan divalidasi penuh.
 
 Next action:
-- Kerjakan Task 7: Buat halaman detail artikel `/edukasi/[slug]`, lengkapi konten artikel, dan hubungkan card edukasi ke halaman detail.
+- Buat project Supabase, jalankan `supabase/schema.sql`, buat akun staf, lalu ganti data demo dashboard dengan query Supabase.
 
 Important context:
 - Project Next.js berada di direktori `src/`.
 - Alur aktif sekarang adalah `/curhat` (consent) → `/curhat/profil` → `/curhat/screening` → `/curhat/wilayah` → `/curhat/chat`.
-- Profil dan hasil screening disimpan sementara di `sessionStorage`; persistensi database akan ditangani pada Task 11.
+- Profil, screening, dan feedback prototipe masih memakai `sessionStorage` sampai Supabase dihubungkan.
 - `priority_label` hanya menjadi metadata konteks konselor dan tidak digunakan untuk routing otomatis.
+- Tiga dashboard sudah tersedia sebagai UI preview; aksi database sengaja dinonaktifkan sampai integrasi Supabase selesai.
 - Semua validasi (`npm run lint` & `npm run build`) dalam status PASS.
 
 Files recently modified:
-- `src/app/curhat/screening/page.jsx` (baru)
-- `src/app/curhat/profil/page.jsx`
+- `src/app/edukasi/[slug]/page.jsx`
+- `src/app/tentang/page.jsx`, `src/app/kontak/page.jsx`, `src/app/kebijakan-privasi/page.jsx`, `src/app/ketentuan/page.jsx`
 - `src/app/curhat/chat/page.jsx`
-- `src/components/curhat/curhat.module.css`
+- `src/app/dashboard/*`
+- `src/app/not-found.jsx`, `src/app/error.jsx`, `src/app/loading.jsx`
+- `src/components/shared/*`, `src/components/dashboard/*`, `src/components/info/*`
+- `src/lib/data/education.js`, `src/lib/data/dashboard.js`
+- `supabase/schema.sql`, `supabase/README.md`
 - `AUDIT_PROGRESS.md`

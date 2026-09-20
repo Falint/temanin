@@ -5,13 +5,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
 import Logo from '@/components/shared/Logo';
-import { APP_NAME } from '@/lib/constants';
 
 const navLinks = [
   { href: '/', label: 'Beranda' },
+  { href: '/tentang', label: 'Tentang' },
   { href: '/edukasi', label: 'Edukasi' },
   { href: '/games', label: 'Games' },
-  { href: '/curhat', label: 'Curhat' },
+  { href: '/kontak', label: 'Kontak' },
 ];
 
 export default function Navbar() {
@@ -51,7 +51,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`${styles.navItem} ${pathname === link.href ? styles.navItemActive : ''}`}
+              className={`${styles.navItem} ${pathname === link.href || (link.href !== '/' && pathname.startsWith(`${link.href}/`)) ? styles.navItemActive : ''}`}
             >
               {link.label}
             </Link>

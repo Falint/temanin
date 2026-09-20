@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { getPikrById } from '@/lib/data/pikr';
 import styles from '@/components/curhat/curhat.module.css';
+import PageLoading from '@/components/shared/PageLoading';
 
 function KonselingContent() {
   const searchParams = useSearchParams();
@@ -140,11 +141,7 @@ function KonselingContent() {
 
 export default function KonselingPage() {
   return (
-    <Suspense fallback={
-      <div style={{ padding: '8rem 2rem', textAlign: 'center' }}>
-        <p>Memuat...</p>
-      </div>
-    }>
+    <Suspense fallback={<PageLoading message="Memuat pilihan konseling..." />}>
       <KonselingContent />
     </Suspense>
   );

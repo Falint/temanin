@@ -4,6 +4,7 @@ import { Suspense, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import styles from '@/components/curhat/curhat.module.css';
+import PageLoading from '@/components/shared/PageLoading';
 
 const TOPICS = [
   { id: 'school', label: 'Sekolah, kuliah, atau pekerjaan', icon: '📚' },
@@ -168,7 +169,7 @@ function ScreeningContent() {
 
 export default function ScreeningPage() {
   return (
-    <Suspense fallback={<div className={styles.screeningLoading}>Menyiapkan screening...</div>}>
+    <Suspense fallback={<PageLoading message="Menyiapkan screening..." />}>
       <ScreeningContent />
     </Suspense>
   );
