@@ -5,7 +5,6 @@ import FeaturesSection from '@/components/landing/FeaturesSection';
 import EducationPreview from '@/components/landing/EducationPreview';
 import GamesPreview from '@/components/landing/GamesPreview';
 import CurhatCTA from '@/components/landing/CurhatCTA';
-import PikrNetwork from '@/components/landing/PikrNetwork';
 import HowItWorks from '@/components/landing/HowItWorks';
 import styles from '@/components/landing/landing.module.css';
 
@@ -20,7 +19,6 @@ export default function Home() {
       <EducationPreview />
       <GamesPreview />
       <CurhatCTA />
-      <PikrNetwork />
       <HowItWorks />
 
       {/* Final CTA */}

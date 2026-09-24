@@ -20,9 +20,6 @@ export default function CurhatCTA() {
             <Link href="/curhat" className={styles.curhatBtnPrimary}>
               💬 Mulai Curhat
             </Link>
-            <Link href="/curhat/wilayah" className={styles.curhatBtnSecondary}>
-              🔍 Cari PIK-R Terdekat
-            </Link>
           </div>
         </div>
       </div>

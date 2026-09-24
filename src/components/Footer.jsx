@@ -55,7 +55,6 @@ export default function Footer() {
                 <Link href="/edukasi" className={styles.linkItem}>Edukasi</Link>
                 <Link href="/games" className={styles.linkItem}>Games</Link>
                 <Link href="/curhat" className={styles.linkItem}>Curhat</Link>
-                <Link href="/curhat/wilayah" className={styles.linkItem}>Cari PIK-R</Link>
               </div>
             </div>
 

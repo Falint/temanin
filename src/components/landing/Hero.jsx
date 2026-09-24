@@ -72,11 +72,6 @@ export default function Hero() {
                 <h3 className={styles.visualCardTitle}>Curhat</h3>
                 <p className={styles.visualCardDesc}>Ceritakan perasaanmu dengan aman</p>
               </Link>
-              <Link href="/curhat/wilayah" className={styles.visualCard}>
-                <span className={styles.visualCardIcon}>🤝</span>
-                <h3 className={styles.visualCardTitle}>PIK-R</h3>
-                <p className={styles.visualCardDesc}>Konselor sebaya di dekatmu</p>
-              </Link>
             </div>
           </div>
         </div>

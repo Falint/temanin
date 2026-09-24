@@ -165,21 +165,10 @@
   box-shadow: var(--shadow-lg);
 }
 
-.visualCard:nth-child(2) {
-  transform: translateY(1.5rem);
+.visualCard:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
-.visualCard:nth-child(4) {
-  transform: translateY(1.5rem);
-}
-
-.visualCard:nth-child(2):hover {
-  transform: translateY(calc(1.5rem - 4px));
-}
-
-.visualCard:nth-child(4):hover {
-  transform: translateY(calc(1.5rem - 4px));
-}
 
 .visualCardIcon {
   font-size: 2rem;

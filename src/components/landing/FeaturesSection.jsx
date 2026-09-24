@@ -24,13 +24,6 @@ const features = [
     href: '/curhat',
     bg: 'var(--accent-bg)',
   },
-  {
-    icon: '🤝',
-    title: 'Jaringan PIK-R',
-    description: 'Temukan Pusat Informasi dan Konseling Remaja di kecamatanmu untuk pendampingan langsung.',
-    href: '/curhat/wilayah',
-    bg: 'var(--secondary-bg)',
-  },
 ];
 
 export default function FeaturesSection() {
@@ -40,7 +33,7 @@ export default function FeaturesSection() {
         <SectionHeader
           badge="Apa yang Bisa Kamu Lakukan"
           badgeVariant="primary"
-          title="Empat Cara untuk Mendukung Kesejahteraanmu"
+          title="Tiga Cara untuk Mendukung Kesejahteraanmu"
           description="Pilih yang paling sesuai dengan kebutuhanmu saat ini."
         />
 
