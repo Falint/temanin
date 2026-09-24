@@ -78,7 +78,7 @@ Periksa statusnya dengan `curl -sS "https://api.telegram.org/bot${TELEGRAM_BOT_T
 
 ## 4. Uji dua arah
 
-1. Buka `http://localhost:3000/curhat`, setujui informasi layanan, isi profil dan screening, pilih PIK-R Demo A.
+1. Buka `http://localhost:3000/curhat`, setujui informasi layanan, pilih mode, isi nama panggilan, lalu pilih PIK-R yang terdaftar.
 2. Klik **Mulai via Telegram**, lalu **Buka bot Telegram**. Tekan Start di Telegram. Bot memberi konfirmasi dan mengirim pemberitahuan ke grup PIK-R.
 3. Kirim pesan dari chat pribadi bot. Pesan muncul sebagai pesan **dari bot** di grup PIK-R, dengan kode sesi dan alias, tanpa chat ID pengguna.
 4. Dari akun pengurus yang ID-nya terdaftar, tekan **Reply** pada pesan bot di grup, lalu kirim jawaban. Jawaban masuk ke chat pribadi pengguna.

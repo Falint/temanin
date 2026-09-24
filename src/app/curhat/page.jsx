@@ -26,7 +26,7 @@ const FAQS = [
   },
   {
     q: 'Apa perbedaan mode Anonim dan Terhubung?',
-    a: 'Mode Anonim hanya memerlukan nama panggilan acak untuk kenyamanan privasimu. Mode Terhubung memungkinkan kamu mencantumkan kontak opsional jika membutuhkan pendampingan rujukan lanjutan.',
+    a: 'Mode Anonim memakai nama panggilan. Mode Terhubung memakai nama yang ingin kamu gunakan saat berbicara dengan pengurus PIK-R.',
   },
 ];
 
@@ -54,88 +54,7 @@ export default function CurhatPage() {
       <section className={styles.modeSection}>
         <div className="container" style={{ maxWidth: '840px' }}>
 
-          {/* 1. CRISIS WARNING BANNER (Kritikal Keselamatan) */}
-          <div className={styles.crisisBanner} role="alert">
-            <div className={styles.crisisHeader}>
-              <span className={styles.crisisIcon}>⚠️</span>
-              <h2 className={styles.crisisTitle}>Pemberitahuan Penting: Bukan Layanan Darurat</h2>
-            </div>
-            <p className={styles.crisisDesc}>
-              TEMANIN adalah layanan <strong>konseling sebaya (peer counseling)</strong> untuk mendengarkan keluh kesah dan berbagi cerita sehari-hari. 
-              Jika kamu atau seseorang yang kamu kenal sedang dalam kondisi krisis hebat, pikiran untuk menyakiti diri, atau situasi darurat medis, 
-              mohon segera hubungi nomor bantuan resmi di bawah ini:
-            </p>
-            <div className={styles.hotlineGrid}>
-              {EMERGENCY_HOTLINES.map((hotline, idx) => (
-                <a
-                  key={idx}
-                  href={hotline.tel}
-                  className={styles.hotlineCard}
-                  title={`Telepon ${hotline.name}`}
-                >
-                  <span className={styles.hotlineName}>{hotline.name}</span>
-                  <span className={styles.hotlineNumber}>{hotline.number} 📞</span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* 2. BATASAN & PENJELASAN LAYANAN */}
-          <div className={styles.scopeSection}>
-            <h3 className={styles.scopeTitle}>Pedoman & Batasan Layanan</h3>
-            <div className={styles.scopeGrid}>
-              <div className={styles.scopeCardCan}>
-                <div className={styles.scopeHeader} style={{ color: '#059669' }}>
-                  <span>✅</span> Yang Bisa Kami Bantu
-                </div>
-                <ul className={styles.scopeList}>
-                  <li>Mendengarkan ceritamu dengan penuh empati dan tanpa penghakiman.</li>
-                  <li>Mendiskusikan stres sekolah, pertemanan, keluarga, dan rasa cemas sehari-hari.</li>
-                  <li>Membantu mencari sudut pandang baru dari sudut pandang teman sebaya.</li>
-                  <li>Memberikan rujukan ke fasilitas kesehatan jika diperlukan.</li>
-                </ul>
-              </div>
-
-              <div className={styles.scopeCardCannot}>
-                <div className={styles.scopeHeader} style={{ color: '#D97706' }}>
-                  <span>ℹ️</span> Batasan Kami
-                </div>
-                <ul className={styles.scopeList}>
-                  <li>Bukan diagnosis klinis, psikiatri, atau psikoterapi medis.</li>
-                  <li>Tidak melayani penanganan gawat darurat (krisis bunuh diri/cedera fisik).</li>
-                  <li>Tidak memberikan resep obat-obatan.</li>
-                  <li>Waktu respons mengikuti jadwal piket relawan konselor sebaya.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* 3. FAQ SINGKAT */}
-          <div className={styles.faqSection}>
-            <h3 className={styles.faqSectionTitle}>Pertanyaan yang Sering Diajukan (FAQ)</h3>
-            {FAQS.map((faq, idx) => (
-              <div
-                key={idx}
-                className={styles.faqItem}
-                onClick={() => toggleFaq(idx)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && toggleFaq(idx)}
-              >
-                <div className={styles.faqQuestion}>
-                  <span>{faq.q}</span>
-                  <span>{openFaq === idx ? '▲' : '▼'}</span>
-                </div>
-                {openFaq === idx && (
-                  <div className={styles.faqAnswer}>
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* 4. CHECKBOX PERSETUJUAN (CONSENT) */}
+          {/* Persetujuan */}
           <div className={styles.consentBox}>
             <label className={styles.consentLabel}>
               <input
@@ -157,7 +76,7 @@ export default function CurhatPage() {
             )}
           </div>
 
-          {/* 5. PILIH MODE CURHAT (Terbuka setelah persetujuan) */}
+          {/* Pilih mode */}
           <div className={hasConsented ? styles.modeWrapperUnlocked : styles.modeWrapperLocked}>
             <h3 style={{ textAlign: 'center', marginBottom: '1.5rem', color: 'var(--text-main)' }}>
               Pilih Cara Kamu Ingin Bercerita:
@@ -191,21 +110,102 @@ export default function CurhatPage() {
                 <span className={styles.modeIcon}>🤝</span>
                 <h4 className={styles.modeTitle}>Terhubung</h4>
                 <p className={styles.modeDesc}>
-                  Sediakan kontak opsional jika kamu menginginkan follow-up atau pendampingan konseling berkala.
+                  Gunakan nama yang ingin kamu pakai saat berbicara dengan pengurus PIK-R.
                 </p>
                 <span className={`${styles.modeBadge} ${styles.modeBadgeTerhubung}`}>
-                  👤 Pendampingan Personal
+                  👤 Nama Pilihanmu
                 </span>
               </Link>
             </div>
           </div>
 
-          {/* Privacy Footnote */}
+          {/* Informasi privasi */}
           <div className={styles.privacyNotice}>
             <span className={styles.privacyNoticeIcon}>🔐</span>
             <p className={styles.privacyNoticeText}>
-              Kerahasiaan percakapanmu dilindungi oleh kode etik konselor sebaya PIK-R Kota Depok. Data sesi konseling tidak pernah dibagikan kepada pihak ketiga.
+              Pengurus PIK-R melihat nama yang kamu pilih saat sesi. Percakapan berlangsung melalui bot Telegram.
             </p>
+          </div>
+
+          {/* Bantuan darurat */}
+          <div className={styles.crisisBanner} role="alert">
+            <div className={styles.crisisHeader}>
+              <span className={styles.crisisIcon}>⚠️</span>
+              <h2 className={styles.crisisTitle}>Pemberitahuan Penting: Bukan Layanan Darurat</h2>
+            </div>
+            <p className={styles.crisisDesc}>
+              TEMANIN adalah layanan <strong>konseling sebaya (peer counseling)</strong> untuk mendengarkan keluh kesah dan berbagi cerita sehari-hari. 
+              Jika kamu atau seseorang yang kamu kenal sedang dalam kondisi krisis hebat, pikiran untuk menyakiti diri, atau situasi darurat medis, 
+              mohon segera hubungi nomor bantuan resmi di bawah ini:
+            </p>
+            <div className={styles.hotlineGrid}>
+              {EMERGENCY_HOTLINES.map((hotline, idx) => (
+                <a
+                  key={idx}
+                  href={hotline.tel}
+                  className={styles.hotlineCard}
+                  title={`Telepon ${hotline.name}`}
+                >
+                  <span className={styles.hotlineName}>{hotline.name}</span>
+                  <span className={styles.hotlineNumber}>{hotline.number} 📞</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Pedoman layanan */}
+          <div className={styles.scopeSection}>
+            <h3 className={styles.scopeTitle}>Pedoman & Batasan Layanan</h3>
+            <div className={styles.scopeGrid}>
+              <div className={styles.scopeCardCan}>
+                <div className={styles.scopeHeader} style={{ color: '#059669' }}>
+                  <span>✅</span> Yang Bisa Kami Bantu
+                </div>
+                <ul className={styles.scopeList}>
+                  <li>Mendengarkan ceritamu dengan penuh empati dan tanpa penghakiman.</li>
+                  <li>Mendiskusikan stres sekolah, pertemanan, keluarga, dan rasa cemas sehari-hari.</li>
+                  <li>Membantu mencari sudut pandang baru dari sudut pandang teman sebaya.</li>
+                  <li>Memberikan rujukan ke fasilitas kesehatan jika diperlukan.</li>
+                </ul>
+              </div>
+
+              <div className={styles.scopeCardCannot}>
+                <div className={styles.scopeHeader} style={{ color: '#D97706' }}>
+                  <span>ℹ️</span> Batasan Kami
+                </div>
+                <ul className={styles.scopeList}>
+                  <li>Bukan diagnosis klinis, psikiatri, atau psikoterapi medis.</li>
+                  <li>Tidak melayani penanganan gawat darurat (krisis bunuh diri/cedera fisik).</li>
+                  <li>Tidak memberikan resep obat-obatan.</li>
+                  <li>Waktu respons mengikuti jadwal piket relawan konselor sebaya.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* FAQ */}
+          <div className={styles.faqSection}>
+            <h3 className={styles.faqSectionTitle}>Pertanyaan yang Sering Diajukan (FAQ)</h3>
+            {FAQS.map((faq, idx) => (
+              <div
+                key={idx}
+                className={styles.faqItem}
+                onClick={() => toggleFaq(idx)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && toggleFaq(idx)}
+              >
+                <div className={styles.faqQuestion}>
+                  <span>{faq.q}</span>
+                  <span>{openFaq === idx ? '▲' : '▼'}</span>
+                </div>
+                {openFaq === idx && (
+                  <div className={styles.faqAnswer}>
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
 
         </div>

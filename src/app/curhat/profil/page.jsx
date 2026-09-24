@@ -23,8 +23,6 @@ function ProfileFormContent() {
   const [sessionId, setSessionId] = useState('');
   const [nickname, setNickname] = useState('');
   const [fullName, setFullName] = useState('');
-  const [contact, setContact] = useState('');
-  const [schoolOrCampus, setSchoolOrCampus] = useState('');
   const [error, setError] = useState('');
 
   // Generate unique session id once on mount
@@ -53,8 +51,8 @@ function ProfileFormContent() {
       sessionId,
       mode,
       displayName: mode === 'anonim' ? nickname.trim() : fullName.trim(),
-      contact: mode === 'terhubung' ? contact.trim() : null,
-      institution: mode === 'terhubung' ? schoolOrCampus.trim() : null,
+      contact: null,
+      institution: null,
       createdAt: new Date().toISOString(),
     };
 
@@ -64,8 +62,7 @@ function ProfileFormContent() {
       // Graceful fallback if storage disabled
     }
 
-    // Proceed to the short screening before choosing a PIK-R partner
-    router.push(`/curhat/screening?mode=${mode}&session=${sessionId}`);
+    router.push(`/curhat/wilayah?mode=${mode}&session=${sessionId}`);
   };
 
   return (
@@ -82,7 +79,7 @@ function ProfileFormContent() {
           <p className={`${styles.pageDesc} ${styles.pageDescDark}`}>
             {mode === 'anonim'
               ? 'Identitas aslimu tidak disimpan. Masukkan nama panggilan yang nyaman untuk didengar teman sebaya.'
-              : 'Informasi ini membantu konselor sebaya memberikan pendampingan lanjutan jika kamu membutuhkannya.'}
+              : 'Masukkan nama yang ingin kamu gunakan saat berbicara dengan PIK-R.'}
           </p>
         </div>
       </header>
@@ -101,11 +98,11 @@ function ProfileFormContent() {
               <div>
                 {mode === 'anonim' ? (
                   <>
-                    <strong>Privasi 100% Terjaga:</strong> Percakapanmu dikaitkan dengan ID sesi acak. Konselor tidak akan mengetahui nama asli, nomor HP, ataupun emailmu.
+                    <strong>Gunakan nama samaran:</strong> Pengurus PIK-R akan melihat nama panggilan yang kamu isi, tanpa nomor Telegrammu.
                   </>
                 ) : (
                   <>
-                    <strong>Pendampingan Personal:</strong> Informasi kontakmu hanya digunakan jika kamu memerlukan rujukan atau jadwal tindak lanjut dengan konselor.
+                    <strong>Nama pilihanmu:</strong> Pengurus PIK-R akan menyapamu dengan nama yang kamu isi.
                   </>
                 )}
               </div>
@@ -173,44 +170,11 @@ function ProfileFormContent() {
                     />
                   </div>
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor="contact" className={styles.formLabel}>
-                      Nomor WhatsApp atau Email <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>(Opsional)</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="contact"
-                      className="input"
-                      placeholder="Contoh: 0812xxxxxxx atau email@contoh.com"
-                      value={contact}
-                      onChange={(e) => setContact(e.target.value)}
-                    />
-                    <p className={styles.formHelpText}>
-                      Hanya dihubungi jika kamu membutuhkan pengingat jadwal konseling atau pendampingan berkala.
-                    </p>
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label htmlFor="schoolOrCampus" className={styles.formLabel}>
-                      Sekolah / Kampus / Komunitas di Depok <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>(Opsional)</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="schoolOrCampus"
-                      className="input"
-                      placeholder="Contoh: SMAN 1 Depok, UI, Karang Taruna Beji"
-                      value={schoolOrCampus}
-                      onChange={(e) => setSchoolOrCampus(e.target.value)}
-                    />
-                    <p className={styles.formHelpText}>
-                      Membantu mencocokkan konselor sebaya dari wilayah atau lingkungan yang paling relevan.
-                    </p>
-                  </div>
                 </>
               )}
 
               <button type="submit" className={`btn btn-primary btn-lg ${styles.formSubmit}`}>
-                Lanjutkan ke Screening →
+                Pilih PIK-R →
               </button>
             </form>
 
