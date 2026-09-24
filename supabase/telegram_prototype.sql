@@ -1,13 +1,7 @@
--- Jalankan setelah schema.sql. Isi chat_id dan staf uji secara manual (lihat README).
+-- Jalankan setelah schema.sql. Isi chat_id grup PIK-R secara manual (lihat TELEGRAM_PROTOTYPE.md).
 create table public.telegram_pikr_routes (
   pikr_id uuid primary key references public.pik_r_partners(id) on delete cascade,
   pikr_chat_id bigint not null unique
-);
-
-create table public.telegram_pikr_staff (
-  pikr_id uuid not null references public.pik_r_partners(id) on delete cascade,
-  telegram_user_id bigint not null,
-  primary key (pikr_id, telegram_user_id)
 );
 
 create table public.telegram_sessions (
@@ -35,10 +29,9 @@ create table public.telegram_processed_updates (
 );
 
 alter table public.telegram_pikr_routes enable row level security;
-alter table public.telegram_pikr_staff enable row level security;
 alter table public.telegram_sessions enable row level security;
 alter table public.telegram_relay_messages enable row level security;
 alter table public.telegram_processed_updates enable row level security;
 -- Tidak ada policy untuk anon/authenticated. Hanya server dengan service role yang mengaksesnya.
-grant all on public.telegram_pikr_routes, public.telegram_pikr_staff, public.telegram_sessions,
+grant all on public.telegram_pikr_routes, public.telegram_sessions,
   public.telegram_relay_messages, public.telegram_processed_updates to service_role;

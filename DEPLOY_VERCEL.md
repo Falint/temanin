@@ -21,12 +21,12 @@
 
    Ganti `NAMA-PROJECT` dengan domain Vercel yang benar. Hasil `getWebhookInfo.result.url` harus menunjukkan domain itu. Hanya satu webhook aktif per bot; setelah dipindahkan ke Vercel, tunnel lokal tidak menerima pesan bot. Bila secret berubah, perbarui Vercel dan webhook dengan nilai yang sama.
 
-6. Uji dari website Vercel: buat sesi, tekan Start pada bot, kirim pesan pribadi, lalu Reply dari akun staf di grup. Periksa **Vercel → Project → Logs** jika webhook gagal.
+6. Uji dari website Vercel: buat sesi, tekan Start pada bot, kirim pesan pribadi, lalu Reply dari anggota grup PIK-R. Periksa **Vercel → Project → Logs** jika webhook gagal.
 
 ## Tambah satu PIK-R
 
-1. Buat grup Telegram PIK-R, masukkan bot dan akun staf. Catat `message.chat.id` grup (biasanya negatif) dan `message.from.id` setiap staf. Cara mengambilnya dijelaskan di `TELEGRAM_PROTOTYPE.md`. ID grup dan ID akun harus angka asli, bukan username atau nama grup.
-2. Di **Supabase → SQL Editor**, jalankan SQL berikut dengan slug, nama, kecamatan, ID grup, dan ID staf yang baru. Jalankan bagian staf lagi untuk setiap staf tambahan:
+1. Buat grup Telegram PIK-R dan masukkan bot. Catat ID grup (biasanya negatif); cara mengambilnya dijelaskan di `TELEGRAM_PROTOTYPE.md`. Anggota grup yang membalas tidak perlu didaftarkan per akun.
+2. Di **Supabase → SQL Editor**, jalankan SQL berikut dengan slug, nama, kecamatan, dan ID grup yang baru:
 
    ```sql
    insert into public.pik_r_partners
@@ -45,9 +45,6 @@
    select id, -1001234567890 from public.pik_r_partners where slug = 'pikr-baru'
    on conflict (pikr_id) do update set pikr_chat_id = excluded.pikr_chat_id;
 
-   insert into public.telegram_pikr_staff (pikr_id, telegram_user_id)
-   select id, 123456789 from public.pik_r_partners where slug = 'pikr-baru'
-   on conflict (pikr_id, telegram_user_id) do nothing;
    ```
 
 3. Buka ulang `/curhat/wilayah`: mitra aktif yang punya route grup muncul langsung dari Supabase. Tidak perlu mengubah source, deploy ulang, atau membuat bot baru. Kecamatan harus memakai slug di `src/lib/data/regions.js`, misalnya `beji`, `cimanggis`, `sukmajaya`, atau `pancoran-mas`. Jika mitra lama memiliki `district = 'Depok'`, ubah ke slug kecamatan agar filter wilayah menampilkannya:
@@ -56,7 +53,7 @@
    update public.pik_r_partners set district = 'beji' where slug = 'testing';
    ```
 
-4. Untuk menonaktifkan mitra tanpa menghapus riwayat, ubah `is_active = false`. Untuk mencabut izin staf, hapus baris miliknya di `telegram_pikr_staff`. Pengurus hanya dapat membalas dengan fitur **Reply** pada pesan bot di grup yang sesuai.
+4. Untuk menonaktifkan mitra tanpa menghapus riwayat, ubah `is_active = false`. Semua anggota grup PIK-R yang terhubung dapat membalas dengan fitur **Reply** pada pesan bot; batasi keanggotaan grup sesuai kebutuhan layanan.
 
 ## Batas saat ini
 

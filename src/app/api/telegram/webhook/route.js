@@ -89,15 +89,13 @@ async function handlePrivate(message) {
 }
 
 async function handlePikrReply(message) {
-  if (!message.reply_to_message?.message_id || !message.text?.trim() || !message.from?.id || message.from.is_bot) return;
+  const fromMember = message.from?.id && !message.from.is_bot;
+  const fromAnonymousAdmin = message.sender_chat?.id === message.chat.id;
+  if (!message.reply_to_message?.message_id || !message.text?.trim() || (!fromMember && !fromAnonymousAdmin)) return;
   const route = await db('telegram_pikr_routes', {
     select: 'pikr_id', filters: { pikr_chat_id: `eq.${message.chat.id}` }, single: true,
   });
   if (!route) return;
-  const staff = await db('telegram_pikr_staff', {
-    select: 'telegram_user_id', filters: { pikr_id: `eq.${route.pikr_id}`, telegram_user_id: `eq.${message.from.id}` }, single: true,
-  });
-  if (!staff) return;
   const relay = await db('telegram_relay_messages', {
     select: 'session_id', filters: { pikr_chat_id: `eq.${message.chat.id}`, bot_message_id: `eq.${message.reply_to_message.message_id}` }, single: true,
   });

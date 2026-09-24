@@ -1,6 +1,6 @@
 # Curhat Telegram TEMANIN
 
-Percakapan berlangsung di Telegram. Halaman `/curhat/chat` masih simulasi. Daftar PIK-R untuk Telegram pada `/curhat/wilayah` dan beranda diambil dari Supabase: hanya mitra aktif dengan `chat_enabled = true` dan baris `telegram_pikr_routes` yang muncul. Satu bot melayani beberapa grup PIK-R; pengurus yang terdaftar membalas dengan **Reply** pada pesan bot di grup.
+Percakapan berlangsung di Telegram. Halaman `/curhat/chat` masih simulasi. Daftar PIK-R untuk Telegram pada `/curhat/wilayah` diambil dari Supabase: hanya mitra aktif dengan `chat_enabled = true` dan baris `telegram_pikr_routes` yang muncul. Satu bot melayani beberapa grup PIK-R; anggota grup yang terhubung membalas dengan **Reply** pada pesan bot di grup.
 
 Untuk memasang di Vercel dan menambah PIK-R, lihat [DEPLOY_VERCEL.md](DEPLOY_VERCEL.md).
 
@@ -8,32 +8,29 @@ Untuk memasang di Vercel dan menambah PIK-R, lihat [DEPLOY_VERCEL.md](DEPLOY_VER
 
 Jalankan `supabase/schema.sql` pada project Supabase baru jika belum pernah dijalankan. Setelah itu jalankan `supabase/telegram_prototype.sql`. Jangan jalankan skema dasar dua kali karena `CREATE TYPE` di sana tidak idempotent.
 
-Untuk uji satu PIK-R, tambahkan mitra, route grup, dan ID pengurus (sesuaikan nilai contoh):
+Untuk uji satu PIK-R, tambahkan mitra dan ID grup (sesuaikan nilai contoh):
 
 ```sql
 insert into public.pik_r_partners (slug, name, district, chat_enabled, is_active)
 values ('pikr-demo-a', 'PIK-R Demo A', 'beji', true, true)
 on conflict (slug) do update set chat_enabled = true, is_active = true;
 
--- Ganti kedua angka di bawah dengan ID grup PIK-R dan ID akun Telegram pengurus.
+-- Ganti angka di bawah dengan ID grup PIK-R.
 insert into public.telegram_pikr_routes (pikr_id, pikr_chat_id)
 select id, -1001234567890 from public.pik_r_partners where slug = 'pikr-demo-a'
 on conflict (pikr_id) do update set pikr_chat_id = excluded.pikr_chat_id;
 
-insert into public.telegram_pikr_staff (pikr_id, telegram_user_id)
-select id, 123456789 from public.pik_r_partners where slug = 'pikr-demo-a'
-on conflict (pikr_id, telegram_user_id) do nothing;
 ```
 
 Slug bebas selama huruf kecil, angka, dan tanda hubung; `district` gunakan ID kecamatan dari `src/lib/data/regions.js`, misalnya `beji`, bukan `Depok`. Satu PIK-R memakai satu grup Telegram. Jangan gunakan chat pribadi pengurus sebagai grup PIK-R.
 
-Untuk mendapatkan ID grup dan ID pengurus: masukkan bot ke grup, kirim perintah seperti `/test@NamaBot` dari akun pengurus, lalu sebelum webhook dipasang panggil `getUpdates`:
+Untuk mendapatkan ID grup publik, gunakan username grup (misalnya `@pikr_contoh`) dengan metode Bot API `getChat`. Webhook tetap dapat aktif:
 
 ```bash
-curl "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates"
+curl -G "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getChat" --data-urlencode 'chat_id=@pikr_contoh'
 ```
 
-Dalam hasilnya, `message.chat.id` adalah ID grup, sedangkan `message.from.id` adalah ID pengurus. Jangan bagikan hasil lengkap `getUpdates` karena mungkin berisi pesan pribadi. Jika webhook sudah aktif, sementara hapus dengan `deleteWebhook`, catat ID melalui `getUpdates`, lalu pasang kembali webhook ke URL Vercel.
+Dalam hasilnya, `result.id` adalah ID grup. Untuk grup privat, bot harus ditambahkan ke grup dan ID diperoleh dari update Telegram. Tidak perlu mendaftarkan ID akun anggota grup satu per satu.
 
 ## 2. Environment lokal
 
@@ -81,7 +78,7 @@ Periksa statusnya dengan `curl -sS "https://api.telegram.org/bot${TELEGRAM_BOT_T
 1. Buka `http://localhost:3000/curhat`, setujui informasi layanan, pilih mode, isi nama panggilan, lalu pilih PIK-R yang terdaftar.
 2. Klik **Mulai via Telegram**, lalu **Buka bot Telegram**. Tekan Start di Telegram. Bot memberi konfirmasi dan mengirim pemberitahuan ke grup PIK-R.
 3. Kirim pesan dari chat pribadi bot. Pesan muncul sebagai pesan **dari bot** di grup PIK-R, dengan kode sesi dan alias, tanpa chat ID pengguna.
-4. Dari akun pengurus yang ID-nya terdaftar, tekan **Reply** pada pesan bot di grup, lalu kirim jawaban. Jawaban masuk ke chat pribadi pengguna.
+4. Dari akun anggota grup PIK-R yang terhubung, tekan **Reply** pada pesan bot di grup, lalu kirim jawaban. Jawaban masuk ke chat pribadi pengguna.
 5. Uji pengguna kedua dan PIK-R kedua dengan grup serta route terpisah. Balas pesan masing-masing menggunakan Reply.
 6. Pengguna mengetik `/end` untuk menutup sesi. Untuk sesi baru, ulangi alur website.
 
