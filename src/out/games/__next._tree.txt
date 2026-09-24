@@ -1,3 +1,0 @@
-:HL["/_next/static/chunks/1-y_st1x6gst_.css","style"]
-:HL["/_next/static/chunks/1mblwb3s36fl3.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"games","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"0hiCzLSMSOah5Mblkwtnc"}

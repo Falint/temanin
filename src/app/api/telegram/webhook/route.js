@@ -103,9 +103,9 @@ async function handlePikrReply(message) {
   });
   if (!relay) return;
   const conversation = await db('conversations', {
-    select: 'pikr_id,status', filters: { session_id: `eq.${relay.session_id}` }, single: true,
+    select: 'pik_r_id,status', filters: { session_id: `eq.${relay.session_id}` }, single: true,
   });
-  if (conversation?.pikr_id !== route.pikr_id || conversation.status !== 'connected') return;
+  if (conversation?.pik_r_id !== route.pikr_id || conversation.status !== 'connected') return;
   const binding = await db('telegram_sessions', {
     select: 'user_chat_id', filters: { session_id: `eq.${relay.session_id}`, closed_at: 'is.null' }, single: true,
   });

@@ -1,12 +1,14 @@
-# Prototipe curhat Telegram (localhost + Cloudflare Tunnel)
+# Curhat Telegram TEMANIN
 
-Percakapan nyata berlangsung di Telegram. Halaman `/curhat/chat` masih simulasi; pilih tombol **Mulai via Telegram** di `/curhat/wilayah`. Satu bot menangani beberapa PIK-R dan beberapa sesi. Pengurus membalas dengan **Reply** pada pesan bot di grup PIK-R yang dituju.
+Percakapan berlangsung di Telegram. Halaman `/curhat/chat` masih simulasi. Daftar PIK-R untuk Telegram pada `/curhat/wilayah` dan beranda diambil dari Supabase: hanya mitra aktif dengan `chat_enabled = true` dan baris `telegram_pikr_routes` yang muncul. Satu bot melayani beberapa grup PIK-R; pengurus yang terdaftar membalas dengan **Reply** pada pesan bot di grup.
+
+Untuk memasang di Vercel dan menambah PIK-R, lihat [DEPLOY_VERCEL.md](DEPLOY_VERCEL.md).
 
 ## 1. Siapkan Supabase
 
 Jalankan `supabase/schema.sql` pada project Supabase baru jika belum pernah dijalankan. Setelah itu jalankan `supabase/telegram_prototype.sql`. Jangan jalankan skema dasar dua kali karena `CREATE TYPE` di sana tidak idempotent.
 
-Untuk uji satu PIK-R, tambahkan mitra dengan slug yang cocok dengan data demo website:
+Untuk uji satu PIK-R, tambahkan mitra, route grup, dan ID pengurus (sesuaikan nilai contoh):
 
 ```sql
 insert into public.pik_r_partners (slug, name, district, chat_enabled, is_active)
@@ -15,13 +17,15 @@ on conflict (slug) do update set chat_enabled = true, is_active = true;
 
 -- Ganti kedua angka di bawah dengan ID grup PIK-R dan ID akun Telegram pengurus.
 insert into public.telegram_pikr_routes (pikr_id, pikr_chat_id)
-select id, -1001234567890 from public.pik_r_partners where slug = 'pikr-demo-a';
+select id, -1001234567890 from public.pik_r_partners where slug = 'pikr-demo-a'
+on conflict (pikr_id) do update set pikr_chat_id = excluded.pikr_chat_id;
 
 insert into public.telegram_pikr_staff (pikr_id, telegram_user_id)
-select id, 123456789 from public.pik_r_partners where slug = 'pikr-demo-a';
+select id, 123456789 from public.pik_r_partners where slug = 'pikr-demo-a'
+on conflict (pikr_id, telegram_user_id) do nothing;
 ```
 
-Untuk PIK-R lain, isi `pik_r_partners` dengan slug sesuai `src/lib/data/pikr.js`, lalu tambahkan route grup serta ID pengurusnya. Jangan gunakan chat pribadi pengurus sebagai grup PIK-R pada prototipe ini.
+Slug bebas selama huruf kecil, angka, dan tanda hubung; `district` gunakan ID kecamatan dari `src/lib/data/regions.js`, misalnya `beji`, bukan `Depok`. Satu PIK-R memakai satu grup Telegram. Jangan gunakan chat pribadi pengurus sebagai grup PIK-R.
 
 Untuk mendapatkan ID grup dan ID pengurus: masukkan bot ke grup, kirim perintah seperti `/test@NamaBot` dari akun pengurus, lalu sebelum webhook dipasang panggil `getUpdates`:
 
@@ -29,7 +33,7 @@ Untuk mendapatkan ID grup dan ID pengurus: masukkan bot ke grup, kirim perintah 
 curl "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates"
 ```
 
-Dalam hasilnya, `message.chat.id` adalah ID grup, sedangkan `message.from.id` adalah ID pengurus. Jangan bagikan hasil lengkap `getUpdates` karena mungkin berisi pesan pribadi. Setelah webhook dipasang, `getUpdates` tidak bisa dipakai bersamaan.
+Dalam hasilnya, `message.chat.id` adalah ID grup, sedangkan `message.from.id` adalah ID pengurus. Jangan bagikan hasil lengkap `getUpdates` karena mungkin berisi pesan pribadi. Jika webhook sudah aktif, sementara hapus dengan `deleteWebhook`, catat ID melalui `getUpdates`, lalu pasang kembali webhook ke URL Vercel.
 
 ## 2. Environment lokal
 
@@ -48,6 +52,8 @@ cloudflared tunnel --url http://localhost:3000
 ```
 
 Catat URL HTTPS `https://...trycloudflare.com` yang muncul. URL ini berubah ketika quick tunnel baru dibuat.
+
+Jika website dibuka melalui tunnel pada mode dev, tambahkan **hostname** tunnel tanpa `https://` ke `allowedDevOrigins` di `src/next.config.mjs`, kemudian restart `npm run dev`. Pengaturan ini tidak diperlukan pada Vercel.
 
 ## 3. Pasang webhook
 

@@ -9,6 +9,8 @@ import PikrNetwork from '@/components/landing/PikrNetwork';
 import HowItWorks from '@/components/landing/HowItWorks';
 import styles from '@/components/landing/landing.module.css';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   return (
     <>
