@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { pikrPartners, getPikrByDistrict } from '@/lib/data/pikr';
 import { regions } from '@/lib/data/regions';
 import styles from '@/components/curhat/curhat.module.css';
-import UnavailableNotice from '@/components/shared/UnavailableNotice';
+import TelegramStartButton from '@/components/curhat/TelegramStartButton';
 import PageLoading from '@/components/shared/PageLoading';
 
 function WilayahContent() {
@@ -100,14 +100,7 @@ function WilayahContent() {
                         </Link>
                       )}
                       {partner.telegramEnabled && (
-                        <UnavailableNotice
-                          href={partner.telegramUrl}
-                          className={`${styles.pikrActionBtn} ${styles.pikrActionTelegram}`}
-                          title="Kontak Telegram belum tersedia"
-                          message="PIK-R ini belum memiliki tautan Telegram resmi yang terverifikasi. Gunakan pilihan Chat atau Konseling jika tersedia."
-                        >
-                          📱 Telegram
-                        </UnavailableNotice>
+                        <TelegramStartButton pikrId={partner.id} mode={mode} sessionId={sessionId} />
                       )}
                       {partner.offlineCounselingEnabled && (
                         <Link
