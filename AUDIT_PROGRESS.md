@@ -130,16 +130,16 @@
   - ESLint: PASS (`npm run lint` exit code 0)
   - Next.js Build: PASS (empat route informasi terdaftar)
 
-### 9. Perbaikan Tautan Placeholder & URL Roblox
+### 9. Perbaikan Tautan Placeholder
 - Status: DONE
 - Priority: LOW
 - Category: UI/UX & Integrity
 - Depends On: -
-- Description: Tangani link placeholder Telegram `t.me/example` di `pikr.js` dan URL game Roblox `#` di `games.js`. Berikan modal konfirmasi atau fallback yang informatif sehingga tidak membingungkan pengguna jika tautan resmi belum tersedia.
+- Description: Tangani link placeholder Telegram `t.me/example` di `pikr.js`. Berikan modal konfirmasi atau fallback yang informatif sehingga tidak membingungkan pengguna jika tautan resmi belum tersedia.
 - Changes:
   - `src/components/shared/UnavailableNotice.jsx`: Membuat komponen fallback aksesibel yang membuka modal informasi untuk tautan yang belum tersedia dan tetap mendukung tautan resmi ketika nanti diisi.
-  - `src/lib/data/games.js` dan `src/lib/data/pikr.js`: Menghapus URL placeholder aktif agar pengguna tidak diarahkan ke tujuan yang salah.
-  - Halaman Games dan pemilihan PIK-R sekarang menampilkan pemberitahuan yang jelas ketika URL Roblox atau Telegram resmi belum tersedia.
+  - `src/lib/data/pikr.js`: Menghapus URL placeholder aktif agar pengguna tidak diarahkan ke tujuan yang salah.
+  - Pemilihan PIK-R menampilkan pemberitahuan yang jelas ketika URL Telegram resmi belum tersedia.
 - Validation:
   - ESLint: PASS (`npm run lint` exit code 0)
   - Next.js Build: PASS
@@ -218,7 +218,7 @@
 - Task 6: Screening Kondisi & Kategori Masalah
 - Task 7: Perbaikan Konten Edukasi & Detail Artikel Dinamis
 - Task 8: Halaman Informasi Publik Wajib
-- Task 9: Perbaikan Tautan Placeholder & URL Roblox
+- Task 9: Perbaikan Tautan Placeholder
 - Task 10: Status Chat UI, Disclaimer Simulasi & Post-Chat Flow
 - Task 11: Skema SQL Supabase, Auth Role & RLS (sesuai scope pengguna)
 - Task 12: Dashboard Konselor, Supervisor & Admin

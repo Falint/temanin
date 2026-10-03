@@ -197,72 +197,19 @@
   text-align: center;
 }
 
-/* --- Games Preview --- */
-.gamesSection {
-  padding: 6rem 0;
-  background: var(--bg-warm);
-}
-
-.gamesGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-}
-
-.gameCard {
-  padding: 1.5rem;
-  background: var(--white);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--border-light);
-  text-align: center;
-  transition: var(--transition);
-  text-decoration: none;
-  display: block;
-}
-
-.gameCard:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-}
-
-.gameEmoji {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.gameTitle {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin-bottom: 0.5rem;
-}
-
-.gameDesc {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 0.75rem;
-}
-
-.gameBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem 0.625rem;
-  border-radius: var(--radius-full);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  background: var(--warm-bg);
-  color: var(--warm-dark);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.gamesCta {
-  text-align: center;
-}
+/* --- Life Game Preview --- */
+.gamesSection { padding: 6rem 0; background: var(--bg-warm); }
+.lifePreview { display: grid; grid-template-columns: 1fr 1fr; max-width: 920px; margin: auto; border: 1px solid #d5decb; border-radius: 20px; overflow: hidden; background: #fffcf5; color: #293e3b; text-decoration: none; }
+.lifePreview:hover { border-color: #7f9873; }
+.lifePreview:focus-visible { outline: 3px solid #bc7638; outline-offset: 5px; }
+.lifePreviewArt { background: #dceae2; }
+.lifePreviewArt svg { display: block; width: 100%; height: 100%; min-height: 250px; }
+.lifePreviewBody { padding: 34px; }
+.lifePreviewBody > span { font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+.lifePreviewBody h3 { font-family: Georgia, serif; font-size: 30px; font-weight: 400; margin: 16px 0; }
+.lifePreviewBody p { color: #61736b; font-size: 14px; line-height: 1.8; }
+.lifePreviewBody strong { color: #375e50; font-size: 14px; }
+@media (max-width: 650px) { .lifePreview { grid-template-columns: 1fr; }.lifePreviewArt svg { min-height: 0; height: 190px; }.lifePreviewBody { padding: 25px; } }
 
 /* --- Curhat CTA --- */
 .curhatSection {
@@ -544,10 +491,6 @@
     grid-template-columns: 1fr;
   }
 
-  .gamesGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .howSteps {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -578,10 +521,6 @@
 
   .eduGrid,
   .pikrGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .gamesGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 

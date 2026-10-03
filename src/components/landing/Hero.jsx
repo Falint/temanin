@@ -65,7 +65,7 @@ export default function Hero() {
               <Link href="/games" className={styles.visualCard}>
                 <span className={styles.visualCardIcon}>🎮</span>
                 <h3 className={styles.visualCardTitle}>Games</h3>
-                <p className={styles.visualCardDesc}>Belajar sambil bermain di Roblox</p>
+                <p className={styles.visualCardDesc}>Tiga tahun SMA, pilihanmu sendiri</p>
               </Link>
               <Link href="/curhat" className={styles.visualCard}>
                 <span className={styles.visualCardIcon}>💬</span>

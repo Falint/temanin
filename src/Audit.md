@@ -71,7 +71,6 @@
 | CTA "Curhat Sekarang" | SEBAGIAN | Ada CTA "Mulai Curhat" (teks berbeda dari brief) | `src/components/landing/Hero.jsx` L33 | Teks CTA tidak persis sesuai brief |
 | CTA "Mulai Belajar" | TIDAK SESUAI | CTA adalah "Jelajahi Edukasi", bukan "Mulai Belajar" | `src/components/landing/Hero.jsx` L36 | Teks tidak sesuai |
 | CTA "Bermain Bersama" | BELUM ADA | Tidak ada CTA ke Games di Hero | `src/components/landing/Hero.jsx` | Tidak ada link langsung ke `/games` dari Hero |
-| Ringkasan 3 kanal (Website, Roblox, Medsos) | SEBAGIAN | Ada FeaturesSection & visual cards, tapi tidak eksplisit menyebut "Website", "Roblox", "Media Sosial" sebagai 3 kanal | `src/components/landing/FeaturesSection.jsx` | Framing berbeda |
 | Artikel edukasi terbaru/terpopuler | SEBAGIAN | Ada `EducationPreview` yang menampilkan 3 artikel pertama, bukan berdasarkan "terbaru/terpopuler" | `src/components/landing/EducationPreview.jsx` L8 | Logic sorting tidak ada |
 | Kegiatan/webinar mendatang | BELUM ADA | Tidak ada section/data kegiatan | Tidak ada | — |
 | Footer | SESUAI | Footer ada dengan link yang relevan | `src/components/Footer.jsx` | — |
@@ -85,7 +84,6 @@
 | Isi/konten artikel | BELUM ADA | Hanya ada `title` + `excerpt`, tidak ada `content` field | `src/lib/data/education.js` | — |
 | "Langkah selanjutnya" + CTA ke Curhat di artikel | BELUM ADA | Tidak ada halaman artikel | — | — |
 | Route `/games` | SESUAI | Halaman ada | `src/app/games/page.jsx` | — |
-| Link Roblox valid | TIDAK SESUAI | Semua URL game adalah `'#'` (placeholder) | `src/lib/data/games.js` L17,25,33,41 | Tidak ada link Roblox sungguhan |
 | Route `/curhat` | SESUAI | Halaman ada | `src/app/curhat/page.jsx` | — |
 | Consent screen | BELUM ADA | `/curhat` langsung menampilkan pilihan mode, tanpa consent, penjelasan, atau FAQ | `src/app/curhat/page.jsx` | — |
 | Penjelasan layanan bukan darurat | BELUM ADA | Tidak ada teks ini di manapun | — | RISIKO TINGGI |
@@ -146,7 +144,6 @@
 | Kontak & Media Sosial | `/kontak` | Tidak ada | BELUM ADA | Hanya email di footer |
 | Kebijakan Privasi | `/kebijakan-privasi` | Tidak ada | BELUM ADA | — |
 | Ketentuan | `/ketentuan` | Tidak ada | BELUM ADA | — |
-| Games | `/games` | `/games` (ada) | SEBAGIAN | URL Roblox semua placeholder `#` |
 | Direktori Layanan (F2) | `/layanan` | Tidak ada | BELUM ADA | — |
 | Kegiatan & Kolaborasi (F2) | `/kegiatan` | Tidak ada | BELUM ADA | — |
 | Cerita & Komunitas (F3) | `/komunitas` | Tidak ada | BELUM ADA | — |
@@ -380,7 +377,6 @@ Project saat ini adalah **static frontend prototype tanpa backend apapun**. Selu
 13. **Status sesi (waiting/connected/outside schedule) tidak ada** di UI chat.
 14. **Dashboard konselor/supervisor/admin semua belum ada**.
 15. **Telegram URL adalah placeholder aktif** — tombol "Telegram" di UI mengarah ke `t.me/example`.
-16. **Semua URL game Roblox adalah `#`** — tombol "Main Sekarang" tidak berfungsi.
 17. **Halaman Tentang Kami, Kontak, Kebijakan Privasi, Ketentuan** tidak ada (required di Fase 1).
 18. **Eskalasi tidak ada** — konselor tidak bisa mengeskalasi sesi ke supervisor.
 
