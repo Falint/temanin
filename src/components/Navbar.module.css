@@ -12,7 +12,7 @@
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(108, 99, 255, 0.06);
+  border-bottom: 1px solid rgba(51, 78, 172, 0.06);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
 }
 
@@ -32,11 +32,14 @@
 }
 
 .logoIcon {
+  flex-shrink: 0;
+  object-fit: contain;
   font-size: 1.5rem;
   line-height: 1;
 }
 
 .logoText {
+  font-family: var(--font-raleway), sans-serif;
   font-size: 1.375rem;
   font-weight: 800;
   color: var(--text-main);

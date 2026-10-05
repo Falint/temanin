@@ -214,7 +214,7 @@
 /* --- Curhat CTA --- */
 .curhatSection {
   padding: 6rem 0;
-  background: linear-gradient(135deg, #6C63FF 0%, #8B85FF 30%, #36D6B5 100%);
+  background: var(--gradient-primary);
   position: relative;
   overflow: hidden;
 }

@@ -40,7 +40,7 @@ export default function Navbar() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.nav}`}>
         <Link href="/" className={styles.logo}>
-          <Logo size={28} className={styles.logoIcon} />
+          <Logo size={44} className={styles.logoIcon} />
           <span className={styles.logoText}>
             TEMAN<span className={styles.logoAccent}>IN</span>
           </span>

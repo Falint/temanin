@@ -19,7 +19,7 @@ export default function Footer() {
             {/* Brand */}
             <div className={styles.brand}>
               <Link href="/" className={styles.logo}>
-                <Logo size={28} className={styles.logoIcon} />
+                <Logo size={44} className={styles.logoIcon} />
                 <span>
                   TEMAN<span className={styles.logoAccent}>IN</span>
                 </span>
