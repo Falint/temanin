@@ -190,20 +190,16 @@ export default function CurhatPage() {
               <div
                 key={idx}
                 className={styles.faqItem}
-                onClick={() => toggleFaq(idx)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && toggleFaq(idx)}
               >
-                <div className={styles.faqQuestion}>
+                <button type="button" className={styles.faqQuestion}
+                  onClick={() => toggleFaq(idx)} aria-expanded={openFaq === idx}
+                  aria-controls={`faq-answer-${idx}`}>
                   <span>{faq.q}</span>
-                  <span>{openFaq === idx ? '▲' : '▼'}</span>
+                  <span aria-hidden="true">{openFaq === idx ? '▲' : '▼'}</span>
+                </button>
+                <div id={`faq-answer-${idx}`} hidden={openFaq !== idx} className={styles.faqAnswer}>
+                  {faq.a}
                 </div>
-                {openFaq === idx && (
-                  <div className={styles.faqAnswer}>
-                    {faq.a}
-                  </div>
-                )}
               </div>
             ))}
           </div>

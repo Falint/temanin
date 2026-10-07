@@ -9,7 +9,7 @@ export default function SectionHeader({ badge, badgeVariant = 'primary', title, 
   }[badgeVariant] || 'badge-primary';
 
   return (
-    <div className={`${styles.sectionHeader} ${align === 'left' ? styles.alignLeft : ''}`}>
+    <div className={`reveal ${styles.sectionHeader} ${align === 'left' ? styles.alignLeft : ''}`}>
       {badge && <span className={`badge ${badgeClass}`}>{badge}</span>}
       {title && <h2 className={styles.title}>{title}</h2>}
       {description && <p className={styles.description}>{description}</p>}

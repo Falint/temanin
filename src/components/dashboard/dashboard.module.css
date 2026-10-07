@@ -1,5 +1,5 @@
-.page { min-height: 100vh; display: grid; grid-template-columns: 240px minmax(0, 1fr); background: var(--bg-color); }
-.sidebar { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; padding: 2rem 1.25rem; background: var(--text-main); color: white; }
+.page { padding-top: 72px; min-height: 100vh; display: grid; grid-template-columns: 240px minmax(0, 1fr); background: var(--bg-color); }
+.sidebar { position: sticky; top: 72px; height: calc(100vh - 72px); display: flex; flex-direction: column; padding: 2rem 1.25rem; background: var(--text-main); color: white; }
 .brand { color: white; font-size: 1.4rem; font-weight: 800; }
 .role { margin: 0.4rem 0 2rem; color: var(--secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
 .sidebar nav { display: flex; flex-direction: column; gap: 0.4rem; }
@@ -37,3 +37,8 @@
 .statusInactive { color: #B45309; }
 @media (max-width: 900px) { .page { grid-template-columns: 1fr; } .sidebar { position: static; height: auto; } .sidebar nav { flex-direction: row; flex-wrap: wrap; } .back { margin-top: 1.5rem; } .statGrid { grid-template-columns: repeat(2, 1fr); } .panelGrid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .main { padding: 1rem; } .header, .demoBanner { flex-direction: column; } .statGrid { grid-template-columns: 1fr; } }
+
+.header { border-bottom: 1px solid var(--border-medium); padding-bottom: 1.5rem; }
+.sidebar { border-right: 1px solid var(--border-medium); }
+
+@media (max-width: 768px) { .page { padding-top: 64px; } }

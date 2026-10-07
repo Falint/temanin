@@ -42,7 +42,7 @@ export default function EdukasiPage() {
       {/* Page Header */}
       <header className={styles.pageHeader}>
         <div className={`container ${styles.pageHeaderInner}`}>
-          <span className={styles.pageHeaderBadge}>📖 Knowledge Hub</span>
+          <span className={styles.pageHeaderBadge}>📖 Ruang Belajar</span>
           <h1 className={styles.pageTitle}>Edukasi Mental Health</h1>
           <p className={styles.pageDesc}>
             Artikel, panduan, dan modul yang mudah dipahami — ditulis khusus untuk remaja.
@@ -72,6 +72,7 @@ export default function EdukasiPage() {
             <button
               key={cat.id}
               className={`${styles.categoryChip} ${activeCategory === cat.id ? styles.categoryChipActive : ''}`}
+              aria-pressed={activeCategory === cat.id}
               onClick={() => setActiveCategory(cat.id)}
             >
               {cat.label}

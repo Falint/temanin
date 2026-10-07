@@ -1,81 +1,30 @@
 import Link from 'next/link';
+import Logo from '@/components/shared/Logo';
 import styles from './Hero.module.css';
 
 export default function Hero() {
-  return (
-    <section className={styles.hero}>
-      {/* Decorative background blobs */}
-      <div className={styles.blobOne} aria-hidden="true" />
-      <div className={styles.blobTwo} aria-hidden="true" />
-      <div className={styles.blobThree} aria-hidden="true" />
-
-      <div className="container">
-        <div className={styles.heroInner}>
-          {/* Content */}
-          <div className={styles.content}>
-            <div className={styles.tagline}>
-              <span className={styles.taglineIcon}>🌱</span>
-              Mental Health × Edukasi × PIK-R Kota Depok
-            </div>
-
-            <h1 className={styles.title}>
-              Tempat untuk{' '}
-              <span className={styles.highlight}>Memahami Diri</span>,
-              Belajar, dan Menemukan yang{' '}
-              <span className={styles.highlight}>Siap Mendengarkan</span>
-            </h1>
-
-            <p className={styles.subtitle}>
-              Ruang aman untuk remaja Depok — curhat, belajar tentang kesehatan mental, bermain game edukatif, dan terhubung dengan konselor sebaya PIK-R.
-            </p>
-
-            <div className={styles.ctas}>
-              <Link href="/curhat" className="btn btn-primary btn-lg">
-                💬 Curhat Sekarang
-              </Link>
-              <Link href="/edukasi" className="btn btn-outline btn-lg">
-                📖 Mulai Belajar
-              </Link>
-            </div>
-
-            <div className={styles.stats}>
-              <div className={styles.stat}>
-                <span className={styles.statValue}>11</span>
-                <span className={styles.statLabel}>Kecamatan</span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statValue}>8+</span>
-                <span className={styles.statLabel}>PIK-R Partner</span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statValue}>Piket</span>
-                <span className={styles.statLabel}>Konselor Sebaya</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Visual — interactive cards preview */}
-          <div className={styles.visual}>
-            <div className={styles.visualGrid}>
-              <Link href="/edukasi" className={styles.visualCard}>
-                <span className={styles.visualCardIcon}>📖</span>
-                <h3 className={styles.visualCardTitle}>Edukasi</h3>
-                <p className={styles.visualCardDesc}>Artikel & modul tentang mental health</p>
-              </Link>
-              <Link href="/games" className={styles.visualCard}>
-                <span className={styles.visualCardIcon}>🎮</span>
-                <h3 className={styles.visualCardTitle}>Games</h3>
-                <p className={styles.visualCardDesc}>Tiga tahun SMA, pilihanmu sendiri</p>
-              </Link>
-              <Link href="/curhat" className={styles.visualCard}>
-                <span className={styles.visualCardIcon}>💬</span>
-                <h3 className={styles.visualCardTitle}>Curhat</h3>
-                <p className={styles.visualCardDesc}>Ceritakan perasaanmu dengan aman</p>
-              </Link>
-            </div>
-          </div>
+  return <section className={styles.hero}>
+    <div className={`container ${styles.inner}`}>
+      <div className={styles.content}>
+        <span className="badge badge-primary">RUANG TUMBUH REMAJA DEPOK</span>
+        <h1>Pelan-pelan,<br />kamu nggak<br /><span>sendirian.</span></h1>
+        <p>Tempat untuk memahami diri, belajar, dan menemukan yang siap mendengarkan. Curhat dengan teman sebaya, jelajahi edukasi, atau rehat lewat cerita interaktif.</p>
+        <div className={styles.actions}>
+          <Link href="/curhat" className="btn btn-primary">Mulai Curhat <span aria-hidden="true">↗</span></Link>
+          <Link href="/edukasi" className="btn btn-outline">Jelajahi Edukasi</Link>
         </div>
+        <p className={styles.note}>Sesuai ritmemu. Tanpa tekanan, tanpa penghakiman.</p>
       </div>
-    </section>
-  );
+      <div className={styles.visual}>
+        <div className={styles.visualHeading}><Logo size={46} /><span>TEMANIN<br /><small>Teman dalam prosesmu</small></span><span aria-hidden="true">✳</span></div>
+        <div className={styles.message}><span>SEBUAH PENGINGAT KECIL</span><h2>Semua perasaanmu<br />punya tempat di sini.</h2><p>Nggak harus punya semua jawaban hari ini.</p></div>
+        <div className={styles.paths}>
+          <Link href="/curhat"><span aria-hidden="true">💬</span><span>Aku ingin cerita<small>Temukan pendengar sebaya</small></span><span aria-hidden="true">↗</span></Link>
+          <Link href="/edukasi"><span aria-hidden="true">📖</span><span>Aku ingin memahami diri<small>Belajar dari hal-hal kecil</small></span><span aria-hidden="true">↗</span></Link>
+          <Link href="/games/life"><span aria-hidden="true">🎮</span><span>Aku butuh jeda<small>Mainkan TEMANIN Life</small></span><span aria-hidden="true">↗</span></Link>
+        </div>
+        <div className={styles.caption}>Kamu boleh mulai dari mana saja.</div>
+      </div>
+    </div>
+  </section>;
 }

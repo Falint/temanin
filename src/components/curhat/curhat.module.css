@@ -246,7 +246,7 @@
 
 .scopeGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -576,6 +576,8 @@
 
 .chatHeaderInfo {
   flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .chatHeaderName {
@@ -1136,3 +1138,8 @@
   .sessionSummary dl div { flex-direction: column; gap: 0.25rem; }
   .sessionSummary dd { text-align: left; }
 }
+
+.pageHeader { padding-top: 8rem; padding-bottom: 3.5rem; }
+.profileCard, .consentBox { box-shadow: var(--shadow-md); border-radius: var(--radius-xl); }
+.modeCard:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.faqQuestion { width: 100%; border: 0; background: transparent; text-align: left; font: inherit; color: var(--text-main); cursor: pointer; }

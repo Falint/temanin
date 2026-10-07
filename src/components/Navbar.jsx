@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
@@ -18,6 +18,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const menuButton = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,10 +28,20 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
+  useEffect(() => { setIsOpen(false); }, [pathname]);
+
   useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+    if (!isOpen) return;
+    document.querySelector('#main-navigation a')?.focus();
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [isOpen]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -46,11 +57,12 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>
+        <nav id="main-navigation" aria-label="Navigasi utama" onClick={() => setIsOpen(false)} className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
+              aria-current={pathname === link.href || (link.href !== '/' && pathname.startsWith(`${link.href}/`)) ? 'page' : undefined}
               className={`${styles.navItem} ${pathname === link.href || (link.href !== '/' && pathname.startsWith(`${link.href}/`)) ? styles.navItemActive : ''}`}
             >
               {link.label}
@@ -62,6 +74,8 @@ export default function Navbar() {
         </nav>
 
         <button
+          ref={menuButton}
+          aria-controls="main-navigation"
           className={styles.mobileMenuBtn}
           onClick={toggleMenu}
           aria-label={isOpen ? 'Tutup menu' : 'Buka menu'}
@@ -76,7 +90,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile overlay */}
-      {isOpen && <div className={styles.overlay} onClick={() => setIsOpen(false)} />}
+      {isOpen && <div className={styles.overlay} onClick={() => setIsOpen(false)} aria-hidden="true" />}
     </header>
   );
 }

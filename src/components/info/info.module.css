@@ -24,3 +24,7 @@
 .notice { padding: 1.25rem; border-left: 4px solid var(--primary); border-radius: var(--radius-md); background: var(--bg-cool); color: var(--text-muted); line-height: 1.7; }
 .updated { margin-bottom: 2rem; color: var(--text-light); font-size: 0.85rem; }
 @media (max-width: 768px) { .page { padding-top: 64px; } .cardGrid, .contactGrid { grid-template-columns: 1fr; } }
+
+.hero { background: var(--bg-cool); border-bottom: 1px solid var(--border-medium); }
+.card, .contactCard { border-radius: var(--radius-2xl); box-shadow: var(--shadow-sm); }
+.updated { color: var(--text-muted); }

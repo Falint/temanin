@@ -345,3 +345,8 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.pageHeader { background: var(--bg-cool); border-bottom: 1px solid var(--border-medium); }
+.articleCard { border-radius: var(--radius-2xl); box-shadow: var(--shadow-sm); }
+.articleEmoji { background: var(--secondary-light); border-radius: var(--radius-lg); padding: 1.5rem; }
+.categoryChip { min-height: 44px; }

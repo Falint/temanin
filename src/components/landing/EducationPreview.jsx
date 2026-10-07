@@ -24,13 +24,14 @@ export default function EducationPreview() {
 
         <div className={styles.eduGrid}>
           {previewArticles.map((article) => (
-            <div key={article.id} className={styles.eduCard}>
+            <Link key={article.id} href={`/edukasi/${article.id}`} className={`${styles.eduCard} soft-card`}>
               <span className={styles.eduEmoji}>{article.emoji}</span>
               <span className={styles.eduCategory}>{getCategoryLabel(article.category)}</span>
               <h3 className={styles.eduTitle}>{article.title}</h3>
               <p className={styles.eduExcerpt}>{article.excerpt}</p>
               <p className={styles.eduReadTime}>⏱ {article.readTime}</p>
-            </div>
+              <span className={styles.articleAction}>Baca artikel ↗</span>
+            </Link>
           ))}
         </div>
 
