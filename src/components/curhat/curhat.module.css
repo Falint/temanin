@@ -11,7 +11,7 @@
 }
 
 .pageHeaderGradient {
-  background: linear-gradient(135deg, #6C63FF 0%, #8B85FF 40%, #36D6B5 100%);
+  background: var(--gradient-primary);
 }
 
 .pageHeaderSoft {
@@ -140,7 +140,7 @@
   padding: 1.5rem;
   background: var(--bg-mint);
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(54, 214, 181, 0.15);
+  border: 1px solid rgba(186, 214, 235, 0.15);
 }
 
 .privacyNoticeIcon {
@@ -254,14 +254,14 @@
   background: var(--bg-mint);
   border-radius: var(--radius-xl);
   padding: 1.5rem;
-  border: 1px solid rgba(54, 214, 181, 0.25);
+  border: 1px solid rgba(186, 214, 235, 0.25);
 }
 
 .scopeCardCannot {
   background: var(--bg-warm);
   border-radius: var(--radius-xl);
   padding: 1.5rem;
-  border: 1px solid rgba(255, 179, 71, 0.25);
+  border: 1px solid rgba(186, 214, 235, 0.25);
 }
 
 .scopeHeader {
@@ -514,7 +514,7 @@
 
 .pikrActionKonseling:hover {
   background: var(--secondary);
-  color: var(--white);
+  color: var(--text-main);
 }
 
 .pikrUnavailable {
@@ -587,7 +587,7 @@
 
 .chatHeaderStatus {
   font-size: 0.8125rem;
-  color: var(--secondary);
+  color: var(--secondary-dark);
   margin: 0;
 }
 
@@ -733,7 +733,7 @@
 
 .chatSendBtn:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.35);
+  box-shadow: 0 4px 16px rgba(51, 78, 172, 0.35);
 }
 
 .chatSendBtn:disabled {
@@ -868,13 +868,13 @@
 
 .profileNoticeAnon {
   background: var(--bg-mint);
-  border: 1px solid rgba(54, 214, 181, 0.3);
+  border: 1px solid rgba(186, 214, 235, 0.3);
   color: #065F46;
 }
 
 .profileNoticeTerhubung {
   background: var(--bg-cool);
-  border: 1px solid rgba(108, 99, 255, 0.25);
+  border: 1px solid rgba(51, 78, 172, 0.25);
   color: #4338CA;
 }
 
@@ -917,7 +917,7 @@
 .screeningNote {
   padding: 1rem 1.25rem;
   margin-bottom: 2rem;
-  border: 1px solid rgba(108, 99, 255, 0.2);
+  border: 1px solid rgba(51, 78, 172, 0.2);
   border-radius: var(--radius-lg);
   background: var(--bg-cool);
   color: var(--text-muted);
@@ -1100,7 +1100,7 @@
 .sessionStatus strong { color: var(--text-main); font-size: 0.875rem; }
 .sessionStatus span { color: var(--text-muted); font-size: 0.75rem; }
 .sessionStatus_waiting { border-color: #F6D365; background: #FFFBEB; }
-.sessionStatus_connected { border-color: rgba(54, 214, 181, 0.4); background: var(--bg-mint); }
+.sessionStatus_connected { border-color: rgba(186, 214, 235, 0.4); background: var(--bg-mint); }
 .sessionStatus_outside-schedule { border-color: #CBD5E1; background: #F8FAFC; }
 .endSessionBtn { min-height: 44px; padding: 0 1rem; border: 1px solid #FEB2B2; border-radius: var(--radius-full); background: #FFF5F5; color: #C53030; font: inherit; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
 .endSessionBtn:disabled { opacity: 0.45; cursor: not-allowed; }

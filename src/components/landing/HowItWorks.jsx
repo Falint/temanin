@@ -12,7 +12,7 @@ const steps = [
     number: '2',
     icon: '🎮',
     title: 'Bermain',
-    description: 'Mainkan game edukatif di Roblox untuk belajar sambil bersenang-senang.',
+    description: 'Mainkan TEMANIN Life dan temui konsekuensi pilihanmu selama tiga tahun SMA.',
   },
   {
     number: '3',

@@ -2,51 +2,51 @@
    DESIGN TOKENS — Mental Health × PIK-R Platform
    ============================================================ */
 :root {
-  /* Primary: Soft violet — calm, modern, mental-health-friendly */
-  --primary: #6C63FF;
-  --primary-dark: #5A52D5;
-  --primary-light: #8B85FF;
-  --primary-bg: rgba(108, 99, 255, 0.08);
+  /* Planetary / Galaxy / Universe */
+  --primary: #334EAC;
+  --primary-dark: #081F5C;
+  --primary-light: #7096D1;
+  --primary-bg: rgba(51, 78, 172, 0.08);
 
-  /* Secondary: Mint/teal — fresh, approachable */
-  --secondary: #36D6B5;
-  --secondary-dark: #2BB89A;
-  --secondary-light: #5EE3C8;
-  --secondary-bg: rgba(54, 214, 181, 0.08);
+  /* Venus / Sky */
+  --secondary: #BAD6EB;
+  --secondary-dark: #334EAC;
+  --secondary-light: #D0E3FF;
+  --secondary-bg: rgba(186, 214, 235, 0.08);
 
-  /* Accent: Soft coral/pink — warm, friendly */
-  --accent: #FF6B9D;
-  --accent-dark: #E5557F;
-  --accent-light: #FF8DB6;
-  --accent-bg: rgba(255, 107, 157, 0.08);
+  /* Planetary accents */
+  --accent: #334EAC;
+  --accent-dark: #081F5C;
+  --accent-light: #7096D1;
+  --accent-bg: rgba(51, 78, 172, 0.08);
 
-  /* Warm yellow for highlights */
-  --warm: #FFB347;
-  --warm-dark: #E09A30;
-  --warm-bg: rgba(255, 179, 71, 0.1);
+  /* Venus highlights */
+  --warm: #BAD6EB;
+  --warm-dark: #334EAC;
+  --warm-bg: rgba(186, 214, 235, 0.1);
 
   /* Backgrounds */
-  --bg-color: #FAFBFE;
-  --bg-warm: #FFF8F3;
-  --bg-cool: #F0F0FF;
-  --bg-mint: #F0FDF9;
+  --bg-color: #FFF9F0;
+  --bg-warm: #FFF9F0;
+  --bg-cool: #D0E3FF;
+  --bg-mint: #F7F2EB;
 
   /* Text */
-  --text-main: #2D3436;
-  --text-muted: #636E72;
-  --text-light: #B2BEC3;
+  --text-main: #081F5C;
+  --text-muted: #334EAC;
+  --text-light: #7096D1;
   --white: #ffffff;
 
   /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 12px rgba(108, 99, 255, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 12px 32px rgba(108, 99, 255, 0.12), 0 4px 8px rgba(0, 0, 0, 0.04);
-  --shadow-xl: 0 20px 48px rgba(108, 99, 255, 0.15), 0 8px 16px rgba(0, 0, 0, 0.06);
-  --shadow-glow: 0 0 24px rgba(108, 99, 255, 0.25);
+  --shadow-md: 0 4px 12px rgba(51, 78, 172, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 32px rgba(51, 78, 172, 0.12), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 48px rgba(51, 78, 172, 0.15), 0 8px 16px rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 0 24px rgba(51, 78, 172, 0.25);
 
   /* Borders */
-  --border-light: rgba(108, 99, 255, 0.08);
-  --border-medium: rgba(108, 99, 255, 0.15);
+  --border-light: rgba(51, 78, 172, 0.08);
+  --border-medium: rgba(51, 78, 172, 0.15);
 
   /* Radius */
   --radius-sm: 0.375rem;
@@ -68,11 +68,11 @@
   --container-narrow: 800px;
 
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #6C63FF 0%, #8B85FF 50%, #36D6B5 100%);
-  --gradient-warm: linear-gradient(135deg, #FF6B9D 0%, #FFB347 100%);
-  --gradient-hero: linear-gradient(160deg, #FAFBFE 0%, #F0F0FF 30%, #F0FDF9 60%, #FFF8F3 100%);
-  --gradient-card: linear-gradient(135deg, rgba(108, 99, 255, 0.03) 0%, rgba(54, 214, 181, 0.03) 100%);
-  --gradient-dark: linear-gradient(135deg, #2D3436 0%, #3D4852 100%);
+  --gradient-primary: linear-gradient(135deg, #334EAC 0%, #081F5C 100%);
+  --gradient-warm: linear-gradient(135deg, #081F5C 0%, #334EAC 100%);
+  --gradient-hero: linear-gradient(160deg, #FFF9F0 0%, #D0E3FF 30%, #F7F2EB 60%, #FFF9F0 100%);
+  --gradient-card: linear-gradient(135deg, rgba(51, 78, 172, 0.03) 0%, rgba(186, 214, 235, 0.03) 100%);
+  --gradient-dark: linear-gradient(135deg, #081F5C 0%, #081F5C 100%);
 }
 
 /* ============================================================
@@ -122,7 +122,8 @@ button {
    TYPOGRAPHY
    ============================================================ */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
+  font-family: var(--font-raleway), sans-serif;
+  font-weight: 800;
   line-height: 1.25;
   margin-bottom: 0.75rem;
   color: var(--text-main);
@@ -196,6 +197,7 @@ p {
 }
 
 .section-title p {
+  font-weight: 500;
   max-width: 600px;
   margin: 0 auto;
   font-size: 1.125rem;
@@ -242,12 +244,12 @@ p {
 .btn-primary {
   background: var(--gradient-primary);
   color: var(--white);
-  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.35);
+  box-shadow: 0 4px 16px rgba(51, 78, 172, 0.35);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.45);
+  box-shadow: 0 8px 24px rgba(51, 78, 172, 0.45);
 }
 
 .btn-primary:active {
@@ -256,25 +258,26 @@ p {
 
 .btn-secondary {
   background-color: var(--secondary);
-  color: var(--white);
-  box-shadow: 0 4px 16px rgba(54, 214, 181, 0.3);
+  color: var(--text-main);
+  box-shadow: 0 4px 16px rgba(186, 214, 235, 0.3);
 }
 
 .btn-secondary:hover {
+  color: var(--white);
   background-color: var(--secondary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(54, 214, 181, 0.4);
+  box-shadow: 0 8px 24px rgba(186, 214, 235, 0.4);
 }
 
 .btn-accent {
   background: var(--gradient-warm);
   color: var(--white);
-  box-shadow: 0 4px 16px rgba(255, 107, 157, 0.3);
+  box-shadow: 0 4px 16px rgba(51, 78, 172, 0.3);
 }
 
 .btn-accent:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 107, 157, 0.4);
+  box-shadow: 0 8px 24px rgba(51, 78, 172, 0.4);
 }
 
 .btn-outline {
@@ -402,7 +405,7 @@ p {
 }
 
 .badge-available {
-  background-color: rgba(54, 214, 181, 0.15);
+  background-color: rgba(186, 214, 235, 0.15);
   color: var(--secondary-dark);
 }
 
@@ -423,7 +426,7 @@ p {
 }
 
 .glass-dark {
-  background: rgba(45, 52, 54, 0.8);
+  background: rgba(8, 31, 92, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);

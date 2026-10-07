@@ -4,7 +4,7 @@
 }
 
 .wave {
-  color: #2D3436;
+  color: #081F5C;
   line-height: 0;
   overflow: hidden;
 }
@@ -16,7 +16,7 @@
 }
 
 .content {
-  background: linear-gradient(135deg, #2D3436 0%, #3D4852 100%);
+  background: linear-gradient(135deg, #081F5C 0%, #081F5C 100%);
   padding: 3rem 0 1.5rem;
 }
 
@@ -33,6 +33,7 @@
 }
 
 .logo {
+  font-family: var(--font-raleway), sans-serif;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -43,6 +44,8 @@
 }
 
 .logoIcon {
+  flex-shrink: 0;
+  object-fit: contain;
   font-size: 1.5rem;
   line-height: 1;
 }
@@ -52,7 +55,7 @@
 }
 
 .description {
-  color: #94a3b8;
+  color: var(--secondary);
   font-size: 0.9375rem;
   line-height: 1.7;
   margin-bottom: 1.25rem;
@@ -76,7 +79,7 @@
 }
 
 .socialLink:hover {
-  background: rgba(108, 99, 255, 0.3);
+  background: rgba(51, 78, 172, 0.3);
   transform: translateY(-2px);
 }
 
@@ -98,7 +101,7 @@
 }
 
 .linkItem {
-  color: #94a3b8;
+  color: var(--secondary);
   font-size: 0.9375rem;
   transition: all 0.2s ease;
   display: inline-block;
@@ -110,7 +113,7 @@
 }
 
 .infoText {
-  color: #94a3b8;
+  color: var(--secondary);
   font-size: 0.9375rem;
 }
 
@@ -122,14 +125,14 @@
 }
 
 .bottom p {
-  color: #64748b;
+  color: var(--secondary);
   font-size: 0.8125rem;
   margin-bottom: 0.25rem;
 }
 
 .disclaimer {
   font-size: 0.75rem;
-  color: #475569;
+  color: var(--secondary);
 }
 
 /* Responsive */

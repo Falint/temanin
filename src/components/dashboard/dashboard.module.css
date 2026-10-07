@@ -1,11 +1,11 @@
-.page { min-height: 100vh; display: grid; grid-template-columns: 240px minmax(0, 1fr); background: #F8FAFC; }
-.sidebar { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; padding: 2rem 1.25rem; background: #1E293B; color: white; }
+.page { min-height: 100vh; display: grid; grid-template-columns: 240px minmax(0, 1fr); background: var(--bg-color); }
+.sidebar { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; padding: 2rem 1.25rem; background: var(--text-main); color: white; }
 .brand { color: white; font-size: 1.4rem; font-weight: 800; }
-.role { margin: 0.4rem 0 2rem; color: #94A3B8; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.role { margin: 0.4rem 0 2rem; color: var(--secondary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
 .sidebar nav { display: flex; flex-direction: column; gap: 0.4rem; }
-.sidebar nav a { padding: 0.75rem 0.9rem; border-radius: 0.6rem; color: #CBD5E1; }
-.sidebar nav a:hover { background: #334155; color: white; }
-.back { margin-top: auto; color: #94A3B8; font-size: 0.85rem; }
+.sidebar nav a { padding: 0.75rem 0.9rem; border-radius: 0.6rem; color: var(--bg-cool); }
+.sidebar nav a:hover { background: var(--primary); color: white; }
+.back { margin-top: auto; color: var(--secondary); font-size: 0.85rem; }
 .main { min-width: 0; padding: 2rem; }
 .demoBanner { display: flex; gap: 0.6rem; padding: 0.8rem 1rem; margin-bottom: 1.5rem; border: 1px solid #F6D365; border-radius: 0.75rem; background: #FFFBEB; color: #854D0E; font-size: 0.82rem; }
 .header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }

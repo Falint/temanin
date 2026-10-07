@@ -13,7 +13,7 @@ const features = [
   {
     icon: '🎮',
     title: 'Games Edukatif',
-    description: 'Belajar tentang kesehatan mental sambil bermain game seru di platform Roblox.',
+    description: 'Jalani tiga tahun SMA melalui pilihan tentang pertemanan, hubungan, dan belajar di TEMANIN Life.',
     href: '/games',
     bg: 'var(--warm-bg)',
   },
