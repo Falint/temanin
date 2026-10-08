@@ -42,3 +42,100 @@
 .sidebar { border-right: 1px solid var(--border-medium); }
 
 @media (max-width: 768px) { .page { padding-top: 64px; } }
+
+.sidebar {
+  background: var(--bg-mint);
+  color: var(--primary-dark);
+}
+.brand {
+  color: var(--primary-dark);
+}
+.role,
+.back,
+.sidebar nav a {
+  color: var(--primary);
+}
+.sidebar nav a[aria-current="page"] {
+  background: var(--primary-dark);
+  color: var(--white);
+}
+.sidebar nav a:hover {
+  background: var(--primary-bg);
+  color: var(--primary-dark);
+}
+.statCard {
+  border-radius: var(--radius-md);
+  border: 0;
+  border-top: 3px solid var(--primary);
+}
+.statCard strong {
+  font-family: var(--font-raleway);
+  font-size: 2.2rem;
+}
+.panel {
+  border-radius: var(--radius-md);
+}
+.table th {
+  background: var(--bg-mint);
+  font-weight: 700;
+}
+.table td {
+  white-space: nowrap;
+}
+.panelHeader {
+  flex-wrap: wrap;
+}
+.tableWrap:focus-visible {
+  outline-offset: -3px;
+}
+.actionBtn {
+  min-height: 36px;
+}
+.demoBanner {
+  background: var(--secondary-light);
+  color: var(--primary-dark);
+  border-color: var(--border-medium);
+}
+.main {
+  max-width: 1500px;
+}
+.header {
+  margin-top: 2rem;
+}
+@media (max-width: 1100px) {
+  .panelGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .sidebar {
+    padding: 1rem;
+  }
+  .brand,
+  .role {
+    display: none;
+  }
+  .back {
+    margin-top: 0.5rem;
+  }
+  .sidebar nav {
+    gap: 0.5rem;
+  }
+  .sidebar nav a {
+    padding: 0.6rem 0.75rem;
+  }
+}
+@media (max-width: 560px) {
+  .statGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .statCard {
+    padding: 1rem;
+  }
+  .statCard strong {
+    font-size: 1.6rem;
+  }
+  .panel {
+    padding: 1rem;
+  }
+}

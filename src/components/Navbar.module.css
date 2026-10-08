@@ -204,3 +204,42 @@
   .overlay { top: 64px; height: calc(100dvh - 64px); }
   .mobileMenuBtn { min-width: 44px; min-height: 44px; }
 }
+
+.navItem {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+}
+.navItemActive {
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+.navCta {
+  border-radius: var(--radius-md);
+}
+.logoText {
+  letter-spacing: -0.05em;
+}
+.scrolled {
+  background: var(--bg-color);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.navLinks a[aria-current="page"] {
+  font-weight: 700;
+}
+@media (min-width: 769px) and (max-width: 900px) {
+  .navItem {
+    padding: 0.5rem;
+  }
+  .navLinks {
+    gap: 0.1rem;
+  }
+  .navCta {
+    margin-left: 0.2rem;
+    padding: 0.5rem 0.7rem;
+  }
+}

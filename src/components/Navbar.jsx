@@ -57,7 +57,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav id="main-navigation" aria-label="Navigasi utama" onClick={() => setIsOpen(false)} className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>
+        <nav id="main-navigation" aria-label="Navigasi utama" onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget) && event.relatedTarget !== menuButton.current) setIsOpen(false); }} onClick={() => setIsOpen(false)} className={`${styles.navLinks} ${isOpen ? styles.active : ''}`}>
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -68,7 +68,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/curhat" className={`btn btn-primary btn-sm ${styles.navCta}`}>
+          <Link href="/curhat" aria-current={pathname.startsWith('/curhat') ? 'page' : undefined} className={`btn btn-primary btn-sm ${styles.navCta}`}>
             Curhat Sekarang
           </Link>
         </nav>

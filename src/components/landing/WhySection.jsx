@@ -29,7 +29,7 @@ export default function WhySection() {
         <SectionHeader
           badge="Kenapa TEMANIN?"
           badgeVariant="secondary"
-          title="Platform yang Benar-Benar Memahami Remaja"
+          title="Teman dalam prosesmu."
           description="Dibangun khusus untuk mendukung kesejahteraan mental remaja di Kota Depok, dengan tiga pilar utama."
         />
 

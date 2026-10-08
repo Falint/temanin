@@ -377,9 +377,9 @@
 }
 
 .modeWrapperLocked {
-  opacity: 0.45;
+  opacity: 1;
   pointer-events: none;
-  filter: grayscale(40%);
+  filter: none;
   transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
@@ -1105,7 +1105,7 @@
 .sessionStatus_connected { border-color: rgba(186, 214, 235, 0.4); background: var(--bg-mint); }
 .sessionStatus_outside-schedule { border-color: #CBD5E1; background: #F8FAFC; }
 .endSessionBtn { min-height: 44px; padding: 0 1rem; border: 1px solid #FEB2B2; border-radius: var(--radius-full); background: #FFF5F5; color: #C53030; font: inherit; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
-.endSessionBtn:disabled { opacity: 0.45; cursor: not-allowed; }
+.endSessionBtn:disabled { opacity: 1; cursor: not-allowed; }
 .postChatPage { min-height: 100vh; padding: 7rem 0 5rem; background: linear-gradient(180deg, var(--bg-mint), var(--bg-color) 45%); }
 .postChatContainer { max-width: 900px; text-align: center; }
 .postChatIcon { display: block; margin-bottom: 0.75rem; font-size: 3rem; }
@@ -1143,3 +1143,170 @@
 .profileCard, .consentBox { box-shadow: var(--shadow-md); border-radius: var(--radius-xl); }
 .modeCard:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 .faqQuestion { width: 100%; border: 0; background: transparent; text-align: left; font: inherit; color: var(--text-main); cursor: pointer; }
+
+.pageHeader,
+.pageHeaderSoft,
+.pageHeaderGradient {
+  background: var(--bg-color);
+  text-align: left;
+  border-bottom: 1px solid var(--border-medium);
+  padding: 8rem 0 2.5rem;
+}
+.pageHeader > :global(.container) {
+  max-width: 900px;
+}
+.pageTitle,
+.pageTitleDark {
+  color: var(--text-main);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  letter-spacing: -0.04em;
+}
+.pageDesc,
+.pageDescDark {
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 600px;
+  font-size: 1rem;
+}
+.pageHeaderBadge {
+  color: var(--primary);
+  background: var(--primary-bg);
+  font-size: 0.7rem;
+}
+.modeSection {
+  padding: 2.5rem 0 5rem;
+}
+.modeCard {
+  text-align: left;
+  align-items: flex-start;
+  padding: 2rem;
+  border-width: 1px;
+}
+.modeCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.modeIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.modeDesc {
+  font-size: 0.9rem;
+}
+.modeBadge {
+  margin-top: auto;
+}
+.consentBox {
+  background: var(--bg-mint);
+  box-shadow: none;
+  border: 1px solid var(--border-medium);
+}
+.privacyNotice a {
+  text-decoration: underline;
+}
+.profileCard,
+.scheduleForm {
+  box-shadow: none;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+}
+.profileSection {
+  padding-top: 2rem;
+}
+.sessionIdBox {
+  background: transparent;
+  border-bottom: 1px solid var(--border-medium);
+  border-radius: 0;
+}
+.pikrCard {
+  box-shadow: none;
+  border: 1px solid var(--border-medium);
+}
+.pikrCardHeader {
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.chatContainer {
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-sm);
+}
+.chatMessageIn,
+.chatMessageOut {
+  border-radius: 16px;
+}
+.chatHeader {
+  background: var(--bg-mint);
+}
+.faqQuestion {
+  min-height: 56px;
+}
+.konselingCard {
+  text-align: left;
+  box-shadow: none;
+}
+.flowSteps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  gap: 0.6rem;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+.flowSteps li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 0;
+  border-bottom: 2px solid var(--border-medium);
+  font-size: 0.75rem;
+}
+.flowSteps li > span:first-child {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-medium);
+  border-radius: 50%;
+}
+.flowSteps li[aria-current="step"] {
+  border-color: var(--primary);
+  font-weight: 700;
+}
+.flowSteps li[aria-current="step"] > span:first-child {
+  background: var(--primary);
+  color: var(--white);
+}
+.unavailable {
+  max-width: 760px;
+  min-height: 65vh;
+  margin: auto;
+  padding: 9rem 1.5rem 5rem;
+}
+.unavailable h1 {
+  margin-top: 1.5rem;
+}
+.unavailable > div {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .pageHeader {
+    padding-top: 6.5rem;
+  }
+  .modeCard {
+    padding: 1.5rem;
+  }
+  .flowSteps li {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.65rem;
+  }
+  .profileCard {
+    padding: 1.25rem;
+  }
+  .modeGrid {
+    gap: 1rem;
+  }
+}

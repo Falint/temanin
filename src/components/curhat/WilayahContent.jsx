@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { regions } from '@/lib/data/regions';
 import styles from '@/components/curhat/curhat.module.css';
+import CurhatSteps from '@/components/curhat/CurhatSteps';
 import TelegramStartButton from '@/components/curhat/TelegramStartButton';
 
 export default function WilayahContent({ partners }) {
@@ -39,6 +41,8 @@ export default function WilayahContent({ partners }) {
       </header>
 
       <div className="container">
+<CurhatSteps current={3} />
+        <p>Setelah memilih PIK-R, buka bot dan tekan Start di Telegram. Waktu balasan mengikuti jadwal pengurus.</p>
         {/* Region Selector */}
         <section className={styles.regionSection}>
           <div className={styles.regionSelectWrapper}>
@@ -63,7 +67,7 @@ export default function WilayahContent({ partners }) {
 
         {/* PIK-R List */}
         <section className={styles.pikrSection}>
-          <p className={styles.pikrCount}>
+          <p className={styles.pikrCount} role="status">
             {filteredPartners.length} PIK-R ditemukan
             {selectedDistrict ? ` di ${getDistrictName(selectedDistrict)}` : ''}
           </p>
@@ -77,7 +81,7 @@ export default function WilayahContent({ partners }) {
                 >
                   <div className={styles.pikrCardHeader}>
                     <h3 className={styles.pikrCardName}>{partner.name}</h3>
-                    <span className="badge badge-available">Tersedia</span>
+                    <span className="badge badge-available">Telegram terhubung</span>
                   </div>
                   <p className={styles.pikrCardDistrict}>
                     📍 {getDistrictName(partner.district)}, {partner.city}
@@ -85,7 +89,7 @@ export default function WilayahContent({ partners }) {
                   <p className={styles.pikrCardDesc}>{partner.description}</p>
 
                   <div className={styles.pikrCardActions}>
-                    <TelegramStartButton pikrId={partner.id} mode={mode} sessionId={sessionId} />
+                    {sessionId ? <TelegramStartButton pikrId={partner.id} mode={mode} sessionId={sessionId} /> : <Link href="/curhat" className="btn btn-primary">Mulai dari pilihan mode →</Link>}
                   </div>
                 </div>
               ))}
@@ -95,6 +99,7 @@ export default function WilayahContent({ partners }) {
               <span className="icon">📍</span>
               <h3>Tidak ada PIK-R di wilayah ini</h3>
               <p>Coba pilih kecamatan lain atau lihat semua PIK-R yang tersedia.</p>
+              {selectedDistrict && <button className="btn btn-outline" onClick={() => setSelectedDistrict('')}>Lihat semua wilayah</button>}
             </div>
           )}
         </section>

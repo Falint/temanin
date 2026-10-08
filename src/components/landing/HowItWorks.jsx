@@ -6,7 +6,7 @@ const steps = [
     number: '1',
     icon: '📖',
     title: 'Pelajari',
-    description: 'Baca artikel dan ikuti modul edukasi tentang kesehatan mental.',
+    description: 'Baca artikel dan panduan tentang emosi, relasi, dan kesehatan mental.',
   },
   {
     number: '2',
@@ -18,7 +18,7 @@ const steps = [
     number: '3',
     icon: '💬',
     title: 'Curhat',
-    description: 'Ceritakan perasaanmu secara anonim atau pilih untuk terhubung dengan konselor.',
+    description: 'Pilih nama panggilan dan PIK-R, lalu lanjutkan bercerita di Telegram.',
   },
   {
     number: '4',

@@ -1,26 +1,192 @@
-.hero { padding: 140px 0 80px; background: radial-gradient(ellipse at 90% 30%, var(--secondary-light), transparent 60%), var(--bg-color); }
-.inner { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: clamp(2rem, 6vw, 6rem); }
-.content h1 { font-size: clamp(3rem, 5.5vw, 4.8rem); letter-spacing: -.05em; line-height: 1.06; margin: 1.5rem 0; }
-.content h1 span { color: var(--primary); }
-.content > p { max-width: 510px; font-size: 1.05rem; }
-.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 2rem 0 1rem; }
-.content .note { font-size: .8rem; }
-.visual { border: 1px solid var(--border-medium); background: var(--white); border-radius: var(--radius-2xl); padding: 1.5rem; box-shadow: var(--shadow-xl); transform: rotate(2deg); }
-.visualHeading { display: flex; gap: .75rem; align-items: center; font-weight: 700; font-size: .85rem; line-height: 1.5; }
-.visualHeading small { font-weight: 400; color: var(--text-muted); }
-.visualHeading > span:last-child { margin-left: auto; font-size: 2.5rem; color: var(--primary); }
-.message { background: var(--secondary-light); border-radius: var(--radius-xl); padding: 2rem 1.5rem; margin: 1.25rem 0; }
-.message > span { font-size: .65rem; font-weight: 700; letter-spacing: .12em; }
-.message h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin: 1rem 0 .75rem; }
-.message p { font-size: .85rem; margin: 0; }
-.paths { display: grid; gap: .5rem; }
-.paths a { display: flex; align-items: center; gap: .75rem; padding: .8rem; border: 1px solid var(--border-light); border-radius: var(--radius-lg); font-weight: 600; font-size: .875rem; }
-.paths a:hover { background: var(--bg-color); border-color: var(--primary-light); transform: translateX(3px); }
-.paths a > span:first-child { font-size: 1.4rem; }
-.paths a > span:last-child { margin-left: auto; }
-.paths small { display: block; color: var(--text-muted); font-size: .7rem; font-weight: 400; }
-.caption { text-align: center; font-size: .75rem; padding-top: 1rem; color: var(--text-muted); }
-@media (prefers-reduced-motion: no-preference) { .content, .visual { animation: heroReveal .55s ease both; } .visual { animation-delay: .08s; } }
-@keyframes heroReveal { from { opacity: 0; translate: 0 12px; filter: blur(4px); } to { opacity: 1; translate: 0 0; filter: blur(0); } }
-@media (max-width: 850px) { .inner { grid-template-columns: 1fr; }.hero { padding: 110px 0 55px; }.visual { transform: none; max-width: 550px; width: 100%; }.content h1 { font-size: clamp(3rem, 8vw, 4.5rem); } }
-@media (max-width: 380px) { .actions { flex-direction: column; }.visual { padding: 1rem; }.message { padding: 1.5rem 1rem; } }
+.hero {
+  padding: 140px 0 0;
+  background: var(--bg-color);
+}
+.inner {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+  padding-bottom: 5rem;
+}
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--primary);
+}
+.content h1 {
+  font-size: clamp(3rem, 5.6vw, 5rem);
+  line-height: 1.07;
+  letter-spacing: -0.055em;
+  margin: 1.8rem 0;
+}
+.content h1 span {
+  color: var(--primary);
+}
+.content > p {
+  max-width: 470px;
+  font-size: 1.05rem;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.explore {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.explore span {
+  margin-left: 1rem;
+}
+.note {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+.note > span {
+  font-size: 2.5rem;
+}
+.note p {
+  font-size: 0.8rem;
+  margin: 0;
+}
+.visual {
+  background: var(--secondary-light);
+  border-radius: 150px 150px 20px 20px;
+  padding: 2.5rem;
+  position: relative;
+  border: 1px solid var(--border-medium);
+}
+.visualHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  padding: 1rem 1.1rem;
+}
+.message > span {
+  font-family: Georgia, serif;
+  display: block;
+  height: 65px;
+  font-size: 7rem;
+  line-height: 1.2;
+  color: var(--primary);
+}
+.message h2 {
+  font-size: clamp(2.4rem, 3.6vw, 3.35rem);
+  line-height: 1.14;
+  letter-spacing: -0.04em;
+  margin: 0.5rem 0 2rem;
+}
+.message em {
+  font-style: normal;
+  color: var(--primary);
+  border-bottom: 3px solid var(--primary-light);
+}
+.caption {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-medium);
+  font-size: 0.8rem;
+}
+.gameNote {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem -1rem -3.75rem;
+  background: var(--primary-dark);
+  color: var(--white);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: var(--shadow-md);
+  font-size: 0.75rem;
+}
+.gameNote > span {
+  font-size: 2rem;
+}
+.gameNote strong {
+  display: block;
+  font-size: 0.875rem;
+  margin-top: 0.2rem;
+}
+.gameNote:hover {
+  background: var(--primary);
+}
+.bottom {
+  border-top: 1px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.4rem;
+  padding-bottom: 1.4rem;
+}
+.bottom > span {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+.bottom p {
+  margin: 0;
+  font-size: 0.75rem;
+}
+@media (max-width: 850px) {
+  .hero {
+    padding-top: 110px;
+  }
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .visual {
+    width: 100%;
+    max-width: 520px;
+    justify-self: center;
+  }
+  .content h1 {
+    font-size: clamp(2.7rem, 8vw, 4.8rem);
+  }
+  .bottom > span:last-child {
+    display: none;
+  }
+  .bottom {
+    align-items: flex-start;
+  }
+}
+@media (max-width: 400px) {
+  .visual {
+    padding: 1.5rem;
+    border-radius: 100px 100px 16px 16px;
+  }
+  .visualHeading {
+    padding: 1.5rem 0 0.5rem;
+  }
+  .bottom {
+    flex-direction: column;
+  }
+  .actions {
+    gap: 1rem;
+  }
+  .eyebrow {
+    font-size: 0.6rem;
+  }
+}

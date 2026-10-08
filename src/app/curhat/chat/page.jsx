@@ -87,7 +87,7 @@ function ChatContent() {
   }, []);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
   }, [messages]);
 
   const startSimulation = () => setSessionStatus(SESSION_STATUS.CONNECTED);
@@ -166,8 +166,8 @@ function ChatContent() {
         <section className={styles.feedbackSection}>
           <h2>Bagaimana pengalamanmu?</h2>
           {feedbackSent ? <div className={styles.feedbackSuccess}>✅ Terima kasih. Feedback demo tersimpan untuk sesi browser ini.</div> : <form onSubmit={submitFeedback}>
-            <div className={styles.ratingRow} role="group" aria-label="Rating pengalaman">{[1, 2, 3, 4, 5].map((value) => <button key={value} type="button" onClick={() => setRating(value)} className={rating >= value ? styles.ratingActive : ''} aria-label={`${value} dari 5`}>★</button>)}</div>
-            <textarea className="input" rows="4" value={feedbackComment} onChange={(event) => setFeedbackComment(event.target.value)} placeholder="Komentar tambahan (opsional)" />
+            <div className={styles.ratingRow} role="group" aria-label="Rating pengalaman">{[1, 2, 3, 4, 5].map((value) => <button key={value} type="button" onClick={() => setRating(value)} className={rating >= value ? styles.ratingActive : ''} aria-label={`${value} dari 5`} aria-pressed={rating === value}>★</button>)}</div>
+            <textarea aria-label="Komentar tambahan (opsional)" className="input" rows="4" value={feedbackComment} onChange={(event) => setFeedbackComment(event.target.value)} placeholder="Komentar tambahan (opsional)" />
             <button type="submit" className="btn btn-primary" disabled={!rating}>Kirim Feedback</button>
           </form>}
         </section>
@@ -194,7 +194,7 @@ function ChatContent() {
 
       <div className={styles.demoNotice} role="alert"><strong>SIMULASI:</strong> Pesan di halaman ini tidak dikirim kepada konselor, PIK-R, atau layanan darurat.</div>
 
-      <div className={styles.chatMessages}>
+      <div className={styles.chatMessages} role="log" aria-label="Percakapan simulasi" aria-live="polite">
         {messages.map((message) => <div key={message.id} className={message.type === 'in' ? styles.chatMessageIn : styles.chatMessageOut}><p className={styles.chatMessageText}>{message.text}</p><span className={styles.chatMessageTime}>{message.time}</span></div>)}
         {chatState === CHAT_STATES.SENDING && <div className={styles.chatMessageIn}><p className={styles.chatMessageText} style={{ opacity: 0.6 }}>Sedang mengetik...</p></div>}
         <div ref={messagesEndRef} />

@@ -24,7 +24,7 @@
 .game .primary { color: var(--white); background: var(--green); }.game .primary:hover { background: var(--primary-dark); }.secondary { background: transparent; color: var(--green); }.secondary:hover { background: var(--bg-cool); }
 .textButton { background: none; border: 0; color: var(--green); padding: 10px; font-size: 13px !important; text-decoration: underline; text-underline-offset: 4px; }
 .small { font-size: 12px !important; line-height: 1.8; color: var(--soft); }.muted { color: var(--soft); font-size: 12px; line-height: 1.7; }
-.chapterList { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 19px; display: grid; gap: 13px; }.chapterList > div { display: flex; gap: 14px; align-items: center; }.chapterList > div > span { color: var(--primary-light); font-family: var(--font-raleway), 'Raleway', sans-serif; font-size: 23px; }.chapterList strong { font-size: 12px; }.chapterList p { margin: 0; color: var(--soft); font-size: 12px; }
+.chapterList { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 19px; display: grid; gap: 13px; }.chapterList > div { display: flex; gap: 14px; align-items: center; }.chapterList > div > span { color: var(--primary); font-family: var(--font-raleway), 'Raleway', sans-serif; font-size: 23px; }.chapterList strong { font-size: 12px; }.chapterList p { margin: 0; color: var(--soft); font-size: 12px; }
 .resume { padding: 19px; border-radius: 12px; background: var(--bg-cool); display: grid; gap: 10px; margin: 22px 0; }.resume strong { font-size: 14px; }.resume > span { font-size: 12px; color: var(--soft); }
 .warning { padding: 12px 16px; border: 1px solid #d9b776; border-radius: 9px; background: #fff1d4; color: #644923; font-size: 13px; line-height: 1.6; }
 .loading { min-height: 400px; display: grid; place-items: center; }
@@ -47,3 +47,147 @@
 .intro, .story, .ending { box-shadow: var(--shadow-md); }
 .startPanel { background: var(--white); }
 .primary, .secondary { border-radius: var(--radius-full); }
+
+.intro,
+.story,
+.ending {
+  box-shadow: none;
+}
+.intro {
+  border-radius: var(--radius-xl);
+}
+.cover {
+  background: var(--primary-dark);
+  color: var(--white);
+}
+.cover h1,
+.cover h1 em {
+  color: var(--white);
+}
+.cover > p,
+.cover .eyebrow {
+  color: var(--secondary-light);
+}
+.cover h1 em {
+  font-style: normal;
+  color: var(--secondary);
+}
+.coverArt {
+  background: var(--secondary);
+  border-radius: 120px 120px 0 0;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+.coverMeta {
+  background: var(--primary-dark);
+  color: var(--secondary-light);
+  border: 0;
+}
+.startPanel {
+  background: var(--bg-color);
+}
+.startPanel h2 {
+  font-size: 2rem;
+  letter-spacing: -0.04em;
+}
+.primary,
+.secondary {
+  border-radius: var(--radius-md);
+}
+.timeline li {
+  background: transparent;
+  border-radius: 0;
+  border-bottom: 2px solid var(--border-medium);
+}
+.timeline .activeChapter {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--primary);
+}
+.timeline .activeChapter > span {
+  opacity: 1;
+  color: var(--primary);
+}
+.storyBody {
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+.storyBody h1 {
+  letter-spacing: -0.035em;
+}
+.prose p {
+  font-size: 1rem;
+  line-height: 1.9;
+}
+.choices button {
+  background: var(--white);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+}
+.choices button:hover {
+  background: var(--secondary-light);
+  border-color: var(--primary);
+}
+.choices button > span:first-child {
+  background: var(--primary-dark);
+  color: var(--white);
+}
+.statsPanel {
+  background: var(--bg-mint);
+  border-radius: var(--radius-lg);
+}
+.statsPanel h2 {
+  font-size: 1.1rem;
+}
+.quote {
+  background: var(--bg-color);
+}
+.quote p {
+  font-family: var(--font-inter);
+  font-weight: 500;
+}
+.lesson {
+  background: var(--secondary-light);
+  border-left: 3px solid var(--primary);
+}
+.endingBody {
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+.endingGrid article {
+  border: 0;
+  border-top: 3px solid var(--primary);
+  border-radius: 0;
+  background: var(--bg-color);
+}
+.endingGrid article:nth-child(2) {
+  background: var(--secondary-light);
+}
+.endingGrid article:nth-child(3) {
+  background: var(--secondary);
+}
+.avatarPicker {
+  flex-wrap: wrap;
+}
+.avatarPicker label {
+  min-height: 44px;
+}
+@media (max-width: 600px) {
+  .cover h1 {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+  }
+  .coverArt {
+    margin-top: 1rem;
+  }
+  .timeline strong {
+    font-size: 0.7rem;
+  }
+  .scene svg {
+    height: 170px;
+  }
+  .topbar {
+    flex-wrap: wrap;
+  }
+  .brand {
+    margin-right: auto;
+  }
+}

@@ -503,3 +503,237 @@
 .finalCtaTitle { font-size: clamp(2rem, 4vw, 3rem); }
 .finalCtaButtons :global(.btn-primary) { background: var(--secondary-light); color: var(--primary-dark); }
 @media (max-width: 768px) { .featureCard { padding: 1.5rem; }.howStep { border-top: 0; border-left: 1px solid var(--border-medium); } }
+
+/* Editorial sections: strong hierarchy, restrained surfaces. */
+.featuresSection {
+  background: var(--bg-color);
+}
+.featuresGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+.featureCard,
+.featureCard:first-child,
+.featureCard:last-child {
+  grid-column: auto;
+  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  min-height: 330px;
+}
+.featureCard:nth-child(2) {
+  background: var(--secondary-light);
+}
+.featureCard:nth-child(3) {
+  background: var(--secondary);
+}
+.featureIcon {
+  font-family: var(--font-raleway);
+  font-size: 3rem;
+  opacity: 0.55;
+  margin: 1.4rem 0;
+  line-height: 1;
+}
+.featureTitle {
+  font-size: 1.3rem;
+}
+.featureDesc {
+  font-size: 0.85rem;
+}
+.featureLabel {
+  font-size: 0.6rem;
+  letter-spacing: 0.09em;
+}
+.featureCard:first-child .featureArrow {
+  border-color: var(--primary-light);
+}
+.gamesSection {
+  background: var(--primary-dark);
+}
+.gamesSection h2,
+.gamesSection h3 {
+  color: var(--white);
+}
+.gamesSection :global(.badge) {
+  background: var(--primary);
+  color: var(--white);
+}
+.gamesSection p {
+  color: var(--secondary-light);
+}
+.lifePreview {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  gap: 2.5rem;
+  align-items: center;
+  overflow: visible;
+}
+.lifePreview:hover {
+  box-shadow: none;
+}
+.lifePreviewArt {
+  border-radius: 150px 150px 12px 12px;
+  overflow: hidden;
+  background: var(--secondary);
+}
+.lifePreviewArt svg {
+  min-height: 330px;
+}
+.lifePreviewBody {
+  padding: 1rem 0;
+  color: var(--secondary-light);
+}
+.lifePreviewBody h3 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+}
+.lifePreviewBody strong {
+  display: inline-block;
+  padding: 0.8rem 1.2rem;
+  color: var(--primary-dark);
+  background: var(--bg-color);
+  border-radius: var(--radius-md);
+}
+.eduSection {
+  background: var(--bg-color);
+}
+.eduCard {
+  padding: 0 0 1.5rem;
+  border: 0;
+  border-bottom: 1px solid var(--border-medium);
+  border-radius: 0;
+  background: transparent;
+}
+.eduCard:hover {
+  box-shadow: none;
+}
+.eduEmoji {
+  height: 170px;
+  border-radius: var(--radius-lg);
+}
+.eduCard:nth-child(2) .eduEmoji {
+  background: var(--secondary);
+}
+.eduCard:nth-child(3) .eduEmoji {
+  background: var(--bg-mint);
+}
+.eduCta {
+  text-align: left;
+}
+.curhatSection {
+  padding-top: 0;
+}
+.curhatInner {
+  max-width: none;
+  text-align: left;
+  background: var(--secondary-light);
+  border: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 2rem;
+}
+.curhatIcon {
+  grid-row: 1 / 5;
+  margin: 0;
+  font-size: 3rem;
+}
+.curhatDesc,
+.curhatSafety {
+  margin-left: 0;
+  max-width: 650px;
+}
+.curhatCtas {
+  justify-content: flex-start;
+}
+.curhatBtnPrimary {
+  border-radius: var(--radius-md);
+  box-shadow: none;
+}
+.whySection {
+  background: var(--bg-mint);
+}
+.whyCard {
+  background: transparent;
+  padding: 1.5rem 0;
+  border: 0;
+  border-radius: 0;
+}
+.whyCard:hover {
+  transform: none;
+  box-shadow: none;
+}
+.whyIcon {
+  width: 44px;
+  height: 44px;
+  font-size: 1.6rem;
+  background: none !important;
+}
+.howStep {
+  text-align: left;
+  padding: 1.5rem 0;
+}
+.howStepNumber {
+  margin-left: 0;
+  outline: none;
+  background: none;
+  color: var(--primary);
+  justify-content: flex-start;
+  font-size: 2rem;
+}
+.howStepIcon {
+  display: none;
+}
+.finalCta {
+  background: var(--bg-color);
+  text-align: left;
+  border-top: 1px solid var(--border-medium);
+}
+.finalCtaInner {
+  max-width: none;
+}
+.finalCtaTitle {
+  color: var(--primary-dark);
+}
+.finalCtaDesc {
+  color: var(--text-muted);
+}
+.finalCtaButtons {
+  justify-content: flex-start;
+}
+.finalCtaButtons :global(.btn-primary) {
+  background: var(--primary);
+  color: var(--white);
+}
+.finalCtaButtons :global(.btn-ghost) {
+  color: var(--primary) !important;
+  border-color: var(--border-medium) !important;
+}
+@media (max-width: 1000px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+  .featureCard {
+    min-height: 0;
+  }
+  .featureIcon {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+  .curhatInner {
+    display: block;
+  }
+  .curhatIcon {
+    margin-bottom: 1rem;
+  }
+  .lifePreview {
+    gap: 1.5rem;
+  }
+  .lifePreviewArt svg {
+    min-height: 0;
+    height: 220px;
+  }
+}

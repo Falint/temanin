@@ -230,3 +230,43 @@
 .returnBtn:hover {
   background: var(--border);
 }
+
+.emergencyFloatingBtn {
+  animation: none;
+  background: var(--danger);
+  box-shadow: var(--shadow-sm);
+}
+.modalBackdrop {
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-xl);
+  background: transparent;
+  width: min(560px, calc(100% - 24px));
+  max-height: calc(100dvh - 24px);
+  overflow: auto;
+  backdrop-filter: none;
+}
+.modalBackdrop::backdrop {
+  background: rgba(8, 31, 92, 0.6);
+}
+.modalContent {
+  max-width: none;
+  border: 1px solid var(--border-medium);
+  padding: clamp(1rem, 4vw, 2rem);
+}
+.hotlineItem {
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.hotlineAction {
+  white-space: nowrap;
+}
+.closeBtn {
+  min-width: 44px;
+}
+.returnBtn:hover {
+  background: var(--secondary-light);
+}
+
+.modalBackdrop:not([open]) { display: none; }

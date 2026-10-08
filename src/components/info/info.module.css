@@ -28,3 +28,55 @@
 .hero { background: var(--bg-cool); border-bottom: 1px solid var(--border-medium); }
 .card, .contactCard { border-radius: var(--radius-2xl); box-shadow: var(--shadow-sm); }
 .updated { color: var(--text-muted); }
+
+.hero {
+  text-align: left;
+  padding: 4rem 0 3rem;
+  background: var(--bg-color);
+}
+.heroInner {
+  max-width: 1000px;
+}
+.title {
+  max-width: 800px;
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  letter-spacing: -0.04em;
+}
+.lead {
+  max-width: 650px;
+}
+.content {
+  max-width: 1000px;
+}
+.section {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-medium);
+}
+.section p {
+  max-width: 72ch;
+  color: var(--text-main);
+}
+.section ul {
+  list-style: disc;
+}
+.card,
+.contactCard {
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  background: var(--bg-mint);
+}
+.contactCard strong {
+  font-size: 1.2rem;
+}
+.contactCard {
+  padding: 2rem;
+}
+.card {
+  background: var(--secondary-light);
+}
+.notice {
+  background: var(--secondary-light);
+}
+.contactCard span {
+  overflow-wrap: anywhere;
+}

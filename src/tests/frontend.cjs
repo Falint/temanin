@@ -15,8 +15,11 @@ const { chromium } = require('playwright');
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     const base = process.env.BASE_URL || 'http://127.0.0.1:3000';
-    const routes = ['/', '/curhat', '/curhat/profil?mode=anonim', '/curhat/screening', '/curhat/chat', '/curhat/konseling', '/edukasi', '/edukasi/mengenal-emosi', '/games', '/games/life', '/tentang', '/kontak', '/ketentuan', '/kebijakan-privasi', '/dashboard/admin', '/dashboard/konselor', '/dashboard/supervisor'];
-    for (const width of [320, 390, 768, 1024, 1440]) {
+    const routes = ['/', '/curhat', '/curhat/wilayah', '/curhat/profil?mode=anonim', '/curhat/screening', '/curhat/chat', '/curhat/konseling', '/edukasi', '/edukasi/mengenal-emosi', '/games', '/games/life', '/tentang', '/kontak', '/ketentuan', '/kebijakan-privasi', '/dashboard/admin', '/dashboard/konselor', '/dashboard/supervisor'];
+    await page.goto(base + '/edukasi');
+    const articleRoutes = await page.locator('a[href^="/edukasi/"]').evaluateAll(links => [...new Set(links.map(link => new URL(link.href).pathname))]);
+    routes.push(...articleRoutes.filter(route => !routes.includes(route)));
+    for (const width of [320, 375, 390, 768, 1024, 1280, 1440]) {
       await page.setViewportSize({ width, height: 900 });
       for (const route of routes) {
         const response = await page.goto(base + route);
@@ -38,6 +41,9 @@ const { chromium } = require('playwright');
     await page.getByLabel('Cari artikel edukasi').fill('zzzz-no-results');
     await page.getByRole('heading', { name: 'Tidak ada artikel ditemukan' }).waitFor();
 
+    await page.getByRole('button', { name: 'Hapus filter' }).click();
+    assert.ok(await page.locator('a[href^="/edukasi/"]').count() > 0);
+
     await page.goto(base + '/curhat');
     const faq = page.getByRole('button', { name: 'Apakah layanan curhat TEMANIN berbayar?' });
     await faq.focus();
@@ -45,6 +51,9 @@ const { chromium } = require('playwright');
     assert.equal(await faq.getAttribute('aria-expanded'), 'true');
     await page.locator('#consentCheckbox').check();
     await page.getByRole('link', { name: 'Anonim', exact: false }).click();
+    await page.getByRole('button', { name: 'Pilih PIK-R' }).click();
+    await page.locator('#profile-error').waitFor();
+    assert.equal(await page.locator('#nickname').getAttribute('aria-invalid'), 'true');
     await page.locator('#nickname').fill('Uji UI');
     await page.getByRole('button', { name: 'Pilih PIK-R' }).click();
     await page.waitForURL('**/curhat/wilayah?**');
@@ -61,11 +70,38 @@ const { chromium } = require('playwright');
     await page.getByRole('button', { name: 'Lanjutkan cerita' }).click();
     await page.getByRole('button', { name: 'Lanjutkan cerita' }).waitFor();
 
+    // Complete the saved run; reducer tests separately cover every choice/outcome.
+    for (let decision = 0; decision < 12; decision++) {
+      const advance = page.getByRole('button', { name: /Lanjutkan cerita|Masuk kelas|Buka epilog kelulusan/ });
+      await advance.click();
+      if (decision < 11) {
+        await page.getByRole('heading', { name: 'Apa yang kamu lakukan?' }).waitFor();
+        await page.locator('button').filter({ has: page.locator('span', { hasText: /^A$/ }) }).click();
+      }
+    }
+    await page.getByRole('heading', { name: 'Tiga tahun. Banyak versi dirimu.' }).waitFor();
+    await page.getByRole('button', { name: 'Coba perjalanan lain' }).click();
+    await page.getByRole('button', { name: 'Batal', exact: true }).click();
+    await page.getByRole('button', { name: 'Lihat epilog' }).click();
+    await page.getByRole('heading', { name: 'Tiga tahun. Banyak versi dirimu.' }).waitFor();
+
+    await page.goto(base + '/curhat/chat');
+    const emergency = page.getByRole('button', { name: 'Bantuan Krisis Darurat', exact: true });
+    await emergency.click();
+    await page.getByRole('dialog').waitFor();
+    for (let index = 0; index < 10; index++) {
+      await page.keyboard.press('Tab');
+      assert.equal(await page.evaluate(() => !!document.querySelector('dialog:modal') && (document.activeElement === document.body || document.activeElement.closest('dialog') !== null)), true);
+    }
+    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('dialog[open]').count(), 0);
+    assert.equal(await emergency.evaluate(element => element === document.activeElement), true);
+
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(base);
     assert.equal(await page.locator('h1').evaluate(element => getComputedStyle(element.parentElement).animationName), 'none');
     assert.deepEqual(errors, []);
-    console.log('PASS: 17 routes × 5 widths; menu, FAQ keyboard, education search, Curhat profile, LifeGame save/resume, reduced motion.');
+    console.log(`PASS: ${routes.length} routes × 7 widths; menu, FAQ keyboard, search/reset, profile validation, LifeGame complete/resume/restart, dialog keyboard, reduced motion.`);
   } finally {
     await browser.close();
   }

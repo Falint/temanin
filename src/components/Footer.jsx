@@ -82,7 +82,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className={styles.linkItem}
                 >
-                  @genre
+                  @genrekotadepok
                 </a>
               </div>
             </div>

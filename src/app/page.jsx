@@ -8,18 +8,18 @@ import CurhatCTA from '@/components/landing/CurhatCTA';
 import HowItWorks from '@/components/landing/HowItWorks';
 import styles from '@/components/landing/landing.module.css';
 
-export const dynamic = 'force-dynamic';
+
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <WhySection />
       <FeaturesSection />
-      <EducationPreview />
       <GamesPreview />
+      <EducationPreview />
       <CurhatCTA />
       <HowItWorks />
+      <WhySection />
 
       {/* Final CTA */}
       <section className={styles.finalCta}>

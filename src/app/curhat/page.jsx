@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from '@/components/curhat/curhat.module.css';
+import CurhatSteps from '@/components/curhat/CurhatSteps';
 
 const EMERGENCY_HOTLINES = [
   { name: 'Kemenkes SEJIWA (Krisis Jiwa)', number: '119 ext 8', tel: 'tel:119,8' },
@@ -22,7 +23,7 @@ const FAQS = [
   },
   {
     q: 'Apakah cerita saya akan disebarkan ke sekolah atau orang tua?',
-    a: 'Tidak. Kami menjunjung tinggi kerahasiaan. Dalam mode Anonim, kami bahkan tidak meminta nama aslimu.',
+    a: 'Pengurus menerima nama pilihanmu dan pesan yang diteruskan bot. Sistem menggunakan ID chat Telegram untuk menghubungkan sesi. Baca Kebijakan Privasi untuk penjelasan dan batasan kerahasiaan.',
   },
   {
     q: 'Apa perbedaan mode Anonim dan Terhubung?',
@@ -44,9 +45,9 @@ export default function CurhatPage() {
       <header className={`${styles.pageHeader} ${styles.pageHeaderGradient}`}>
         <div className="container">
           <span className={styles.pageHeaderBadge}>💬 Ruang Curhat & Konseling Sebaya</span>
-          <h1 className={styles.pageTitle}>Kamu Tidak Sendirian di Sini</h1>
+          <h1 className={styles.pageTitle}>Cerita sedikit juga boleh.</h1>
           <p className={styles.pageDesc}>
-            Tempat aman untuk bercerita, melepaskan beban, dan didengarkan oleh konselor sebaya PIK-R Kota Depok.
+            Mulai dengan nama pilihanmu. Pilih PIK-R, lalu buka bot Telegram untuk bercerita kepada pengurus sebaya.
           </p>
         </div>
       </header>
@@ -54,6 +55,7 @@ export default function CurhatPage() {
       <section className={styles.modeSection}>
         <div className="container" style={{ maxWidth: '840px' }}>
 
+          <CurhatSteps current={1} />
           {/* Persetujuan */}
           <div className={styles.consentBox}>
             <label className={styles.consentLabel}>
@@ -78,9 +80,9 @@ export default function CurhatPage() {
 
           {/* Pilih mode */}
           <div className={hasConsented ? styles.modeWrapperUnlocked : styles.modeWrapperLocked}>
-            <h3 style={{ textAlign: 'center', marginBottom: '1.5rem', color: 'var(--text-main)' }}>
-              Pilih Cara Kamu Ingin Bercerita:
-            </h3>
+            <h2 style={{ textAlign: 'center', marginBottom: '1.5rem', color: 'var(--text-main)' }}>
+              Pilih cara yang nyaman untukmu
+            </h2>
 
             <div className={styles.modeGrid}>
               {/* Mode Anonim */}
@@ -93,10 +95,10 @@ export default function CurhatPage() {
                 <span className={styles.modeIcon}>🕊️</span>
                 <h4 className={styles.modeTitle}>Anonim</h4>
                 <p className={styles.modeDesc}>
-                  Ceritakan masalahmu secara bebas. Kami hanya membutuhkan nama panggilan tanpa identitas asli.
+                  Ceritakan masalahmu secara bebas. Gunakan nama panggilan; bot tetap memerlukan ID chat Telegram untuk meneruskan pesan.
                 </p>
                 <span className={`${styles.modeBadge} ${styles.modeBadgeAnon}`}>
-                  🔒 Privasi 100% Terlindungi
+                  Nama samaran diperbolehkan
                 </span>
               </Link>
 
@@ -123,7 +125,7 @@ export default function CurhatPage() {
           <div className={styles.privacyNotice}>
             <span className={styles.privacyNoticeIcon}>🔐</span>
             <p className={styles.privacyNoticeText}>
-              Pengurus PIK-R melihat nama yang kamu pilih saat sesi. Percakapan berlangsung melalui bot Telegram.
+              Pengurus PIK-R melihat nama yang kamu pilih saat sesi. Percakapan berlangsung melalui bot Telegram. <Link href="/kebijakan-privasi">Pelajari penggunaan datamu →</Link>
             </p>
           </div>
 
@@ -158,7 +160,7 @@ export default function CurhatPage() {
             <h3 className={styles.scopeTitle}>Pedoman & Batasan Layanan</h3>
             <div className={styles.scopeGrid}>
               <div className={styles.scopeCardCan}>
-                <div className={styles.scopeHeader} style={{ color: '#059669' }}>
+                <div className={styles.scopeHeader} style={{ color: 'var(--success)' }}>
                   <span>✅</span> Yang Bisa Kami Bantu
                 </div>
                 <ul className={styles.scopeList}>
@@ -170,7 +172,7 @@ export default function CurhatPage() {
               </div>
 
               <div className={styles.scopeCardCannot}>
-                <div className={styles.scopeHeader} style={{ color: '#D97706' }}>
+                <div className={styles.scopeHeader} style={{ color: '#854d0e' }}>
                   <span>ℹ️</span> Batasan Kami
                 </div>
                 <ul className={styles.scopeList}>

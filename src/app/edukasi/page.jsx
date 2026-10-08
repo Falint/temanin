@@ -21,7 +21,7 @@ export default function EdukasiPage() {
 
     // Filter by search
     if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
+      const q = searchQuery.trim().toLowerCase();
       result = result.filter(
         (a) =>
           a.title.toLowerCase().includes(q) ||
@@ -43,9 +43,9 @@ export default function EdukasiPage() {
       <header className={styles.pageHeader}>
         <div className={`container ${styles.pageHeaderInner}`}>
           <span className={styles.pageHeaderBadge}>📖 Ruang Belajar</span>
-          <h1 className={styles.pageTitle}>Edukasi Mental Health</h1>
+          <h1 className={styles.pageTitle}>Sedikit baca. Lebih memahami.</h1>
           <p className={styles.pageDesc}>
-            Artikel, panduan, dan modul yang mudah dipahami — ditulis khusus untuk remaja.
+            Tentang perasaan, relasi, dan keseharianmu. Temukan bacaan yang paling dekat dengan apa yang sedang kamu alami.
           </p>
         </div>
       </header>
@@ -56,7 +56,7 @@ export default function EdukasiPage() {
           <div className={styles.searchWrapper}>
             <span className={styles.searchIcon}>🔍</span>
             <input
-              type="text"
+              type="search"
               className={styles.searchInput}
               placeholder="Cari artikel..."
               value={searchQuery}
@@ -95,6 +95,7 @@ export default function EdukasiPage() {
           </div>
         )}
 
+        <div className={styles.resultsBar}><p role="status">{filteredArticles.length} bacaan untuk dijelajahi</p>{(searchQuery || activeCategory !== 'all') && <button className="btn btn-ghost btn-sm" onClick={() => { setSearchQuery(''); setActiveCategory('all'); }}>Hapus filter ×</button>}</div>
         {/* Article grid */}
         <div className={styles.articlesSection}>
           {filteredArticles.length > 0 ? (

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useId } from 'react';
 import styles from './EmergencyButton.module.css';
 
 const EMERGENCY_CONTACTS = [
@@ -33,16 +33,14 @@ const EMERGENCY_CONTACTS = [
 export default function EmergencyButton({ variant = 'floating' }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Close modal on Escape key press
+  const dialog = useRef(null);
+  const titleId = useId();
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && isOpen) {
-        setIsOpen(false);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    const element = dialog.current;
+    if (isOpen) element.showModal();
+    else element.close();
   }, [isOpen]);
+
 
   return (
     <>
@@ -72,13 +70,12 @@ export default function EmergencyButton({ variant = 'floating' }) {
       )}
 
       {/* Emergency Modal */}
-      {isOpen && (
-        <div
+      <dialog ref={dialog} onCancel={() => setIsOpen(false)}
           className={styles.modalBackdrop}
           onClick={() => setIsOpen(false)}
           role="dialog"
           aria-modal="true"
-          aria-labelledby="emergency-modal-title"
+          aria-labelledby={titleId}
         >
           <div
             className={styles.modalContent}
@@ -87,7 +84,7 @@ export default function EmergencyButton({ variant = 'floating' }) {
             <div className={styles.modalHeader}>
               <div className={styles.modalTitleWrapper}>
                 <span className={styles.modalIcon}>🚨</span>
-                <h3 id="emergency-modal-title" className={styles.modalTitle}>
+                <h3 id={titleId} className={styles.modalTitle}>
                   Bantuan Darurat Krisis
                 </h3>
               </div>
@@ -135,8 +132,7 @@ export default function EmergencyButton({ variant = 'floating' }) {
               </button>
             </div>
           </div>
-        </div>
-      )}
+      </dialog>
     </>
   );
 }
