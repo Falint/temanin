@@ -1,27 +1,26 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import Logo from '@/components/shared/Logo';
 import styles from './Hero.module.css';
 
 export default function Hero() {
   return <section className={styles.hero}>
+    <Image className={styles.photo} src="/images/temanin-together.webp" alt="" fill sizes="(max-width: 768px) 1400px, 100vw" preload />
+    <div className={styles.overlay} />
     <div className={`container ${styles.inner}`}>
       <div className={styles.content}>
-        <span className={styles.eyebrow}>DARI REMAJA, UNTUK REMAJA DEPOK</span>
-        <h1>Jadi diri sendiri.<br /><span>Tumbuh bareng.</span></h1>
-        <p>Hari yang berat, pertanyaan yang banyak, atau sekadar ingin cerita. Ada ruang untuk setiap versi dirimu di TEMANIN.</p>
+        <span className={styles.eyebrow}>RUANG TUMBUH REMAJA DEPOK</span>
+        <h1>CERITAMU.<br /><span>BERARTI.</span></h1>
+        <div className={styles.rule} />
+        <h2>Berani cerita. Berani jadi diri sendiri.</h2>
+        <p>Teman untuk hari yang berat, mimpi yang besar, dan semua proses di antaranya. Yuk, tumbuh bareng TEMANIN.</p>
         <div className={styles.actions}>
-          <Link href="/curhat" className="btn btn-primary">Aku ingin cerita <span aria-hidden="true">↗</span></Link>
-          <Link href="#jelajahi" className={styles.explore}>Kenalan dulu <span aria-hidden="true">↓</span></Link>
+          <Link href="/curhat" className={styles.primary}>MULAI CERITAMU <span aria-hidden="true">↗</span></Link>
+          <Link href="#jelajahi" className={styles.secondary}>KENALI TEMANIN <span aria-hidden="true">↓</span></Link>
+          <Link href="/games/life" className={styles.game}>MAIN TEMANIN LIFE <span aria-hidden="true">→</span></Link>
         </div>
-        <div className={styles.note}><span aria-hidden="true">✳</span><p>Nggak harus tahu semua jawabannya.<br /><strong>Satu langkah kecil juga berarti.</strong></p></div>
       </div>
-      <div className={styles.visual}>
-        <div className={styles.visualHeading}><span>CATATAN UNTUK DIRIMU</span><Logo size={48} /></div>
-        <div className={styles.message}><span aria-hidden="true">“</span><h2>Kamu nggak<br />harus menjalani<br />semuanya<br /><em>sendirian.</em></h2></div>
-        <div className={styles.caption}><span>Ambil jeda. Tarik napas.</span><span aria-hidden="true">↗</span></div>
-        <Link href="/games/life" className={styles.gameNote}><span aria-hidden="true">↳</span><div>Butuh ganti suasana?<strong>Coba cerita interaktif Life →</strong></div></Link>
-      </div>
+      <div className={styles.photoCaption}><span>BERSAMA, KITA BISA BERTUMBUH.</span><small>Ilustrasi suasana kebersamaan</small></div>
     </div>
-    <div className={`container ${styles.bottom}`}><span>RUANGMU, RITMEMU.</span><p>Belajar memahami diri. Berani bercerita. Menemukan teman tumbuh.</p><span aria-hidden="true">01 / TEMANIN</span></div>
+    <div className={styles.bottom}><div className="container"><span>PAHAMI DIRI <b aria-hidden="true">✦</b> TEMUKAN DUKUNGAN <b aria-hidden="true">✦</b> TULIS CERITAMU <b aria-hidden="true">✦</b> TEMANIN</span><Link href="#jelajahi" aria-label="Jelajahi TEMANIN">↓</Link></div></div>
   </section>;
 }

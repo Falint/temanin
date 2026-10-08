@@ -1310,3 +1310,5 @@
     gap: 1rem;
   }
 }
+
+.pageHeader,.pageHeaderSoft,.pageHeaderGradient { background:var(--secondary-light); border-bottom:4px solid var(--primary); }.pageTitle,.pageTitleDark { letter-spacing:-.045em; line-height:1.08; font-size:clamp(2.2rem,4.5vw,3.7rem); }.pageHeaderBadge { background:var(--white); }.modeCard { border-top:4px solid var(--primary); }.pikrActionBtn { border-radius:var(--radius-full); }

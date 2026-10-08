@@ -1,192 +1,265 @@
 .hero {
-  padding: 140px 0 0;
+  position: relative;
+  isolation: isolate;
+  padding-top: 72px;
   background: var(--bg-color);
 }
-.inner {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(2rem, 6vw, 6rem);
-  align-items: center;
-  padding-bottom: 5rem;
+.photo {
+  object-fit: cover;
+  object-position: center;
+  z-index: -3;
 }
-.eyebrow {
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-  font-weight: 700;
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 249, 240, 0.97) 0%,
+      rgba(255, 249, 240, 0.9) 28%,
+      rgba(255, 249, 240, 0.66) 47%,
+      rgba(255, 249, 240, 0.08) 78%
+    ),
+    linear-gradient(0deg, rgba(255, 249, 240, 0.55), transparent 60%);
+}
+.inner {
+  min-height: 720px;
+  min-height: min(820px, calc(100svh - 72px));
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  padding-top: 4rem;
+  padding-bottom: 5rem;
 }
-.eyebrow::before {
-  content: "";
-  width: 24px;
-  height: 2px;
-  background: var(--primary);
+.content {
+  max-width: 690px;
+}
+.eyebrow {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  border: 1px solid var(--primary-light);
+  background: rgba(255, 249, 240, 0.8);
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  color: var(--primary-dark);
 }
 .content h1 {
-  font-size: clamp(3rem, 5.6vw, 5rem);
-  line-height: 1.07;
-  letter-spacing: -0.055em;
-  margin: 1.8rem 0;
+  font-size: clamp(4.5rem, 8.8vw, 8rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  margin: 1.4rem 0 1.7rem;
 }
 .content h1 span {
   color: var(--primary);
 }
-.content > p {
+.rule {
+  width: 90px;
+  height: 4px;
+  background: var(--primary);
+  margin-bottom: 1.7rem;
+}
+.content h2 {
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  max-width: 580px;
+  letter-spacing: -0.035em;
+}
+.content p {
   max-width: 470px;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
+  color: var(--primary-dark);
 }
 .actions {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 1.5rem;
-  margin: 2rem 0;
+  gap: 0.8rem;
+  max-width: 590px;
+  margin-top: 2rem;
 }
-.explore {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--primary);
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-.explore span {
-  margin-left: 1rem;
-}
-.note {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin-top: 2.5rem;
-}
-.note > span {
-  font-size: 2.5rem;
-}
-.note p {
-  font-size: 0.8rem;
-  margin: 0;
-}
-.visual {
-  background: var(--secondary-light);
-  border-radius: 150px 150px 20px 20px;
-  padding: 2.5rem;
-  position: relative;
-  border: 1px solid var(--border-medium);
-}
-.visualHeading {
-  display: flex;
+.primary,
+.secondary,
+.game {
+  display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  padding: 1rem 1.1rem;
+  gap: 1.8rem;
+  border: 2px solid var(--primary-dark);
+  min-height: 50px;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
 }
-.message > span {
-  font-family: Georgia, serif;
-  display: block;
-  height: 65px;
-  font-size: 7rem;
-  line-height: 1.2;
-  color: var(--primary);
-}
-.message h2 {
-  font-size: clamp(2.4rem, 3.6vw, 3.35rem);
-  line-height: 1.14;
-  letter-spacing: -0.04em;
-  margin: 0.5rem 0 2rem;
-}
-.message em {
-  font-style: normal;
-  color: var(--primary);
-  border-bottom: 3px solid var(--primary-light);
-}
-.caption {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-medium);
-  font-size: 0.8rem;
-}
-.gameNote {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin: 1.5rem -1rem -3.75rem;
-  background: var(--primary-dark);
+.primary,
+.game {
   color: var(--white);
-  border-radius: 12px;
-  padding: 1rem 1.5rem;
-  box-shadow: var(--shadow-md);
-  font-size: 0.75rem;
+  background: var(--primary-dark);
+  box-shadow: 0 6px 20px #081f5c18;
 }
-.gameNote > span {
-  font-size: 2rem;
+.secondary {
+  color: var(--primary-dark);
+  background: #fff9f0b8;
 }
-.gameNote strong {
-  display: block;
-  font-size: 0.875rem;
-  margin-top: 0.2rem;
-}
-.gameNote:hover {
+.primary:hover,
+.game:hover {
   background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+.secondary:hover {
+  background: var(--white);
+}
+.game {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.photoCaption {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 2rem;
+  padding: 0.7rem 1rem;
+  border-left: 3px solid var(--secondary-light);
+  background: #081f5ce6;
+  color: var(--white);
+}
+.photoCaption span {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+.photoCaption small {
+  display: block;
+  color: var(--secondary-light);
+  font-size: 0.6rem;
 }
 .bottom {
-  border-top: 1px solid var(--border-medium);
+  background: var(--primary-dark);
+  color: var(--secondary-light);
+}
+.bottom > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding-top: 1.4rem;
-  padding-bottom: 1.4rem;
+  min-height: 60px;
 }
-.bottom > span {
+.bottom span {
   font-size: 0.65rem;
-  letter-spacing: 0.1em;
   font-weight: 700;
+  letter-spacing: 0.15em;
 }
-.bottom p {
-  margin: 0;
-  font-size: 0.75rem;
+.bottom b {
+  margin: 0 1.8rem;
+  color: var(--white);
 }
-@media (max-width: 850px) {
+.bottom a {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-left: 1px solid var(--primary-light);
+  font-size: 1.4rem;
+}
+@media (min-width: 1600px) {
+  .photo {
+    object-position: center 42%;
+  }
+}
+@media (max-width: 768px) {
   .hero {
-    padding-top: 110px;
+    padding-top: 64px;
   }
   .inner {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    min-height: 760px;
+    align-items: flex-start;
+    padding-top: 3rem;
+    padding-bottom: 14rem;
   }
-  .visual {
-    width: 100%;
-    max-width: 520px;
-    justify-self: center;
+  .content {
+    max-width: 100%;
   }
   .content h1 {
-    font-size: clamp(2.7rem, 8vw, 4.8rem);
+    font-size: clamp(3.8rem, 12vw, 6rem);
   }
-  .bottom > span:last-child {
-    display: none;
+  .content h2 {
+    max-width: 440px;
   }
-  .bottom {
-    align-items: flex-start;
+  .content p {
+    max-width: 420px;
   }
-}
-@media (max-width: 400px) {
-  .visual {
-    padding: 1.5rem;
-    border-radius: 100px 100px 16px 16px;
+  .overlay {
+    background: linear-gradient(
+      180deg,
+      #fff9f0 0%,
+      #fff9f0f2 35%,
+      #fff9f0bb 55%,
+      #fff9f020 78%
+    );
   }
-  .visualHeading {
-    padding: 1.5rem 0 0.5rem;
+  .photo {
+    object-position: 65% bottom;
   }
-  .bottom {
-    flex-direction: column;
+  .photoCaption {
+    bottom: 1rem;
+    right: 1rem;
   }
-  .actions {
-    gap: 1rem;
+  .bottom span {
+    font-size: 0.55rem;
+    line-height: 2;
+    letter-spacing: 0.06em;
+  }
+  .bottom b {
+    margin: 0 0.4rem;
   }
   .eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+  }
+  .actions {
+    max-width: 440px;
+  }
+  .primary,
+  .secondary,
+  .game {
+    min-height: 46px;
+    padding: 0.8rem 1.2rem;
     font-size: 0.6rem;
+    gap: 1rem;
+  }
+}
+@media (max-width: 380px) {
+  .content h1 {
+    font-size: 3.25rem;
+  }
+  .inner {
+    min-height: 780px;
+  }
+  .actions {
+    gap: 0.6rem;
+  }
+  .eyebrow {
+    padding: 0.5rem 0.7rem;
+  }
+  .photoCaption span {
+    font-size: 0.5rem;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .content {
+    animation: arrive 0.5s ease both;
+  }
+  @keyframes arrive {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 }

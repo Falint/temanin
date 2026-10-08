@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import WelcomeNote from '@/components/landing/WelcomeNote';
+import ExploreGuide from '@/components/landing/ExploreGuide';
 import Hero from '@/components/landing/Hero';
 import WhySection from '@/components/landing/WhySection';
 import FeaturesSection from '@/components/landing/FeaturesSection';
@@ -14,12 +16,14 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <WelcomeNote />
       <FeaturesSection />
       <GamesPreview />
       <EducationPreview />
       <CurhatCTA />
       <HowItWorks />
       <WhySection />
+      <ExploreGuide />
 
       {/* Final CTA */}
       <section className={styles.finalCta}>
@@ -33,10 +37,10 @@ export default function Home() {
             </p>
             <div className={styles.finalCtaButtons}>
               <Link href="/curhat" className="btn btn-primary btn-lg">
-                💬 Mulai Curhat
+                Mulai Curhat →
               </Link>
-              <Link href="/edukasi" className="btn btn-ghost" style={{ color: 'rgba(255,255,255,0.8)', borderColor: 'rgba(255,255,255,0.3)', border: '2px solid rgba(255,255,255,0.3)' }}>
-                📖 Jelajahi Edukasi
+              <Link href="/edukasi" className="btn btn-ghost">
+                Jelajahi Edukasi
               </Link>
             </div>
           </div>

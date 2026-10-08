@@ -52,3 +52,5 @@
   text-align: left;
   max-width: none;
 }
+
+.header h1 { text-transform:uppercase; font-size:clamp(2.5rem,5.5vw,4.8rem); line-height:1.05; }.card { border:2px solid var(--primary); box-shadow:9px 9px 0 var(--secondary-light); }.art { background:var(--secondary-light); }.play { border-radius:999px; }

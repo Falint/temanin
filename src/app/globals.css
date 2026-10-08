@@ -64,7 +64,7 @@
   /* Spacing */
   --section-padding: clamp(3.5rem, 7vw, 6rem) 0;
   --section-padding-sm: 4rem 0;
-  --container-max: 1160px;
+  --container-max: 1200px;
   --surface: var(--white);
   --surface-soft: var(--bg-mint);
   --danger: #b42318;
@@ -858,3 +858,6 @@ select {
   white-space: nowrap;
   border: 0;
 }
+
+/* Campaign controls share the reference's rounded, high-contrast treatment. */
+.btn { border-radius: var(--radius-full); }

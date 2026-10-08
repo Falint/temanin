@@ -5,13 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
 import Logo from '@/components/shared/Logo';
+import Icon from '@/components/shared/Icon';
 
 const navLinks = [
-  { href: '/', label: 'Beranda' },
-  { href: '/tentang', label: 'Tentang' },
-  { href: '/edukasi', label: 'Edukasi' },
-  { href: '/games', label: 'Games' },
-  { href: '/kontak', label: 'Kontak' },
+  { href: '/', label: 'Beranda', icon: 'spark' },
+  { href: '/tentang', label: 'Tentang', icon: 'people' },
+  { href: '/edukasi', label: 'Edukasi', icon: 'book' },
+  { href: '/games', label: 'Games', icon: 'game' },
+  { href: '/kontak', label: 'Kontak', icon: 'chat' },
 ];
 
 export default function Navbar() {
@@ -65,7 +66,7 @@ export default function Navbar() {
               aria-current={pathname === link.href || (link.href !== '/' && pathname.startsWith(`${link.href}/`)) ? 'page' : undefined}
               className={`${styles.navItem} ${pathname === link.href || (link.href !== '/' && pathname.startsWith(`${link.href}/`)) ? styles.navItemActive : ''}`}
             >
-              {link.label}
+              <Icon name={link.icon} size={15} />{link.label}
             </Link>
           ))}
           <Link href="/curhat" aria-current={pathname.startsWith('/curhat') ? 'page' : undefined} className={`btn btn-primary btn-sm ${styles.navCta}`}>

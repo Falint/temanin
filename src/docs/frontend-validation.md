@@ -42,3 +42,7 @@ node tests/frontend.cjs
 - Repo JavaScript ini tidak menyediakan skrip typecheck terpisah. Tahap pemeriksaan Next.js saat build lulus; ini bukan audit TypeScript tambahan.
 - Tidak menjalankan Lighthouse atau mengukur Core Web Vitals lapangan. Tidak ada klaim skor performa.
 - axe adalah pemeriksaan otomatis pada halaman yang disebutkan, bukan sertifikasi WCAG seluruh produk.
+
+## Revisi visual Future First
+
+Validasi diulang setelah revisi hero fotografi, navbar gelap, section kampanye, panel jelajah, dan accordion. Build, lint, 7 tes engine, dan 26 rute × 7 viewport lulus. Pemeriksaan axe pada lima halaman × dua viewport tetap nol violations untuk aturan yang disebutkan di atas. Lihat `reference-redesign.md` untuk aset, prompt, perubahan, dan screenshot final.

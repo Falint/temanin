@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Icon from '@/components/shared/Icon';
 import styles from './landing.module.css';
 
 export default function CurhatCTA() {
@@ -9,9 +10,9 @@ export default function CurhatCTA() {
 
       <div className="container">
         <div className={styles.curhatInner}>
-          <span className={styles.curhatIcon}>💬</span>
+          <span className={styles.curhatIcon}><Icon name="chat" size={52} /></span>
           <h2 className={styles.curhatTitle}>
-            Butuh Seseorang untuk Mendengarkan?
+            ADA CERITA YANG INGIN KAMU BAGIKAN?
           </h2>
           <p className={styles.curhatDesc}>
             Pilih nama yang nyaman, cari PIK-R, lalu lanjutkan percakapan melalui bot Telegram. Balasan mengikuti jadwal dan ketersediaan pengurus.

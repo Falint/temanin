@@ -31,6 +31,12 @@ const { chromium } = require('playwright');
     }
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(base);
+    const guide = page.locator('details').filter({ has: page.locator('summary[aria-label="Buka panduan jelajah TEMANIN"]') });
+    await guide.locator('summary').click();
+    assert.equal(await guide.locator('a').count(), 3);
+    assert.equal(await guide.getAttribute('open'), '');
+    await guide.locator('summary').click();
+    assert.equal(await guide.getAttribute('open'), null);
     await page.getByRole('button', { name: 'Buka menu' }).click();
     assert.equal(await page.getByRole('button', { name: 'Tutup menu' }).getAttribute('aria-expanded'), 'true');
     await page.keyboard.press('Escape');

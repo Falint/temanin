@@ -193,3 +193,5 @@
 .bottom {
   gap: 1rem;
 }
+
+.content { background:var(--primary-dark); }.logoAccent { color:var(--secondary-light); }.title { text-transform:uppercase; letter-spacing:.12em; }.links a:focus-visible,.socialLink:focus-visible { outline-color:var(--secondary-light); }
