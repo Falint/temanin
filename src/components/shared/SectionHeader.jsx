@@ -1,6 +1,6 @@
 import styles from './shared.module.css';
 
-export default function SectionHeader({ badge, badgeVariant = 'primary', title, description, align = 'center' }) {
+export default function SectionHeader({ badge, badgeVariant = 'primary', title, description, align = 'left' }) {
   const badgeClass = {
     primary: 'badge-primary',
     secondary: 'badge-secondary',

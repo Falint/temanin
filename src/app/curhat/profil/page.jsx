@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from '@/components/curhat/curhat.module.css';
+import CurhatSteps from '@/components/curhat/CurhatSteps';
 import PageLoading from '@/components/shared/PageLoading';
 
 function generateRandomSessionId() {
@@ -59,7 +60,8 @@ function ProfileFormContent() {
     try {
       sessionStorage.setItem('temanin_user_profile', JSON.stringify(profileData));
     } catch {
-      // Graceful fallback if storage disabled
+      setError('Browser tidak dapat menyimpan sesi. Izinkan penyimpanan situs, lalu coba lagi.');
+      return;
     }
 
     router.push(`/curhat/wilayah?mode=${mode}&session=${sessionId}`);
@@ -74,11 +76,11 @@ function ProfileFormContent() {
             {mode === 'anonim' ? '🕊️ Mode Anonim' : '🤝 Mode Terhubung'}
           </span>
           <h1 className={`${styles.pageTitle} ${styles.pageTitleDark}`}>
-            {mode === 'anonim' ? 'Pengaturan Profil Anonim' : 'Informasi Profil Kamu'}
+            Mau dipanggil siapa?
           </h1>
           <p className={`${styles.pageDesc} ${styles.pageDescDark}`}>
             {mode === 'anonim'
-              ? 'Identitas aslimu tidak disimpan. Masukkan nama panggilan yang nyaman untuk didengar teman sebaya.'
+              ? 'Kamu boleh menggunakan nama samaran. Nama ini akan menyertai pesan yang diteruskan bot ke pengurus PIK-R.'
               : 'Masukkan nama yang ingin kamu gunakan saat berbicara dengan PIK-R.'}
           </p>
         </div>
@@ -88,6 +90,7 @@ function ProfileFormContent() {
       <section className={styles.profileSection}>
         <div className="container">
           <div className={styles.profileCard}>
+            <CurhatSteps current={2} />
             {/* Info Notice */}
             <div
               className={`${styles.profileNotice} ${
@@ -115,7 +118,7 @@ function ProfileFormContent() {
             </div>
 
             {error && (
-              <div
+              <div id="profile-error" role="alert"
                 style={{
                   background: '#FFF5F5',
                   color: '#C53030',
@@ -145,7 +148,9 @@ function ProfileFormContent() {
                     value={nickname}
                     onChange={(e) => setNickname(e.target.value)}
                     maxLength={30}
-                    autoFocus
+                    aria-invalid={Boolean(error)}
+                    aria-describedby={error ? "profile-error" : undefined}
+                    autoComplete="off"
                   />
                   <p className={styles.formHelpText}>
                     Boleh nama samaran atau karakter favoritmu. Konselor akan memanggilmu dengan nama ini.
@@ -166,7 +171,9 @@ function ProfileFormContent() {
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       maxLength={60}
-                      autoFocus
+                      aria-invalid={Boolean(error)}
+                      aria-describedby={error ? "profile-error" : undefined}
+                      autoComplete="off"
                     />
                   </div>
 

@@ -36,8 +36,8 @@ export default async function ArticleDetailPage({ params }) {
 
       <div className={`container ${styles.detailLayout}`}>
         <div className={styles.detailContent}>
-          {article.content.map((section) => (
-            <section key={section.heading} className={styles.detailSection}>
+          {article.content.map((section, index) => (
+            <section id={`bagian-${index + 1}`} key={section.heading} className={styles.detailSection}>
               <h2>{section.heading}</h2>
               {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               {section.tips && <ul>{section.tips.map((tip) => <li key={tip}>{tip}</li>)}</ul>}
@@ -53,6 +53,7 @@ export default async function ArticleDetailPage({ params }) {
         </div>
 
         <aside className={styles.detailAside}>
+          <nav aria-label="Daftar isi artikel" className={styles.contents}><strong>DI BACAAN INI</strong><ol>{article.content.map((section, index) => <li key={section.heading}><a href={`#bagian-${index + 1}`}>{section.heading}</a></li>)}</ol></nav>
           <strong>Butuh bantuan segera?</strong>
           <p>TEMANIN bukan layanan darurat. Jika kamu sedang tidak aman, hubungi 112 atau 119 ext 8.</p>
           <a href="tel:112" className="btn btn-secondary btn-sm">Hubungi 112</a>

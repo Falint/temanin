@@ -7,3 +7,25 @@
 .systemCard p { margin-bottom: 1.5rem; color: var(--text-muted); line-height: 1.7; }
 .systemActions { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+.systemPage {
+  background: var(--bg-color);
+}
+.systemCard {
+  text-align: left;
+  box-shadow: none;
+  border: 0;
+  border-top: 3px solid var(--primary);
+  border-radius: 0;
+  background: transparent;
+}
+.systemActions {
+  justify-content: flex-start;
+}
+.systemCode {
+  font-family: var(--font-raleway);
+  font-size: 5rem;
+}
+.loading {
+  background: var(--bg-color);
+}

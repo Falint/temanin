@@ -1,240 +1,265 @@
 .hero {
-  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+  padding-top: 72px;
+  background: var(--bg-color);
+}
+.photo {
+  object-fit: cover;
+  object-position: center;
+  z-index: -3;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 249, 240, 0.97) 0%,
+      rgba(255, 249, 240, 0.9) 28%,
+      rgba(255, 249, 240, 0.66) 47%,
+      rgba(255, 249, 240, 0.08) 78%
+    ),
+    linear-gradient(0deg, rgba(255, 249, 240, 0.55), transparent 60%);
+}
+.inner {
+  min-height: 720px;
+  min-height: min(820px, calc(100svh - 72px));
+  position: relative;
   display: flex;
   align-items: center;
-  position: relative;
-  overflow: hidden;
-  background: var(--gradient-hero);
-  padding-top: 72px;
+  padding-top: 4rem;
+  padding-bottom: 5rem;
 }
-
-.heroInner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-/* Decorative blobs */
-.blobOne {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: var(--primary);
-  filter: blur(120px);
-  opacity: 0.08;
-  top: -10%;
-  right: -5%;
-  pointer-events: none;
-}
-
-.blobTwo {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background: var(--secondary);
-  filter: blur(100px);
-  opacity: 0.06;
-  bottom: 5%;
-  left: -8%;
-  pointer-events: none;
-}
-
-.blobThree {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: var(--accent);
-  filter: blur(80px);
-  opacity: 0.06;
-  top: 40%;
-  right: 30%;
-  pointer-events: none;
-}
-
-/* Content side */
 .content {
-  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  max-width: 690px;
 }
-
-.tagline {
+.eyebrow {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  border: 1px solid var(--primary-light);
+  background: rgba(255, 249, 240, 0.8);
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  color: var(--primary-dark);
+}
+.content h1 {
+  font-size: clamp(4.5rem, 8.8vw, 8rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  margin: 1.4rem 0 1.7rem;
+}
+.content h1 span {
+  color: var(--primary);
+}
+.rule {
+  width: 90px;
+  height: 4px;
+  background: var(--primary);
+  margin-bottom: 1.7rem;
+}
+.content h2 {
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  max-width: 580px;
+  letter-spacing: -0.035em;
+}
+.content p {
+  max-width: 470px;
+  font-size: 0.95rem;
+  color: var(--primary-dark);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  max-width: 590px;
+  margin-top: 2rem;
+}
+.primary,
+.secondary,
+.game {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1.125rem;
-  background: var(--primary-bg);
-  border: 1px solid rgba(51, 78, 172, 0.12);
-  border-radius: var(--radius-full);
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--primary);
-  margin-bottom: 1.5rem;
-}
-
-.taglineIcon {
-  font-size: 1rem;
-}
-
-.title {
-  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  justify-content: space-between;
+  gap: 1.8rem;
+  border: 2px solid var(--primary-dark);
+  min-height: 50px;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
   font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  color: var(--text-main);
+  letter-spacing: 0.06em;
 }
-
-.highlight {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.primary,
+.game {
+  color: var(--white);
+  background: var(--primary-dark);
+  box-shadow: 0 6px 20px #081f5c18;
 }
-
-.subtitle {
-  font-weight: 500;
-  font-size: 1.1875rem;
-  color: var(--text-muted);
-  line-height: 1.8;
-  max-width: 480px;
-  margin-bottom: 2.5rem;
+.secondary {
+  color: var(--primary-dark);
+  background: #fff9f0b8;
 }
-
-.ctas {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+.primary:hover,
+.game:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-2px);
 }
-
-.stats {
-  display: flex;
-  gap: 2.5rem;
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-light);
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-}
-
-.statValue {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--primary);
-  line-height: 1.2;
-}
-
-.statLabel {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-top: 0.125rem;
-}
-
-/* Visual side */
-.visual {
-  position: relative;
-  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
-  opacity: 0;
-}
-
-.visualGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.visualCard {
-  padding: 1.5rem;
-  border-radius: var(--radius-xl);
+.secondary:hover {
   background: var(--white);
-  border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-md);
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
 }
-
-.visualCard:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+.game {
+  background: var(--primary);
+  border-color: var(--primary);
 }
-
-.visualCard:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
+.photoCaption {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 2rem;
+  padding: 0.7rem 1rem;
+  border-left: 3px solid var(--secondary-light);
+  background: #081f5ce6;
+  color: var(--white);
 }
-
-
-.visualCardIcon {
-  font-size: 2rem;
-  line-height: 1;
-}
-
-.visualCardTitle {
-  font-size: 0.9375rem;
+.photoCaption span {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
   font-weight: 700;
-  color: var(--text-main);
-  margin: 0;
 }
-
-.visualCardDesc {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin: 0;
+.photoCaption small {
+  display: block;
+  color: var(--secondary-light);
+  font-size: 0.6rem;
 }
-
-/* Responsive */
+.bottom {
+  background: var(--primary-dark);
+  color: var(--secondary-light);
+}
+.bottom > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 60px;
+}
+.bottom span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+.bottom b {
+  margin: 0 1.8rem;
+  color: var(--white);
+}
+.bottom a {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  border-left: 1px solid var(--primary-light);
+  font-size: 1.4rem;
+}
+@media (min-width: 1600px) {
+  .photo {
+    object-position: center 42%;
+  }
+}
 @media (max-width: 768px) {
   .hero {
-    min-height: auto;
-    padding: 6rem 0 3rem;
+    padding-top: 64px;
   }
-
-  .heroInner {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    text-align: center;
+  .inner {
+    min-height: 760px;
+    align-items: flex-start;
+    padding-top: 3rem;
+    padding-bottom: 14rem;
   }
-
-  .subtitle {
-  font-weight: 500;
+  .content {
     max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
   }
-
-  .ctas {
-    justify-content: center;
+  .content h1 {
+    font-size: clamp(3.8rem, 12vw, 6rem);
   }
-
-  .stats {
-    justify-content: center;
+  .content h2 {
+    max-width: 440px;
   }
-
-  .visualGrid {
-    max-width: 360px;
-    margin: 0 auto;
+  .content p {
+    max-width: 420px;
   }
-
-  .blobOne, .blobTwo, .blobThree {
-    display: none;
+  .overlay {
+    background: linear-gradient(
+      180deg,
+      #fff9f0 0%,
+      #fff9f0f2 35%,
+      #fff9f0bb 55%,
+      #fff9f020 78%
+    );
+  }
+  .photo {
+    object-position: 65% bottom;
+  }
+  .photoCaption {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .bottom span {
+    font-size: 0.55rem;
+    line-height: 2;
+    letter-spacing: 0.06em;
+  }
+  .bottom b {
+    margin: 0 0.4rem;
+  }
+  .eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+  }
+  .actions {
+    max-width: 440px;
+  }
+  .primary,
+  .secondary,
+  .game {
+    min-height: 46px;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.6rem;
+    gap: 1rem;
   }
 }
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
+@media (max-width: 380px) {
+  .content h1 {
+    font-size: 3.25rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .inner {
+    min-height: 780px;
+  }
+  .actions {
+    gap: 0.6rem;
+  }
+  .eyebrow {
+    padding: 0.5rem 0.7rem;
+  }
+  .photoCaption span {
+    font-size: 0.5rem;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .content {
+    animation: arrive 0.5s ease both;
+  }
+  @keyframes arrive {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 }

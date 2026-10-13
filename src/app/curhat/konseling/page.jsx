@@ -33,7 +33,7 @@ function KonselingContent() {
             Butuh Bantuan Lebih Lanjut?
           </h1>
           <p className={`${styles.pageDesc} ${styles.pageDescDark}`}>
-            Pilih jenis bantuan yang kamu butuhkan. Semua layanan bersifat rahasia.
+            Lihat pilihan dukungan lanjutan. Formulir penjadwalan di halaman ini masih simulasi dan belum membuat janji nyata.
           </p>
         </div>
       </header>
@@ -44,9 +44,9 @@ function KonselingContent() {
           <div className={styles.konselingGrid}>
             <div className={styles.konselingCard}>
               <span className={styles.konselingIcon}>📞</span>
-              <h2 className={styles.konselingTitle}>Hubungi Professional</h2>
+              <h2 className={styles.konselingTitle}>Dukungan Sebaya</h2>
               <p className={styles.konselingDesc}>
-                Terhubung dengan konselor atau psikolog profesional untuk mendapatkan bantuan yang lebih mendalam.
+                Kembali ke alur Curhat untuk mencari PIK-R dan berbicara melalui Telegram. Layanan ini bukan konsultasi psikolog.
               </p>
               <Link href="/curhat" className="btn btn-primary">
                 Mulai Konsultasi
@@ -57,7 +57,7 @@ function KonselingContent() {
               <span className={styles.konselingIcon}>📅</span>
               <h2 className={styles.konselingTitle}>Jadwalkan Konseling Offline</h2>
               <p className={styles.konselingDesc}>
-                Buat janji untuk bertemu langsung dengan konselor di lokasi PIK-R terdekat.
+                Coba contoh formulir permintaan jadwal. Data tidak dikirim kepada pengurus PIK-R.
               </p>
               <button
                 className="btn btn-secondary"
@@ -124,7 +124,7 @@ function KonselingContent() {
           {submitted && (
             <div className={styles.scheduleForm} style={{ textAlign: 'center' }}>
               <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>✅</span>
-              <h3 className={styles.scheduleTitle}>Permintaan Terkirim (Demo)</h3>
+              <h3 className={styles.scheduleTitle}>Simulasi Selesai — Belum Ada Janji</h3>
               <p className={styles.scheduleDesc}>
                 Pada versi live, tim PIK-R akan menghubungimu untuk mengonfirmasi jadwal konseling.
               </p>

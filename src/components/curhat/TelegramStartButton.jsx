@@ -9,6 +9,7 @@ export default function TelegramStartButton({ pikrId, mode, sessionId }) {
   const [url, setUrl] = useState('');
 
   async function start() {
+    if (loading) return;
     setError('');
     setUrl('');
     let profile;
@@ -44,10 +45,11 @@ export default function TelegramStartButton({ pikrId, mode, sessionId }) {
         Buka bot Telegram ↗
       </a>
     ) : (
-      <button type="button" onClick={start} disabled={loading} className={`${styles.pikrActionBtn} ${styles.pikrActionTelegram}`}>
+      <button type="button" onClick={start} disabled={loading} aria-busy={loading} className={`${styles.pikrActionBtn} ${styles.pikrActionTelegram}`}>
         {loading ? 'Menyiapkan...' : '📱 Mulai via Telegram'}
       </button>
     )}
+    {url && <p role="status" className={styles.formHelpText}>Sesi siap. Buka bot dan tekan Start. Tautan berlaku 15 menit.</p>}
     {error && <p role="alert" style={{ color: '#b42318', fontSize: '0.8rem', marginTop: '0.5rem' }}>{error}</p>}
   </div>;
 }

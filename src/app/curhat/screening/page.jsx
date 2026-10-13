@@ -78,11 +78,11 @@ function ScreeningContent() {
       <header className={`${styles.pageHeader} ${styles.pageHeaderSoft}`}>
         <div className="container">
           <span className={`${styles.pageHeaderBadge} ${styles.pageHeaderBadgeDark}`}>
-            Langkah 2 dari 3
+            REFLEKSI AWAL · ALUR DEMO
           </span>
           <h1 className={`${styles.pageTitle} ${styles.pageTitleDark}`}>Ceritakan Kondisimu Singkat</h1>
           <p className={`${styles.pageDesc} ${styles.pageDescDark}`}>
-            Dua jawaban ini membantu konselor memahami konteks awal sebelum kamu mulai bercerita.
+            Dua pertanyaan untuk mengenali keadaanmu. Jawaban disimpan di browser dan tidak dikirim melalui bot Telegram.
           </p>
         </div>
       </header>

@@ -72,8 +72,8 @@ export default function LifeGame() {
           <div className={styles.coverMeta}><span>3 bab</span><span>12 keputusan</span><span>Banyak kemungkinan</span></div>
         </div>
         <div className={styles.startPanel}>
-          <span className={styles.eyebrow}>TEMANIN LIFE</span>
-          <h2>Sebelum bel berbunyi</h2>
+          <span className={styles.eyebrow}>BUKU CERITA / 01</span>
+          <h2>Halaman pertama milikmu.</h2>
           <p>Tidak semua pilihan mudah. Temui akibatnya, jaga hubunganmu, lalu tentukan langkah berikutnya.</p>
           {state && <div className={styles.resume}>
             <strong>{state.player.name} · {state.phase === 'ending' ? 'Perjalanan selesai' : `Kelas ${chapter.grade}`}</strong>
@@ -83,7 +83,7 @@ export default function LifeGame() {
           {(!state || confirmRestart) ? <form onSubmit={start}>
             {state && <p className={styles.warning}>Memulai cerita baru akan mengganti progres di browser ini.</p>}
             <label className={styles.label} htmlFor="player-name">Nama panggilanmu</label>
-            <input id="player-name" className={styles.input} value={name} onChange={e => setName(e.target.value)} maxLength={24} placeholder="Misalnya, Kafka" autoComplete="off" />
+            <input id="player-name" className={styles.input} value={name} onChange={e => setName(e.target.value)} maxLength={24} placeholder="Nama tokoh ceritamu" autoComplete="off" />
             <fieldset className={styles.avatarPicker}><legend>Karakter ceritamu</legend>
               <label><input type="radio" name="avatar" value="girl" checked={avatar === 'girl'} onChange={() => setAvatar('girl')} /> Perempuan</label>
               <label><input type="radio" name="avatar" value="boy" checked={avatar === 'boy'} onChange={() => setAvatar('boy')} /> Laki-laki</label>

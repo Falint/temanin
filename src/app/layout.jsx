@@ -19,7 +19,7 @@ const raleway = localFont({
 
 export const metadata = {
   title: 'TEMANIN | Platform Mental Health & Konseling Sebaya Remaja Kota Depok',
-  description: 'Platform mental health, edukasi, dan konseling sebaya untuk remaja Kota Depok. Curhat anonim, temukan PIK-R terdekat, belajar, dan bermain.',
+  description: 'Platform mental health, edukasi, dan konseling sebaya untuk remaja Kota Depok. Curhat dengan nama pilihanmu, temukan PIK-R terdekat, belajar, dan bermain.',
   icons: { icon: '/logo-temanin.png', apple: '/logo-temanin.png' },
   keywords: 'mental health, remaja, PIK-R, konseling sebaya, edukasi, Kota Depok, GenRe, curhat, TEMANIN',
 };
@@ -28,8 +28,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id" className={`${inter.variable} ${raleway.variable}`}>
       <body className={inter.className}>
+        <a className="skip-link" href="#main-content">Lewati ke konten</a>
         <Navbar />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
         <Footer />
       </body>
     </html>

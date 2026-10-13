@@ -9,6 +9,10 @@
 
 .title {
   color: var(--text-main);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  max-width: 800px;
+  line-height: 1.08;
+  letter-spacing: -.04em;
   margin-bottom: 0.75rem;
   margin-top: 0.75rem;
 }
