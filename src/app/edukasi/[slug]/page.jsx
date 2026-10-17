@@ -36,20 +36,15 @@ export default async function ArticleDetailPage({ params }) {
 
       <div className={`container ${styles.detailLayout}`}>
         <div className={styles.detailContent}>
+          <div className={styles.detailSection} dangerouslySetInnerHTML={{ __html: article.intro }} />
           {article.content.map((section, index) => (
             <section id={`bagian-${index + 1}`} key={section.heading} className={styles.detailSection}>
               <h2>{section.heading}</h2>
-              {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-              {section.tips && <ul>{section.tips.map((tip) => <li key={tip}>{tip}</li>)}</ul>}
+              <div dangerouslySetInnerHTML={{ __html: section.html }} />
             </section>
           ))}
 
-          <section className={styles.nextSteps}>
-            <h2>Langkah Selanjutnya</h2>
-            <ul>{article.nextSteps.map((step) => <li key={step}>{step}</li>)}</ul>
-            <p>Kamu tidak harus menjalani semuanya sendiri. Konselor sebaya TEMANIN siap mendengarkan tanpa menghakimi.</p>
-            <Link href="/curhat" className="btn btn-primary">Curhat Sekarang</Link>
-          </section>
+
         </div>
 
         <aside className={styles.detailAside}>
