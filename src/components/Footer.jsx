@@ -25,7 +25,7 @@ export default function Footer() {
                 </span>
               </Link>
               <p className={styles.description}>
-                Platform mental health, edukasi, dan konseling sebaya untuk remaja Kota Depok. Didukung oleh jaringan PIK-R (Pusat Informasi dan Konseling Remaja).
+                Tempat belajar tentang diri, mencoba cerita baru, dan menemukan teman cerita. Untuk remaja Depok, bersama jejaring PIK-R.
               </p>
               <div className={styles.socialLinks}>
                 <a

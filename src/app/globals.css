@@ -26,14 +26,14 @@
   --warm-bg: rgba(186, 214, 235, 0.1);
 
   /* Backgrounds */
-  --bg-color: #FFF9F0;
+  --bg-color: #FAF8F2;
   --bg-warm: #FFF9F0;
   --bg-cool: #D0E3FF;
-  --bg-mint: #F7F2EB;
+  --bg-mint: #EAF2E7;
 
   /* Text */
   --text-main: #081F5C;
-  --text-muted: #334EAC;
+  --text-muted: #56647B;
   --text-light: var(--primary);
   --white: #ffffff;
 
@@ -53,7 +53,10 @@
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
-  --radius-2xl: 1.25rem;
+  --radius-2xl: 2rem;
+  --peach: #FFE1CB;
+  --lime: #E4EFB5;
+  --lilac: #E8E1F5;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -126,7 +129,9 @@ button {
 /* ============================================================
    TYPOGRAPHY
    ============================================================ */
+::selection { background: var(--secondary); color: var(--primary-dark); }
 h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
   font-family: var(--font-raleway), sans-serif;
   font-weight: 800;
   line-height: 1.25;

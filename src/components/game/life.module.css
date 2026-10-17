@@ -84,7 +84,7 @@
   border: 0;
 }
 .startPanel {
-  background: var(--bg-color);
+  background: var(--white);
 }
 .startPanel h2 {
   font-size: 2rem;
@@ -95,14 +95,13 @@
   border-radius: var(--radius-md);
 }
 .timeline li {
-  background: transparent;
-  border-radius: 0;
-  border-bottom: 2px solid var(--border-medium);
+  background: var(--white);
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
 }
 .timeline .activeChapter {
-  background: transparent;
-  border: 0;
-  border-bottom: 2px solid var(--primary);
+  background: var(--lime);
+  border: 1px solid var(--primary);
 }
 .timeline .activeChapter > span {
   opacity: 1;
@@ -133,7 +132,7 @@
   color: var(--white);
 }
 .statsPanel {
-  background: var(--bg-mint);
+  background: var(--white);
   border-radius: var(--radius-lg);
 }
 .statsPanel h2 {
@@ -156,7 +155,7 @@
 .endingGrid article {
   border: 0;
   border-top: 3px solid var(--primary);
-  border-radius: 0;
+  border-radius: 16px;
   background: var(--bg-color);
 }
 .endingGrid article:nth-child(2) {
@@ -191,3 +190,11 @@
     margin-right: auto;
   }
 }
+
+.story, .ending { background: var(--white); }
+.choices button { box-shadow: 0 3px 0 var(--border-light); }
+.choices button:active { transform: translateY(2px); box-shadow: none; }
+.cover h1 em { color: var(--lime); }
+.progress { height: 7px; }
+.avatarPicker label { padding: 8px 14px; border: 1px solid var(--border-light); border-radius: 999px; }
+.avatarPicker label:has(input:checked) { background: var(--secondary-light); border-color: var(--primary); }

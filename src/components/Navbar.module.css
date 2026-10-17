@@ -2,8 +2,8 @@
   position: fixed;
   inset: 0 0 auto;
   z-index: 1000;
-  background: var(--primary-dark);
-  border-bottom: 1px solid #bad6eb26;
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--border-light);
 }
 .scrolled {
   box-shadow: 0 4px 18px #081f5c20;
@@ -33,10 +33,10 @@
   font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.04em;
-  color: var(--white);
+  color: var(--primary-dark);
 }
 .logoAccent {
-  color: var(--secondary);
+  color: var(--primary);
 }
 .navLinks {
   display: flex;
@@ -49,41 +49,41 @@
   gap: 0.4rem;
   min-height: 44px;
   padding: 0.6rem 0.8rem;
-  color: var(--secondary-light);
-  font-size: 0.75rem;
+  color: var(--text-main);
+  font-size: 0.83rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   border-radius: 6px;
 }
 .navItem svg {
-  color: var(--secondary);
+  color: var(--primary);
 }
 .navItem:hover,
 .navItemActive {
-  color: var(--white);
-  background: #bad6eb15;
+  color: var(--primary-dark);
+  background: var(--secondary-light);
 }
 .navItemActive {
   box-shadow: inset 0 -2px var(--secondary);
 }
 .navCta {
   margin-left: 0.5rem;
-  background: var(--secondary-light) !important;
-  color: var(--primary-dark) !important;
+  background: var(--primary) !important;
+  color: var(--white) !important;
   border-radius: 999px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   box-shadow: none;
 }
 .header a:focus-visible,
 .header button:focus-visible {
-  outline-color: var(--secondary-light);
+  outline-color: var(--text-main);
 }
 .mobileMenuBtn {
   display: none;
   border: 1px solid #bad6eb44;
   border-radius: 8px;
   background: transparent;
-  color: var(--white);
+  color: var(--primary-dark);
   min-width: 44px;
   min-height: 44px;
   padding: 10px;
@@ -98,7 +98,7 @@
 .hamburger span {
   height: 2px;
   width: 100%;
-  background: var(--secondary-light);
+  background: var(--primary-dark);
   border-radius: 2px;
   transition:
     transform 0.2s,
@@ -144,7 +144,7 @@
     left: 0;
     right: 0;
     padding: 1rem;
-    background: var(--primary-dark);
+    background: var(--bg-color);
     border-bottom: 1px solid var(--primary-light);
     flex-direction: column;
     align-items: stretch;
@@ -167,6 +167,6 @@
   }
   .navItemActive {
     box-shadow: none;
-    background: var(--primary);
+    background: var(--secondary-light);
   }
 }

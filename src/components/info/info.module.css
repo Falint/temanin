@@ -81,4 +81,4 @@
   overflow-wrap: anywhere;
 }
 
-.hero { background:var(--secondary-light); border-bottom:4px solid var(--primary); }.title { text-transform:uppercase; font-size:clamp(2.2rem,4.8vw,4rem); line-height:1.06; }.badge { background:var(--white); }.contactCard { border-bottom:3px solid var(--primary); }
+.hero { background:var(--secondary-light); border-bottom:1px solid var(--border-light); }.title { font-size:clamp(2.2rem,4.8vw,4rem); line-height:1.06; }.badge { background:var(--white); }.contactCard { border:1px solid var(--border-light); border-radius:24px; background:var(--white); }

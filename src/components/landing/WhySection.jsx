@@ -30,7 +30,7 @@ export default function WhySection() {
         <SectionHeader
           badge="Kenapa TEMANIN?"
           badgeVariant="secondary"
-          title="TUMBUH ITU SEBUAH PROSES."
+          title="Di sini, kamu boleh berproses."
           description="Dibangun khusus untuk mendukung kesejahteraan mental remaja di Kota Depok, dengan tiga pilar utama."
         />
 

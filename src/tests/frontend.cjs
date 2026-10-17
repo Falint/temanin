@@ -15,7 +15,7 @@ const { chromium } = require('playwright');
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     const base = process.env.BASE_URL || 'http://127.0.0.1:3000';
-    const routes = ['/', '/curhat', '/curhat/wilayah', '/curhat/profil?mode=anonim', '/curhat/screening', '/curhat/chat', '/curhat/konseling', '/edukasi', '/edukasi/mengenal-emosi', '/games', '/games/life', '/tentang', '/kontak', '/ketentuan', '/kebijakan-privasi', '/dashboard/admin', '/dashboard/konselor', '/dashboard/supervisor'];
+    const routes = ['/', '/curhat', '/curhat/wilayah', '/curhat/profil?mode=anonim', '/curhat/screening', '/curhat/chat', '/curhat/konseling', '/edukasi', '/edukasi/pentingnya-kesehatan-mental', '/games', '/games/life', '/tentang', '/kontak', '/ketentuan', '/kebijakan-privasi', '/dashboard/admin', '/dashboard/konselor', '/dashboard/supervisor'];
     await page.goto(base + '/edukasi');
     const articleRoutes = await page.locator('a[href^="/edukasi/"]').evaluateAll(links => [...new Set(links.map(link => new URL(link.href).pathname))]);
     routes.push(...articleRoutes.filter(route => !routes.includes(route)));

@@ -5,14 +5,12 @@ import styles from './landing.module.css';
 export default function CurhatCTA() {
   return (
     <section className={styles.curhatSection}>
-      <div className={`${styles.curhatDecor} ${styles.curhatDecorOne}`} aria-hidden="true" />
-      <div className={`${styles.curhatDecor} ${styles.curhatDecorTwo}`} aria-hidden="true" />
 
       <div className="container">
         <div className={styles.curhatInner}>
           <span className={styles.curhatIcon}><Icon name="chat" size={52} /></span>
           <h2 className={styles.curhatTitle}>
-            ADA CERITA YANG INGIN KAMU BAGIKAN?
+            Nggak perlu merangkai kata yang sempurna.
           </h2>
           <p className={styles.curhatDesc}>
             Pilih nama yang nyaman, cari PIK-R, lalu lanjutkan percakapan melalui bot Telegram. Balasan mengikuti jadwal dan ketersediaan pengurus.

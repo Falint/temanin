@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Icon from '@/components/shared/Icon';
+import ArticleCover from '@/components/education/ArticleCover';
 import SectionHeader from '@/components/shared/SectionHeader';
 import { articles, categories } from '@/lib/data/education';
 import styles from './landing.module.css';
@@ -19,14 +19,14 @@ export default function EducationPreview() {
         <SectionHeader
           badge="Edukasi"
           badgeVariant="primary"
-          title="KENALI DIRI. BUKA PERSPEKTIF."
+          title="Bacaan kecil. Perspektif baru."
           description="Artikel dan panduan yang mudah dipahami, ditulis khusus untuk remaja."
         />
 
         <div className={styles.eduGrid}>
           {previewArticles.map((article) => (
             <Link key={article.id} href={`/edukasi/${article.id}`} className={`${styles.eduCard} soft-card`}>
-              <span className={styles.eduEmoji}><Icon name="book" size={50} /></span>
+              <div className={styles.eduEmoji}><ArticleCover slug={article.id} /></div>
               <span className={styles.eduCategory}>{getCategoryLabel(article.category)}</span>
               <h3 className={styles.eduTitle}>{article.title}</h3>
               <p className={styles.eduExcerpt}>{article.excerpt}</p>
