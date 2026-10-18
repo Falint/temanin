@@ -522,3 +522,10 @@
 }
 
 .pageTitle { text-transform:uppercase; font-size:clamp(2.3rem,5vw,4.2rem); line-height:1.06; max-width:900px; }.pageHeader { background:var(--secondary-light); border-bottom:4px solid var(--primary); }.pageHeaderBadge { background:var(--white); }.detailTitle { font-size:clamp(2.2rem,4.5vw,3.6rem); }.detailHeader { background:var(--secondary-light); }.featuredCard { box-shadow:7px 7px 0 var(--bg-mint); }.articleCard { border-radius:var(--radius-lg); border:1px solid var(--border-medium); padding:1.5rem; background:var(--white); }.articleEmoji { background:var(--secondary-light); }
+
+/* Format materi edukasi: subjudul, daftar, kutipan, dan tabel. */
+.detailSection h3 { margin: 1.5rem 0 0.75rem; }
+.detailSection ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+.detailSection blockquote { margin: 1.25rem 0; padding: 1rem; border-left: 3px solid var(--secondary); background: var(--secondary-light); }
+.detailSection table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin-bottom: 1.25rem; }
+.detailSection th, .detailSection td { padding: 0.75rem; border: 1px solid var(--border-medium); text-align: left; vertical-align: top; }
